@@ -1,0 +1,170 @@
+{
+  "run_id": "d17ee9b4f4d346b39394f9737148e734",
+  "source_commit": "048c204673e4d46cd94b4de8256d3f25d15db6b1",
+  "mode": "fast",
+  "photos": 177,
+  "hardware": {
+    "cuda_semantic_refinement": true,
+    "cuda_version": "12.8",
+    "device": "cuda",
+    "gpu_name": "NVIDIA A100-SXM4-40GB",
+    "original_3dgs": true,
+    "torch": "2.11.0+cu128"
+  },
+  "status": "completed",
+  "timing_seconds": {
+    "cuda_environment_setup": 284.1802403249999,
+    "detection_worker": 43.88260245323181,
+    "reconstruction_job": 2630.54,
+    "reconstruction_worker_including_full_export": 2750.5086121559143,
+    "semantic_worker": 119.56124665399966,
+    "semantic_optimizer": 27.836274513999342
+  },
+  "verification": {
+    "verified": true,
+    "gaussian_count": 1200686,
+    "sh_degree": 3,
+    "sh_coefficients_per_gaussian": 48,
+    "semantic_columns": 173,
+    "semantic_shapes": {
+      "probabilities": [
+        1200686,
+        173
+      ],
+      "closed_probabilities": [
+        1200686,
+        173
+      ],
+      "membership": [
+        1200686
+      ],
+      "closed_membership": [
+        1200686
+      ]
+    },
+    "semantic_steps": 400,
+    "semantic_timing": {
+      "worker_seconds": 119.56124665399966,
+      "matching_seconds": 3.989896337000573,
+      "optimizer_seconds": 27.836274513999342,
+      "setup_seconds": 4.626980080999601,
+      "checkpoint_seconds": 31.839500863001376,
+      "scope": "worker through sidecar serialization; excludes teacher inference and RGB training; components overlap worker total"
+    },
+    "coverage": {
+      "sampling_schedule": "view_cycle",
+      "sweep_steps": 77,
+      "min_required_steps": 77,
+      "minimum_sweeps": 1,
+      "planned_steps": 400,
+      "planned_sweeps": 5,
+      "completed_sweeps": 5,
+      "minimum_pair_visits": 5,
+      "observed_frame_class_pairs": 218,
+      "visited_frame_class_pairs": 218,
+      "uncovered_observed_frame_class_pairs": [],
+      "eligible_frames": 12,
+      "uncovered_observed_frames": []
+    },
+    "hierarchy_relations": {
+      "member_of": 11
+    },
+    "cross_view_confidence_keys": [
+      "executed",
+      "method",
+      "observations"
+    ],
+    "source_ply_sha256": "9d43c0633a8fb0652818b2616143c0dd8d33193ae8c76e77d0580cb47ce3edd6"
+  },
+  "priority": {
+    "reviewed_regions": 11,
+    "cameras_visited": 7,
+    "high_resolution_visits": 13,
+    "local_densification_added_gaussians": 0,
+    "in_memory_snapshot_gaussians": 1207539,
+    "exported_ply_gaussians": 1200686,
+    "snapshot_psnr_not_reported_as_exported_ply_metric": true
+  },
+  "result_archive": {
+    "filename": "Teatime-Fast-A100.zip",
+    "bytes": 521098336,
+    "sha256": "4870ee10b7eaad712593900a5fea96ae8148939de352a27eb06f68bc6cc699bd",
+    "chunk_bytes": 4194304,
+    "chunks": 125,
+    "format": "PLY plus matching semantics ZIP and execution evidence"
+  },
+  "runtime_released": true,
+  "screenshots_status": "completed: 24 scenes, 48 original bilingual native screenshots and 48 captioned cards",
+  "native_demo": {
+    "capture_date": "2026-09-12",
+    "app_version": "0.4.2",
+    "platform": "macOS",
+    "source_unchanged": true,
+    "import_ply_and_semantic_zip": "validated and opened",
+    "viewer_objects": 23,
+    "selected_table_region": {
+      "gaussians": 14543,
+      "cross_view_confidence": 0.52,
+      "coverage": "partial table"
+    },
+    "bear_region": {
+      "gaussians": 6,
+      "coverage": "insufficient for full object editing"
+    },
+    "semantic_import_matches_artifact": true,
+    "tested": [
+      "orbit",
+      "zoom",
+      "core region filter at 0.75x",
+      "catalog search",
+      "region isolation",
+      "hide",
+      "undo by button",
+      "undo by local text command",
+      "full native JSONL export",
+      "six-photo sparse input routing",
+      "two-photo completion input routing",
+      "manual 35-vertex mask save",
+      "priority region review and confirmation",
+      "six-photo cloud task ZIP export"
+    ],
+    "llm_provider_used": false,
+    "sparse_examples_trained_in_capture_session": false,
+    "jsonl_reimport": "not completed after second Mac screen lock"
+  },
+  "native_export": {
+    "filename": "Teatime-Fast.splat.jsonl",
+    "bytes": 1811880762,
+    "sha256": "a8d3bc36ea6e8cb8796fc426ab7c9c23427ecc0544826249e5cb0b3a4ed74c32",
+    "gaussians": 1200686,
+    "data_chunks": 49,
+    "sh_coefficient_lengths": {
+      "48": 1200686
+    },
+    "source_counts": {
+      "unknown": 1200686
+    },
+    "objects": 23,
+    "source_sh_degree": 3,
+    "preview_sampled": false,
+    "semantic_import_validated": true,
+    "visibility": {
+      "isolated_ids": null
+    },
+    "viewer_core_region": {
+      "format": "splat-studio-core-region/1",
+      "enabled": true,
+      "multiplier": 0.75,
+      "target": "scene",
+      "object_ids": []
+    }
+  },
+  "sparse_task_export": {
+    "filename": "Teatime-6views-task.zip",
+    "bytes": 1992763,
+    "sha256": "b8112b572a8593a898adeb9377696fc367a379133db2767f8b872dba602f2a1e",
+    "archive_validated": true,
+    "files": 52,
+    "run_status": "prepared, not trained"
+  }
+}

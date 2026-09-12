@@ -1,0 +1,41 @@
+Splat Studio · 中英文截图 Demo
+
+打开“图文展示.html”，右上角切换中文 / EN；按章节筛选，点击截图放大。
+打开“项目报告.html”，查看从照片输入到重建、语义、重点物品、稀疏流程、三维编辑与保存的完整报告，也可切换语言。
+
+本次交付：24 组、48 张原生 App 截图，以及 48 张带中英文配文的展示卡片。
+- screenshots/：未修改的原生 App JPEG 截图。
+- cards/：1280 × 720 的配文截图，可直接放入作品集或演示材料。
+- capture-manifest.json：截图、配文与文件校验值。
+- execution-record.json：A100 训练、模型校验、原生操作与导出记录。
+- 方法与实测说明.md：报告的可编辑 Markdown 版本。
+
+图册覆盖创建与已有模型导入、照片分析、RGB/语义选择、重点输入与手工标注、区域确认、三档模式、时间估计、本机/Colab/其他服务器配置、云任务打包、真实 Teatime 浏览、核心区域、物品搜索、隔离、隐藏、文字撤销与完整保存。
+六照片与双照片示例展示按输入触发的稀疏/补全建议；六照片示例完成任务包导出。本次新训练的展示模型使用完整 177 张 Teatime 照片。
+
+真实 Fast A100 任务完成 7,000 步 RGB + 400 步语义，保留 1,200,686 个高斯及三阶球谐（每高斯 48 个 RGB 系数）。重建任务至完整导出耗时 45 分 50.5 秒；环境准备、识别、网络传输和人工核对的范围见报告。
+快速语义仅覆盖部分区域；报告与隔离截图如实记录，不将区域选择宣传为完整物体分割。所有展示画面来自实际界面。
+
+训练结果包 Teatime-Fast-A100.zip 约 521 MB，包含完整 PLY 和配套语义 ZIP；它独立保存，不重复放入图文 Demo 压缩包。
+请保持 HTML 与 screenshots/ 的相对位置。原生保存窗口的系统按钮使用 macOS 系统语言。
+
+English
+
+Open 图文展示.html and use 中文 / EN. Filter by chapter and click a screenshot to enlarge it.
+Open 项目报告.html for the bilingual system, method and execution report.
+
+The collection contains 24 scenes: 48 original native App captures and 48 captioned 1280 × 720 presentation cards.
+- screenshots/: untouched native JPEG captures.
+- cards/: captioned images for a portfolio or presentation.
+- capture-manifest.json: captions, paths and checksums.
+- execution-record.json: real training, model validation and native-operation evidence.
+- 方法与实测说明.md: editable Markdown report.
+
+The walkthrough covers creation/import, input analysis, appearance-only/semantic choices, priority input and annotation, mask review, quality presets, estimates, local/Colab/server setup, task packaging, the trained Teatime viewer, core filtering, region search/isolation/hiding, text undo and full export.
+Six-photo and two-photo branches demonstrate input-triggered sparse/completion recommendations. The six-photo task was packaged; the executed training run uses the full 177-photo Teatime set.
+
+The real Fast A100 run completes 7,000 RGB and 400 semantic iterations, retaining 1,200,686 Gaussians with degree-three spherical harmonics (48 RGB coefficients per Gaussian). Reconstruction through full export takes 45 minutes 50.5 seconds. The report defines timing scope and separately discusses setup, detection, review and transfer.
+Fast semantics covers partial regions. The report and isolation captures document this scope; region editing is not presented as complete-object segmentation. All interface images are genuine captures.
+
+Teatime-Fast-A100.zip contains the complete PLY and matching semantic ZIP (~521 MB). It is delivered separately and is not duplicated in the screenshot archive.
+Keep the HTML files beside screenshots/. Native file-dialog controls follow the macOS system language.

@@ -6,11 +6,24 @@
 
 把 **3D 高斯重建、稀疏视角处理、层级语义与重要物品细化** 连接成完整桌面工作流。
 
-[English](README.md) · **简体中文** · [完整使用说明](docs/user-guide.html) · [Colab 笔记本](colab/Splat-Studio-User-Guide.ipynb)
+[English](README.md) · **简体中文** · [完整使用说明](docs/user-guide.html) · [Colab 笔记本](colab/Splat-Studio-User-Guide.ipynb) · [图文 Demo](docs/demo/README.zh-CN.md)
 
-![Splat Studio 工作流](docs/assets/workflow.svg)
+![Splat Studio 原生 App 中的 Teatime 实际重建结果](docs/demo/screenshots/16-teatime-viewer-zh.jpg)
 
 </div>
+
+## 看实际运行效果
+
+[**查看中英文图文功能展示 →**](docs/demo/README.zh-CN.md)
+
+从场景创建、按照片触发稀疏建议、重点区域确认与 GPU 配置，到真实 Teatime 浏览和可撤销区域编辑。**24 组展示、48 张原始截图、48 张配文卡片。**
+
+| 核对重要物品区域 | 编辑与撤销 | 按输入触发稀疏建议 |
+| --- | --- | --- |
+| ![重点区域确认](docs/demo/screenshots/25-priority-review-zh.jpg) | ![文字撤销恢复场景](docs/demo/screenshots/19-command-undo-zh.jpg) | ![双照片重建建议](docs/demo/screenshots/27-two-view-completion-zh.jpg) |
+
+真实 Fast A100 任务由 177 张照片完整导出 **1,200,686 个高斯及三阶球谐**，重建任务至完整导出耗时 **45 分 50.5 秒**，环境准备与识别另外记录。快速版的语义编辑展示部分区域覆盖。[方法与实测范围](docs/demo/方法与实测说明.md) · [执行记录](docs/demo/execution-record.json)。
+
 
 ## 从输入照片，到保存可交互的场景
 

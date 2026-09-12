@@ -6,11 +6,24 @@
 
 A bilingual desktop workbench that brings **3D Gaussian reconstruction, sparse-view geometry, hierarchical semantics, and object-focused refinement** into one guided workflow.
 
-**English** · [简体中文](README.zh-CN.md) · [Complete user guide](docs/user-guide.html) · [Colab notebook](colab/Splat-Studio-User-Guide.ipynb)
+**English** · [简体中文](README.zh-CN.md) · [Complete user guide](docs/user-guide.html) · [Colab notebook](colab/Splat-Studio-User-Guide.ipynb) · [Screenshot demo](docs/demo/README.md)
 
-![Splat Studio workflow](docs/assets/workflow.svg)
+![Teatime reconstructed in the native Splat Studio App](docs/demo/screenshots/16-teatime-viewer-en.jpg)
 
 </div>
+
+## See the app in action
+
+[**Explore the bilingual screenshot walkthrough →**](docs/demo/README.md)
+
+The walkthrough covers scene creation, photo-based sparse guidance, priority-mask review, GPU setup, the trained Teatime viewer and reversible region editing. **24 scenes, 48 original screenshots, 48 captioned cards.**
+
+| Review priority regions | Edit and undo | Input-aware sparse guidance |
+| --- | --- | --- |
+| ![Priority region confirmation](docs/demo/screenshots/25-priority-review-en.jpg) | ![Restore the scene with undo](docs/demo/screenshots/19-command-undo-en.jpg) | ![Two-photo reconstruction guidance](docs/demo/screenshots/27-two-view-completion-en.jpg) |
+
+The real Fast A100 run exports **1,200,686 Gaussians with degree-three SH** from 177 photos. Reconstruction through full export takes **45m 50.5s**, with setup and detection reported separately. Semantic editing uses partial regions in this Fast result. [Methods and measured scope](docs/demo/方法与实测说明.md) · [Execution record](docs/demo/execution-record.json).
+
 
 ## A complete workflow, from capture to interaction
 
