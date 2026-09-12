@@ -15,8 +15,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # macos-14 is currently arm64; migrate this label before its announced
-          # November 2, 2026 retirement. See docs/COLAB.zh-CN.md.
+          # Build the native backend on the target operating system.
+          # Keep the runner architecture aligned with the selected artifact.
           - os: macos-14
             label: macOS-arm64
             package-script: package:mac
