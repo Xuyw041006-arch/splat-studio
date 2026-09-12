@@ -1,0 +1,11 @@
+{
+  "device": "cuda",
+  "mode": "balanced",
+  "geometry_backend": "auto",
+  "sparse_completion": "auto",
+  "allow_geometry_download": true,
+  "completion": "auto",
+  "semantics": false,
+  "priority_objects": [],
+  "view_span": null
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101416" />
+  <title>Splat Studio · 三维重建工作台</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/wizard.css" />
+</head>
+<body>
+  <div id="app" data-workflow="home">
+    <header class="app-header">
+      <a class="brand" href="#" aria-label="Splat Studio 主页"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>Splat<span class="brand-light"> Studio</span></span></a>
+      <div class="header-center"><span class="header-divider"></span><span class="project-breadcrumb">工作空间</span><span class="slash">/</span><span id="project-title">未命名场景</span><span class="local-badge">LOCAL</span></div>
+      <div class="header-actions"><div class="language-switch" role="group" aria-label="Language / 语言" data-i18n-ignore><button type="button" data-language="zh" lang="zh-CN" aria-pressed="true">中文</button><button type="button" data-language="en" lang="en" aria-pressed="false">EN</button></div><span id="connection-status" class="connection-status"><i></i>连接引擎中</span><button class="button ghost compact" id="home-button" data-icon="folder">场景首页</button><button class="button secondary compact" id="export-button" data-icon="download" disabled>保存成果</button></div>
+    </header>
+    <section id="scene-home" class="scene-home">
+      <div class="home-intro"><h1>开始你的三维场景</h1></div>
+      <div class="home-choices"><button id="new-scene" class="scene-choice"><span data-icon="plus"></span><h2>从 0 开始重建</h2><p>添加照片，创建一个新场景。</p><strong>开始 →</strong></button><button id="existing-scene" class="scene-choice"><span data-icon="folder"></span><h2>导入已有重建</h2><p>打开已有场景，继续查看与操作。</p><strong>选择文件 →</strong></button></div>
+      <button id="resume-scene" class="text-button" hidden>返回当前场景</button>
+    </section>
+    <section id="scene-import" class="scene-import" hidden>
+      <button id="import-back" class="text-button">← 返回</button>
+      <div id="import-type-step"><p class="wizard-kicker">导入已有重建</p><h1>这个场景包含物品语义吗？</h1><div class="wizard-choice-grid"><button id="import-rgb-choice" class="wizard-choice"><span class="choice-symbol">◈</span><h2>仅 RGB 外观</h2><p>查看与旋转三维场景</p></button><button id="import-semantic-choice" class="wizard-choice"><span class="choice-symbol">⌕</span><h2>包含物品语义</h2><p>还能查找、选择和隐藏物品</p></button></div></div>
+      <div id="import-files-step" hidden><p class="wizard-kicker">导入文件</p><h1 id="import-files-heading">选择场景文件</h1><p id="import-files-description"></p>
+      <label class="import-file-field"><span id="geometry-field-label">场景文件</span><input id="scene-geometry-file" type="file" accept=".ply,.json,.jsonl"></label>
+      <label class="import-file-field" id="semantic-file-field">配套语义包<input id="scene-semantic-file" type="file" accept=".zip"><small>选择与点云一起生成的语义 ZIP。</small></label>
+      <input id="geometry-only" type="checkbox" hidden>
+      <p id="import-scene-status" role="status"></p><button id="import-scene-submit" class="button primary" disabled>打开场景</button></div>
+    </section>
+    <main class="workspace">
+      <aside class="setup-panel">
+        <div class="panel-heading"><div><span class="eyebrow">CREATE A SCENE</span><h1>从照片，到空间。</h1></div><span class="step-index">01—03</span></div>
+        <div class="setup-scroll">
+          <section class="setup-section source-section">
+            <div class="section-title"><h2><span class="number">01</span> 场景素材</h2><span id="photo-count" class="muted">0 张照片</span></div>
+            <label class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="选择照片，或将照片拖拽到此处"><span class="upload-symbol" data-icon="upload"></span><strong>拖入照片，开始重建</strong><span>或 <em>选择文件</em></span><small>JPG、PNG、WEBP · 至少 2 张</small><input id="photo-input" type="file" multiple accept="image/jpeg,image/png,image/webp" hidden /></label>
+            <div id="photo-grid" class="photo-grid" aria-label="已选照片"></div>
+            <div id="photo-actions" class="photo-actions" hidden><button id="add-photos" class="text-button" data-icon="plus">添加照片</button><button id="clear-photos" class="text-button muted">清空</button></div>
+            <label class="field-label" for="view-span">拍摄覆盖角度 <span class="optional">可选</span></label>
+            <div class="angle-field"><span data-icon="orbit"></span><input id="view-span" type="number" min="0" max="360" placeholder="自动判断 / 输入已知角度" /><span>°</span></div>
+            <p class="field-hint">读取照片重叠与相机信息；填写已知覆盖角度可以辅助判断，相机位姿由照片估计。</p>
+          </section>
+          <section class="setup-section">
+            <div class="section-title"><h2><span class="number">02</span> 重建设置</h2></div>
+            <div class="quality-options" role="radiogroup" aria-label="重建预算">
+              <button class="quality-option" role="radio" aria-checked="false" data-mode="fast"><span data-icon="bolt"></span><strong>快速</strong><small>快速预览</small></button>
+              <button class="quality-option selected" role="radio" aria-checked="true" data-mode="balanced"><span data-icon="sliders"></span><strong>均衡</strong><small>推荐使用</small><i></i></button>
+              <button class="quality-option" role="radio" aria-checked="false" data-mode="fine" title="CUDA 精细模式：22000 次优化"><span data-icon="diamond"></span><strong>精细</strong><small>更多优化</small></button>
+            </div>
+            <p class="field-hint">模式代表计算预算；更多迭代不保证画质提高。</p>
+            <div class="inline-field"><label for="execution-target">训练位置</label><select id="execution-target"><option value="local">本机</option><option value="cloud">云服务器 GPU</option></select></div>
+            <div class="inline-field" id="local-device-field"><label for="device">本机计算设备</label><select id="device"><option value="auto">自动选择</option><option value="mps">Apple GPU · MPS</option><option value="cuda">NVIDIA · CUDA</option><option value="cpu">CPU · 兼容模式</option></select></div>
+            <section id="cloud-execution-panel" class="cloud-execution-panel" aria-label="云端训练任务" hidden>
+              <label class="field-label" for="cloud-provider">云端运行方式</label><select id="cloud-provider" class="full-select"><option value="colab">Google Colab</option><option value="server">自有 NVIDIA GPU 服务器</option></select>
+              <p class="cloud-connection-label">未连接云端 GPU</p>
+              <p id="cloud-execution-hint" class="field-hint">导出照片与配置，在 Colab 运行任务，再将结果导入应用。当前不会直接提交远程训练。</p>
+              <ol class="cloud-workflow"><li>选择照片与训练设置</li><li>导出任务包，在云端按包内说明运行</li><li>下载完整结果，在首页选择“导入已有场景”</li></ol>
+              <div id="cloud-package-result" class="cloud-package-result" role="status" hidden><p id="cloud-package-message"></p><a id="cloud-package-download" class="button secondary full">下载任务包</a><details class="cloud-package-details"><summary>运行说明 / 校验信息</summary><p class="field-hint">解压后按 README 准备环境，再运行任务：</p><p id="cloud-package-command" class="field-hint"></p><p id="cloud-package-sha" class="field-hint"></p></details></div>
+            </section>
+            <div id="device-detail" class="device-detail"><span data-icon="cpu"></span><span>正在检测可用计算能力</span></div>
+            <div class="semantic-toggle-row"><div><label for="semantics">语义理解</label><p>识别物品，让场景可以被编辑</p></div><label class="switch"><input type="checkbox" id="semantics" checked /><span></span></label></div>
+            <div id="semantic-settings"><label class="field-label" for="semantic-strategy">语义融合方式</label><select id="semantic-strategy" class="full-select"><option value="post">重建后融合 · 更快，推荐</option><option value="joint" disabled>联合几何优化 · 暂未提供</option></select><p class="field-hint" id="strategy-hint">通过跨视角投影融合语义，保留物体与部件层级。</p></div>
+          </section>
+          <section class="setup-section" id="inventory-section" hidden>
+            <div class="section-title"><h2><span class="number">03</span> 重点物品</h2><span class="pill">局部增强</span></div>
+            <p class="section-description">选择值得更多细节的物品，提高这些物品在重建损失中的权重。</p>
+            <div id="inventory-list" class="inventory-list"></div>
+            <p id="inventory-note" class="field-hint"></p>
+          </section>
+          <section id="analysis-summary" class="analysis-summary" hidden><div class="analysis-summary-title"><span data-icon="route"></span><strong id="plan-name">重建方案</strong></div><p id="plan-description"></p><p id="estimate-basis" class="field-hint"></p><div id="plan-warnings" class="plan-warnings"></div></section>
+        </div>
+        <div class="setup-footer"><div class="estimate-row"><span data-icon="clock"></span><span>规划粗估</span><strong id="estimate">分析素材后显示</strong></div><button class="button primary full" id="analyze-button" data-icon="scan" disabled>分析照片</button><button class="button primary full" id="reconstruct-button" data-icon="play" hidden>开始重建</button><button class="text-button reanalyze-button" id="reanalyze-button" hidden>重新分析照片</button><p id="setup-status" class="setup-status">在本机处理 · 照片由你掌控</p></div>
+      </aside>
+      <section class="viewer-panel" aria-label="三维场景视图">
+        <div class="viewer-topbar"><div class="view-tab selected"><span class="tiny-splat"></span>场景视图</div><span id="scene-kind" class="scene-kind">3D GAUSSIAN SPLATTING</span><div class="view-toolbar"><button id="grid-toggle" class="icon-button active" title="切换地面网格" aria-label="切换地面网格" data-icon="grid"></button><button id="reset-view" class="icon-button" title="重置视角" aria-label="重置视角" data-icon="maximize"></button><span class="toolbar-divider"></span><button id="help-button" class="icon-button" title="操作指南" aria-label="操作指南" data-icon="help"></button></div></div>
+        <div class="canvas-wrap" id="canvas-wrap"><canvas id="scene-canvas"></canvas><div class="viewport-vignette"></div>
+          <div class="scene-chips" id="scene-chips" hidden><span id="scene-badge" class="scene-badge"><i></i>场景已加载</span><span id="splat-count" class="splat-count">0 GAUSSIANS</span></div>
+          <div class="viewport-mode" id="viewport-mode" hidden><button class="active" data-source="all">全部</button><button data-source="observed">真实观测</button><button data-source="inferred">补全部分</button><button data-source="unknown">来源未知</button></div>
+          <div class="welcome-overlay" id="welcome-overlay"><div class="welcome-art"><div class="orbit-ring r1"></div><div class="orbit-ring r2"></div><div class="orbit-ring r3"></div><div class="floating-splat s1"></div><div class="floating-splat s2"></div><div class="floating-splat s3"></div><div class="floating-splat s4"></div><div class="floating-splat s5"></div><div class="floating-splat s6"></div><div class="floating-splat s7"></div><div class="floating-splat s8"></div><span class="art-center"></span></div><span class="eyebrow">EVERY PERSPECTIVE COUNTS</span><h2>让每个视角，<br />汇成一个世界。</h2><p>导入一组照片，用 3D Gaussian Splatting<br />构建可探索、可理解的三维场景。</p><div class="creation-steps"><span>01 导入素材</span><span>02 设置与训练</span><span>03 操作场景</span></div><span class="welcome-caption">完成重建后，自动进入场景编辑</span></div>
+          <div id="job-overlay" class="job-overlay" hidden><div class="job-card"><div class="job-title"><span class="spinner"></span><span id="job-stage">准备重建</span><button id="cancel-job" class="text-button">取消</button></div><p id="job-message">正在准备照片</p><div class="progress-track"><span id="job-progress"></span></div><div class="job-meta"><span id="job-progress-label">0%</span><span id="job-elapsed">已用时 0 秒</span></div><p id="job-eta" aria-live="polite" hidden></p></div></div>
+          <div class="axis-widget" aria-hidden="true"><span class="axis-line x"></span><span class="axis-line y"></span><span class="axis-line z"></span><b class="axis-x">X</b><b class="axis-y">Y</b><b class="axis-z">Z</b><i></i></div>
+          <div class="viewport-hint"><span data-icon="mouse"></span><span>拖拽旋转</span><i>·</i><span>滚轮缩放</span><i>·</i><span>右键平移</span></div>
+          <div id="selection-chip" class="selection-chip" hidden><span class="selection-dot"></span><span id="selection-label"></span><button id="focus-selection" title="定位物品" aria-label="定位物品" data-icon="focus"></button><button id="hide-selection" title="隐藏物品" aria-label="隐藏物品" data-icon="eyeOff"></button></div>
+        </div>
+        <div class="command-area"><div class="command-box"><span class="command-icon" data-icon="sparkles"></span><input id="command-input" type="text" placeholder="试试「找到椅子」或「隐藏所有植物」" autocomplete="off" aria-label="用自然语言操作三维场景" /><span class="command-provider" id="command-provider">本地指令</span><button id="command-send" title="执行指令" aria-label="执行指令" data-icon="arrowUp" disabled></button></div><div class="command-footer"><span id="command-feedback">用语言探索场景。支持查找、聚焦、隐藏、隔离与撤销。</span><kbd>↵</kbd></div></div>
+      </section>
+      <aside class="objects-panel"><div class="objects-heading"><h2>场景层级</h2><span id="object-count" class="count-badge">0</span><button id="undo-button" class="icon-button" title="撤销隐藏 / 隔离 (⌘Z)" aria-label="撤销场景操作" data-icon="undo" disabled></button></div><div class="object-search"><span data-icon="search"></span><input id="object-search" placeholder="搜索物品…" aria-label="搜索场景中的物品" /><kbd>⌕</kbd></div><div class="tree-header"><span>物体 / 部件</span><span>可见</span></div><div id="object-tree" class="object-tree"><div class="objects-empty"><span data-icon="layers"></span><strong>空间里，不止有几何。</strong><p>启用语义理解后，<br />在这里探索物品与部件层级。</p></div></div><div id="object-detail" class="object-detail" hidden><div class="detail-header"><span class="eyebrow">SELECTED OBJECT</span><span id="object-confidence" class="pill"></span></div><h3 id="object-detail-name"></h3><div id="object-detail-stats" class="detail-stats"></div><div class="detail-actions"><button id="detail-focus" class="button secondary" data-icon="focus">定位</button><button id="detail-isolate" class="button secondary" data-icon="isolate">隔离</button><button id="detail-hide" class="button secondary" data-icon="eyeOff">隐藏</button></div><p class="field-hint">隐藏可随时撤销，保留原始场景数据。</p></div><div class="objects-bottom"><div><span class="status-dot"></span>可交互的语义场景</div><p>物体 → 部件 · 跨视角统一标识</p></div></aside>
+    </main>
+    <footer class="status-bar"><span><i class="status-dot"></i><span id="engine-status">引擎连接中</span></span><span id="renderer-status">WebGL · Gaussian Renderer</span><span class="status-bar-right" id="scene-metadata">本地工作空间</span><span class="version">v0.4.2</span></footer>
+  </div>
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <dialog id="help-dialog"><div class="dialog-heading"><h2>探索你的三维场景</h2><button id="close-help" class="icon-button" aria-label="关闭帮助" data-icon="close"></button></div><p class="dialog-intro">用鼠标自由移动视角，用语义直接操作物体。</p><dl class="shortcut-list"><div><dt>旋转视角</dt><dd>鼠标左键拖拽</dd></div><div><dt>平移视角</dt><dd>鼠标右键拖拽</dd></div><div><dt>缩放</dt><dd>鼠标滚轮 / 触控板</dd></div><div><dt>选中物品</dt><dd>点击高斯场景或层级列表</dd></div><div><dt>聚焦选中物品</dt><dd><kbd>F</kbd></dd></div><div><dt>隐藏选中物品</dt><dd><kbd>H</kbd> / <kbd>Delete</kbd></dd></div><div><dt>撤销场景编辑</dt><dd><kbd>⌘ / Ctrl</kbd> + <kbd>Z</kbd></dd></div><div><dt>显示所有物品</dt><dd><kbd>Esc</kbd></dd></div></dl><p class="help-note">补全区域是推断结果。来源未知的导入模型不会计为真实观测。显示保留输入模型的全部球谐系数。多类别重叠高斯请从列表或搜索选择类别，画面点击只选择具有单一物品归属的高斯；隐藏类别会移除其全部成员，隔离类别会保留重叠成员。</p></dialog>
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

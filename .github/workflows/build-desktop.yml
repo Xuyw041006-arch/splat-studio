@@ -1,0 +1,81 @@
+name: Build desktop installers
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: ${{ matrix.label }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # macos-14 is currently arm64; migrate this label before its announced
+          # November 2, 2026 retirement. See docs/COLAB.zh-CN.md.
+          - os: macos-14
+            label: macOS-arm64
+            package-script: package:mac
+          - os: windows-2022
+            label: Windows-x64
+            package-script: package:win
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+      ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES: 'false'
+      HF_HUB_OFFLINE: '1'
+      TRANSFORMERS_OFFLINE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-semantic.txt
+            requirements-dev.txt
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          package-manager-cache: false
+      - name: Install Python runtime and semantic dependencies
+        run: python -m pip install -r requirements-semantic.txt -r requirements-dev.txt
+      - name: Install Corepack
+        run: npm install --global corepack
+      - name: Activate pinned pnpm
+        run: corepack prepare pnpm@11.19.0 --activate
+      - name: Enable pnpm shim
+        run: corepack enable
+      - name: Install desktop dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Restore pinned upstream source for CPU contract tests
+        run: python scripts/setup_upstream.py
+      - name: Run local backend checks without model downloads
+        run: python -m pytest tests -q
+      - name: Check desktop and viewer contracts
+        run: node --test tests/*.mjs tests/*.cjs
+      - name: Prepare pinned geometry code without model weights
+        run: python scripts/setup_geometry.py --root build/geometry --no-weights
+      - name: Build bundled backend including semantic runtime
+        run: python scripts/build_backend.py --semantics --geometry --geometry-repo build/geometry/dust3r
+      - name: Package platform installer
+        run: pnpm run ${{ matrix.package-script }} --publish never
+      - name: Upload installer artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Splat-Studio-${{ matrix.label }}-${{ github.run_number }}
+          path: |
+            release/*.dmg
+            release/*.zip
+            release/*.exe
+            release/*.blockmap
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14

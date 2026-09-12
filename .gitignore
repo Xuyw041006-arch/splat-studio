@@ -1,0 +1,39 @@
+# Local environments and build output
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+dist/
+build/
+release*/
+work/
+# Downloads, photos and generated training artifacts
+vendor/
+data/
+datasets/
+models/
+weights/
+checkpoints/
+results/
+outputs/
+*.ply
+*.splat.jsonl
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.npz
+*.npy
+*.zip
+*.dmg
+*.exe
+*.msi
+*.app/
+# Private configuration
+.env
+.env.*
+!.env.example
+*.log

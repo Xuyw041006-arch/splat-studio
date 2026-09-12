@@ -1,0 +1,70 @@
+{
+  "name": "splat-studio-guided",
+  "version": "0.4.2",
+  "private": true,
+  "description": "Local 3D Gaussian reconstruction and semantic editing workbench",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "web": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "desktop": "electron .",
+    "package:mac": "vite build && electron-builder --mac dmg zip",
+    "package:win": "vite build && electron-builder --win nsis",
+    "build:backend": "python scripts/build_backend.py --semantics --geometry",
+    "test:ui": "node --test tests/*.mjs tests/*.cjs",
+    "test": "python -m pytest tests"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "acorn": "^8.18.0",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.0.12",
+    "linkedom": "^0.18.13",
+    "vite": "^7.1.5"
+  },
+  "build": {
+    "appId": "studio.splat.desktop.guided",
+    "productName": "Splat Studio",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**/*",
+      "dist/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "build/backend",
+        "to": "backend"
+      },
+      {
+        "from": "dist",
+        "to": "frontend"
+      },
+      {
+        "from": "build/geometry",
+        "to": "geometry"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "hardenedRuntime": false
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "author": "Splat Studio research prototype"
+}

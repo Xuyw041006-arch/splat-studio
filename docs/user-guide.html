@@ -1,0 +1,807 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Splat Studio 0.4.2 · 完整使用说明</title><style>
+:root{--ink:#18283c;--muted:#586779;--green:#167867;--line:#dce4e9;--bg:#f3f6f8;--nav:#0e2538}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:26px}body{margin:0;background:var(--bg);font:16px/1.85 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink)}a{color:#146f9b;text-underline-offset:3px}nav{position:fixed;inset:0 auto 0 0;width:250px;background:var(--nav);color:#d9e7ef;padding:30px 22px;overflow:auto}nav .brand{font-size:21px;font-weight:750;color:white;letter-spacing:-.5px}nav .sub{font-size:12px;color:#9ab4c5;margin:2px 0 27px}nav a{display:block;color:#c1d4e1;text-decoration:none;font-size:13px;padding:8px 10px;border-radius:6px;line-height:1.7}nav a:hover,nav a:focus{background:#254356;color:white}main{margin-left:250px;max-width:1190px;padding:54px 48px 80px}.hero{background:linear-gradient(125deg,#132e45,#19515b);color:white;border-radius:18px;padding:40px 42px;margin-bottom:28px;position:relative;overflow:hidden}.hero .eyebrow{font-size:12px;letter-spacing:3px;color:#a5d5d4}.hero h1{font-size:38px;line-height:1.35;margin:12px 0 16px}.hero p{margin:0;color:#cee1e6;max-width:660px}.badge{display:inline-block;margin-top:24px;border:1px solid #719b9f;border-radius:100px;padding:3px 12px;font-size:12px}section{background:white;border:1px solid var(--line);border-radius:14px;margin:22px 0;padding:30px 34px}h2{font-size:23px;line-height:1.5;margin:0 0 22px;letter-spacing:-.4px}h3{font-size:18px;margin-top:28px}.lead{font-size:18px}.recipe{display:flex;flex-wrap:wrap;gap:8px}.recipe span{font-size:13px;padding:5px 11px;background:#edf7f3;color:#146753;border-radius:7px}.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:24px 0}.flow div{padding:12px 8px;border:1px solid var(--line);border-radius:8px;font-size:13px;text-align:center;line-height:1.7}.flow b{display:block;border-radius:50%;background:var(--nav);color:white;width:25px;height:25px;line-height:25px;margin:0 auto 8px}.note{border-left:4px solid var(--green);background:#eef8f4;padding:15px 18px;border-radius:0 8px 8px 0;margin:22px 0}.button{display:inline-block;background:#167867;color:white!important;text-decoration:none;border:0;border-radius:8px;padding:10px 18px;font:600 14px/1.7 inherit;cursor:pointer;margin-right:8px}.secondary{background:#eaf0f4;color:var(--ink)!important}.table-wrap{overflow-x:auto;margin:22px 0}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.75;min-width:510px}th{text-align:left;background:#edf2f5;font-size:13px;padding:12px 13px}td{padding:13px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:600;min-width:126px}td code, p code{overflow-wrap:anywhere}.steps{padding-left:25px}.steps li{padding:5px 0 11px 5px}details{margin:18px 0;border:1px solid var(--line);border-radius:8px;padding:12px 16px}summary{cursor:pointer;font-weight:650;color:#285166}details[open] summary{margin-bottom:14px}code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:#eff3f6;padding:2px 5px;border-radius:4px}kbd{border:1px solid #c8d2da}.codebox{margin:18px 0;background:#132438;color:#e4edf6;border-radius:9px;overflow:hidden}.codebar{display:flex;justify-content:space-between;background:#20384d;color:#b9cede;padding:8px 14px;font-size:11px}.copy{border:1px solid #526c80;background:transparent;color:#e0ebf3;border-radius:5px;padding:3px 10px;cursor:pointer}pre{padding:16px;margin:0;overflow-x:auto;font:12px/1.75 ui-monospace,SFMono-Regular,Menlo,monospace}pre code{font-size:inherit;background:none;padding:0;color:inherit}.small{font-size:13px;color:var(--muted)}.checklist label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #edf1f4}.checklist input{margin-top:9px;accent-color:var(--green)}footer{font-size:12px;color:var(--muted);text-align:center}p,li{overflow-wrap:break-word} @media(max-width:1050px){nav{width:205px;padding:25px 14px}main{margin-left:205px;padding:34px 24px}section{padding:25px}.flow{grid-template-columns:1fr 1fr}.hero{padding:30px}.hero h1{font-size:31px}}@media(max-width:720px){nav{position:static;width:auto;padding:18px}nav .sub{margin-bottom:0}nav .toc{display:none}main{margin-left:0;padding:18px 12px}.hero{padding:25px}section{padding:23px 18px}h2{font-size:21px}.hero h1{font-size:28px}.flow{grid-template-columns:1fr 1fr}table{font-size:13px}}@media print{body{background:white;font-size:11pt}nav,.copy,.button{display:none}main{margin:0;max-width:none;padding:0}.hero{background:white!important;color:var(--ink);border:1px solid #ddd;padding:25px}.hero p,.hero .eyebrow{color:var(--muted)}section{border:0;border-radius:0;padding:15px 0;margin:10px 0}h2,h3,summary{break-after:avoid}tr,.note{break-inside:avoid}a{color:inherit;text-decoration:none}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:8pt;background:#f0f3f5;color:#111}.codebar{background:#edf2f5;color:#111}.codebox{background:#f0f3f5;color:#111}details{break-inside:auto}.code-section{display:none}.table-wrap{overflow:visible}table{min-width:0}.hero h1{font-size:28pt}}
+</style><style>[data-guide-language][hidden]{display:none!important}.guide-language{position:fixed;right:22px;top:14px;z-index:50;display:flex;gap:3px;padding:4px;background:#fff;border:1px solid #cedbe2;border-radius:10px;box-shadow:0 3px 15px #102a3b18}.guide-language button{border:0;padding:7px 11px;border-radius:6px;cursor:pointer;color:#42616d;background:transparent;font:600 13px system-ui}.guide-language button[aria-pressed=true]{background:#153a43;color:#fff}@media print{.guide-language{display:none}}html{scroll-padding-top:65px}</style></head><body><div class="guide-language" role="group" aria-label="Language / 语言"><button data-guide-choice="zh" lang="zh-CN" aria-pressed="true">中文</button><button data-guide-choice="en" lang="en" aria-pressed="false">EN</button></div><div data-guide-language="zh"><nav><div class="brand">Splat Studio</div><div class="sub">使用手册 · v0.4.2</div><div class="toc"><a href="#start">01 · 选择使用路线</a><a href="#prepare">02 · 打开 App，准备照片</a><a href="#app">03 · 在 App 中完成设置</a><a href="#colab">04 · 配置 Colab：按笔记本顺序运行</a><a href="#priority">05 · 回到 App，确认“熊”的区域</a><a href="#train">06 · 正式重建、下载和导入</a><a href="#view">07 · 查看模型、操作物品、保存成果</a><a href="#sparse">08 · 再测试 6 张和 2 张照片</a><a href="#import">09 · 导入已经重建好的模型</a><a href="#server">10 · 所有环境的配置与操作</a><a href="#problems">11 · 常见卡点与处理</a><a href="#commands">12 · 可复制的完整 Colab 单元格</a><a href="#finish">13 · 完成一次试验的检查表</a></div></nav><main><header class="hero"><div class="eyebrow">FROM PHOTOS TO YOUR SCENE</div><h1>从第一张照片，<br>到可操作的三维场景。</h1><p>一份可以照着完成的使用说明。涵盖 Mac、Windows、Linux、Colab 与云服务器的配置、重要物品确认、完整重建、稀疏视角与成果保存。</p><span class="badge">适用版本 0.4.2 · 2026.09.12</span></header><section id="start"><h2>01 · 选择使用路线</h2><p>App 右上角与本说明右上角均可使用 <strong>中文 / EN</strong> 切换语言。App 切换时保留当前步骤、输入、设置与场景，重启后记住选择。场景名、文件名和物品标签保留原文。使用说明独立记住语言选择。</p><div class="note"><strong>先按设备选择路线：</strong><a href="#env-mac">Mac + 云端</a> · <a href="#env-win">Windows 启动</a> · <a href="#env-local">Windows 本机 GPU</a> · <a href="#env-linux">Linux 服务器</a> · <a href="#env-win-server">Windows 服务器</a> · <a href="#env-linux-desktop">Linux 桌面</a> · <a href="#env-container">WSL2 / Docker / Jupyter</a>。第 3 章的 App 操作通用；第 4–6 章是 Colab 示例，其他环境用第 10 章替代云端步骤。</div>
+<p class="lead">使用完整 Teatime 照片，训练一个可以定位、隐藏物品的场景，并重点细化“熊”。</p>
+<div class="recipe"><span>177 张照片</span><span>均衡</span><span>同时识别物品</span><span>重点：熊</span><span>Colab · A100</span></div>
+<div class="flow"><div><b>1</b>App 创建场景</div><div><b>2</b>Colab 识别物品</div><div><b>3</b>App 确认区域</div><div><b>4</b>Colab 正式重建</div><div><b>5</b>App 查看与保存</div></div>
+<p>App 的工作是接收照片、选择设置、确认重点与操作结果；Colab 执行计算。当前通过 <strong>ZIP 任务包和结果文件</strong>交换数据，App 不会自动连接或控制你的 Colab。</p>
+
+<p><a class="button" href="../colab/Splat-Studio-User-Guide.ipynb" download>下载配套 Colab 笔记本</a> <button class="button secondary" onclick="window.print()">打印 / 保存为 PDF</button></p>
+</section><section id="prepare"><h2>02 · 打开 App，准备照片</h2>
+<p>打开本目录的 <strong>Splat Studio.app</strong>。这是 <strong>0.4.2 / Apple Silicon Mac</strong>版本，已在清理旧开发环境后验证独立启动。Mac 不需要安装 Python、CUDA 或 COLMAP；完整训练可选 Colab 或其他 GPU 服务器。Windows 用户先按第 10 章 B 节启动 Windows 包。</p>
+<div class="table-wrap"><table><thead><tr><th>目录</th><th>用途</th><th>第一次怎么选</th></tr></thead><tbody><tr><td>Teatime-完整-177张</td><td>完整照片集，177 张 JPG</td><td>第一次选择其中全部照片</td></tr><tr><td>Teatime-稀疏 / 6张</td><td>6 个真实拍摄视角</td><td>完整流程走通后单独新建场景测试</td></tr><tr><td>Teatime-稀疏 / 2张</td><td>2 个真实拍摄视角</td><td>测试极少视角与按需补全</td></tr><tr><td>源码备份</td><td>用于继续开发或配置服务器</td><td>普通 App 使用无需解压</td></tr></tbody></table></div>
+<p>每次只上传一个目录里的照片，不要把三组混在一起。选择文件时，进入对应目录后按 <kbd>⌘A</kbd>（Windows 用 <kbd>Ctrl+A</kbd>）全选。支持 JPG、PNG、WEBP；iPhone 的 HEIC 请先导出为 JPG。当前云端任务支持 <strong>2–300 张照片</strong>，单个任务 ZIP 上限 4 GiB。</p>
+<details><summary>可以用自己拍的照片吗？相机角度怎么得到？</summary>
+<p>可以，不需要手动填写每一张的拍摄角度。上传后先检查数量、重复、清晰度和特征重叠；正式重建再根据匹配估计相机位置与朝向。<strong>“照片关联比例”不是拍摄角度，也不代表已经覆盖 360°。</strong></p>
+<ul><li>围绕同一个静止场景移动拍摄，让相邻照片有明显共同内容。</li><li>多拍不同侧面、稍高和稍低的位置；只站在原地转动镜头不足以恢复可靠深度。</li><li>保持光照、焦距与曝光尽量稳定，避免运动模糊、反光、透明物体或大面积无纹理区域成为主体。</li><li>不要混入不同房间、不同时间已移动的物品；重复照片不会增加有效视角。</li><li>可选“拍摄信息”中的覆盖范围只是你提供的辅助信息。内参 JSON 面向有实际标定数据的用户，首次试验留空；当前不支持直接导入外部相机位姿或畸变参数。</li></ul>
+</details>
+</section><section id="app"><h2>03 · 在 App 中完成设置</h2>
+<ol class="steps">
+<li><strong>首页 → 从 0 开始重建。</strong>输入场景名称，例如 <code>teatime</code>。</li>
+<li><strong>添加照片。</strong>导入“Teatime-完整-177张”中的全部照片，等待自动进入照片检查。</li>
+<li><strong>核对检查结果 → 确认方案。</strong>完整集应推荐直接重建；本版检查过完整集及打乱顺序的输入。几张照片未关联并不等于全部失败，正式相机恢复仍需验证。首次完整集保持“需要时尝试补全”关闭。</li>
+<li><strong>选择“同时识别物品”。</strong>如果只需要 RGB 外观，选“仅重建外观”，之后跳过重要物品和确认包流程。</li>
+<li><strong>在“哪些物品需要更清晰？”输入“熊”。</strong>第一次只设一个重点，便于确认效果。留空代表不设重点，但开启的普通语义识别仍会执行。</li>
+<li><strong>识别方式保留自动识别。</strong>无需填写 API Key。候选词可以留空。多个重点使用逗号分隔，例如“熊、杯子”；每一个重点最终都需要有真实确认区域。</li>
+<li><strong>重建质量选“均衡”。</strong>设备选择“云端 GPU” → “Colab” → “NVIDIA A100”。</li>
+<li><strong>勾选“首次使用时下载所需资源”。</strong>首次语义识别需要模型；极少视角补全还可能需要几何模型。勾选后将随任务包传递下载许可。“实测速率”未知就留空。</li>
+<li><strong>下一步 → 最后确认。</strong>检查场景名、照片数量、重点“熊”、质量“均衡”和设备“A100”。点击“识别并核对区域”，按提示点击 <strong>下载物品识别任务</strong>。</li>
+</ol>
+<div class="note"><strong>底部“准备云端重建”暂时灰色是正常的。</strong>你填写了重点物品，必须先获得并确认像素区域。仅输入名称不能告诉模型该精细处理哪些高斯。</div>
+<p>预计时间是计算范围，包含场景和设置的折算，不是当前 A100 的即时测速；安装、模型下载、上传下载另外计算。此说明的 Colab 配置让 COLMAP 特征阶段使用 CPU，因此这段耗时也可能比 App 的参考值更长。</p>
+<details><summary>快速、均衡、精细有什么区别？</summary>
+<div class="table-wrap"><table><thead><tr><th>档位</th><th>RGB 总步数</th><th>常规训练分辨率</th><th>语义视角预算</th><th>语义基础步数</th><th>重点细化预算</th></tr></thead><tbody><tr><td>快速</td><td>7,000</td><td>原图宽高各约 1/4</td><td>最多 12 个训练视角</td><td>400 起</td><td>400，计入 RGB 总步数</td></tr><tr><td>均衡</td><td>15,000</td><td>原图宽高各约 1/2</td><td>最多 24 个训练视角</td><td>1,200 起</td><td>1,200，计入 RGB 总步数</td></tr><tr><td>精细</td><td>22,000</td><td>原图尺度</td><td>全部可用训练视角</td><td>2,400 起</td><td>2,400，计入 RGB 总步数</td></tr></tbody></table></div>
+<p>所有档位都保留层级语义处理和跨视角置信度；有效监督覆盖可能使语义实际步数超过基础预算。照片数少于预算时按实际可用视角处理。语义步骤在 RGB 之后，不能把表中所有“步数”简单当成同一种耗时单位。精细消耗更多时间和显存，不保证每个物品都比均衡更准。</p></details>
+</section><section id="colab"><h2>04 · 配置 Colab：按笔记本顺序运行</h2>
+<ol class="steps"><li>从本说明开头下载 <strong>Splat-Studio-Colab使用.ipynb</strong>。</li>
+<li>打开 <a href="https://colab.research.google.com/" target="_blank" rel="noreferrer">Google Colab</a>，通过“文件 → 上传笔记本”（或打开笔记本对话框的“上传”页）选择这个文件。</li>
+<li>在“运行时 → 更改运行时类型”中选择 GPU / A100，然后连接。若没有 A100 可选，说明当前账号或资源供应不支持；实际 GPU 以笔记本第 1 步的输出为准。<a href="https://research.google.com/colaboratory/faq.html">Colab 官方说明</a></li>
+<li>逐个点击代码单元格左侧的运行按钮，或按 <kbd>Shift ↵</kbd>。第一次按 <strong>1 → 2 → 3 → 4 → 5 → 6 → 7</strong> 运行。</li></ol>
+<div class="table-wrap"><table><thead><tr><th>笔记本步骤</th><th>你要做什么</th><th>成功时看到什么</th></tr></thead><tbody><tr><td>1 初始化与 GPU 检查</td><td>运行；确认 NVIDIA A100</td><td>GPU 名称、显存、驱动、Python 版本</td></tr><tr><td>2 上传本次任务</td><td>选择 App 下载的物品识别 ZIP</td><td>物品识别任务、177 张、均衡、重点与 SHA256</td></tr><tr><td>3 结果备份</td><td>保留 SAVE_TO_DRIVE=True，完成 Google 授权</td><td>任务包备份到 MyDrive / Splat-Studio / 本次目录</td></tr><tr><td>4 安装环境</td><td>运行并等到完成；首次会下载依赖</td><td>CUDA 可用，torch 和 torchvision 版本</td></tr><tr><td>5 配置扩展</td><td>运行；按任务需要安装几何资源</td><td>3DGS 与识别组件导入成功、任务校验通过</td></tr><tr><td>6 执行</td><td>开始实际计算，等待结束</td><td>识别阶段为 awaiting_user_confirmation</td></tr><tr><td>7 下载</td><td>运行，允许浏览器保存文件</td><td>priority-review.zip</td></tr></tbody></table></div>
+<p>第 4、5 步是环境准备；<strong>第 6 步才开始任务</strong>。本笔记本使用独立虚拟环境，避免把 Colab 自带的 PyTorch、torchvision 和其他库混在一起。不要额外运行网上另一份安装脚本，也不要单独升级 torch。</p>
+<details><summary>环境里具体配置了什么？</summary>
+<div class="table-wrap"><table><thead><tr><th>组件</th><th>此说明采用的配置</th></tr></thead><tbody><tr><td>系统 / Python</td><td>Colab Linux；Python 3.11–3.13，建议 3.12</td></tr><tr><td>GPU</td><td>本次使用 A100；执行前检查，设备不符时停止</td></tr><tr><td>PyTorch / torchvision</td><td>torch 2.11.0 + torchvision 0.26.0，官方 cu128 wheel</td></tr><tr><td>CUDA 编译工具</td><td>CUDA Toolkit 12.8，真正检查 nvcc；不是只看 nvidia-smi 的版本文字</td></tr><tr><td>语义依赖</td><td>任务自带 requirements-semantic.txt；transformers 4.57.6</td></tr><tr><td>训练扩展</td><td>任务自带 setup_upstream.py 安装固定上游及 3 个 CUDA 扩展</td></tr><tr><td>COLMAP</td><td>apt 安装命令行工具；独立包装脚本选择 CPU 特征提取和匹配</td></tr><tr><td>几何补全</td><td>2–12 张且本次训练需要时安装 DUSt3R 代码与固定权重</td></tr><tr><td>缓存</td><td>同一个 Colab 运行时复用 Python 环境、识别模型和已校验的上游代码</td></tr></tbody></table></div>
+<p>PyTorch 组合来自 <a href="https://pytorch.org/get-started/previous-versions/">官方版本表</a>。如果 Colab 没有 CUDA 12.8，笔记本可尝试安装 <code>cuda-toolkit-12-8</code>；这个包不包含驱动。若提示找不到该包，按 <a href="https://docs.nvidia.com/cuda/archive/12.8.0/cuda-installation-guide-linux/index.html">NVIDIA 对应系统安装步骤</a>配置软件源。不要在 Colab 重装显卡驱动。</p>
+<p><a href="https://colmap.github.io/install.html">COLMAP 官方文档</a>说明系统仓库包通常没有 CUDA 支持。这里仅让相机恢复的特征阶段使用 CPU，后续高斯和语义仍在 A100 上训练。</p>
+</details>
+<div class="note"><strong>Mac 熄屏不等于云端一定中断，也不保证一直运行。</strong>Colab 会受到空闲、运行时寿命和额度限制；额度耗尽可能终止计算。保持运行时可用，完成后及时下载。Drive 备份在任务完成或正常报错时执行；不能保证突然销毁运行时前已保存中间模型。<a href="https://research.google.com/colaboratory/faq.html">Colab 生命周期说明</a></div>
+</section><section id="priority"><h2>05 · 回到 App，确认“熊”的区域</h2>
+<ol class="steps"><li>在 App 的“核对重要物品”区域，点击 <strong>导入云端重点确认包</strong>，选择刚下载的 <code>priority-review.zip</code>。</li>
+<li>打开预览，检查绿色区域是不是你想加强的熊。检查边缘、遮挡，以及是否把杯子、桌子等相邻物品一起选进去了。</li>
+<li>保留正确区域，取消错误区域。对同一只熊，尽量保留多个清楚、互有重叠的视角；无需把每一张都强行选上。</li>
+<li>点击 <strong>确认所选区域用于训练</strong>。出现已确认区域数量和类别后，关闭预览。</li>
+<li>点击 <strong>准备云端重建</strong>，下载<strong>新的正式重建任务 ZIP</strong>。</li></ol>
+<p>“确认一个物品”与“只确认一张照片”不同。你可以只把熊作为重点，但多张正确的区域能提供更充分的监督。也不要把两个同名实例不加区分地视为同一件物品。</p>
+<details><summary>识别不准或完全没识别出来怎么办？</summary>
+<p>先确认图片中确实看得见目标。名称使用具体物品，例如“熊”或“teddy bear”，避免“那个重要的东西”。如果自动区域错误较多，可回到重要物品页面，展开“识别与手动标注设置”，点击“手动标注物品 / 部件”。</p>
+<ol><li>选择照片，填写物品名称和跨视角 ID。</li><li>沿物品轮廓连续点击绘制多边形，至少 3 个顶点，然后“保存当前照片掩码”。</li><li>切换照片继续标注；同一实例用相同 ID，不同实例用不同 ID。</li><li>若标注部件，先标注父物品，再填写父 ID 和真实的层级关系。</li><li>重新匹配并确认重点区域，再导出正式任务。</li></ol>
+<p>手动方式必须提供像素区域，单独填写候选名称不能代替标注。改变照片或重要物品后，需要重新核对；不要修改已导出的 ZIP 内部内容。</p></details>
+</section><section id="train"><h2>06 · 正式重建、下载和导入</h2>
+<ol class="steps"><li>回到刚才的 Colab，保持同一运行时。<strong>从第 2 步重新运行</strong>，这次上传新的“正式重建任务 ZIP”，输出应显示“正式重建”，不是“物品识别”。</li>
+<li>按顺序继续运行第 3–7 步。已经安装好的依赖会复用；本次工作目录会重新创建，确认包中的区域随任务携带。</li>
+<li>第 6 步依次进行相机恢复、高斯重建、重要物品细化、层级语义处理与结果保存。原始训练迭代结束后，语义和导出仍可能在执行。</li>
+<li>看到最终状态 <code>completed</code>，再运行第 7 步，下载 <code>scene.splat.jsonl</code>。文件较大时，可以到 Google Drive 的本次任务目录下载。</li>
+<li>回 App 点击“导入重建结果”；或从首页选择“导入已有重建” → <strong>包含物品语义</strong>，选择该 JSONL 文件。</li>
+<li>等待完整载入，检查右侧物品列表。选中熊，点击“定位”，开始交互。</li></ol>
+<div class="note"><strong>App 一直显示“等待云端执行”并不代表 Colab 没在训练。</strong>当前没有云端实时进度回传。请在 Colab 第 6 步查看阶段输出，最终以 <code>worker-status.json</code> 的状态和实际产物为准。</div>
+<div class="table-wrap"><table><thead><tr><th>云端状态</th><th>含义</th><th>下一步</th></tr></thead><tbody><tr><td>preparing / preparing_semantics</td><td>准备任务或生成识别区域</td><td>等待；首次下载也会在这段耗时</td></tr><tr><td>awaiting_user_confirmation</td><td>物品识别完成，正式重建尚未开始</td><td>下载确认包，在 App 确认</td></tr><tr><td>running</td><td>正在重建、语义优化或保存</td><td>看阶段消息和日志，不只看 RGB 步数</td></tr><tr><td>completed</td><td>任务成功完成并导出结果</td><td>下载完整 JSONL</td></tr><tr><td>failed</td><td>本次任务失败</td><td>看错误和日志；不要导入部分文件</td></tr></tbody></table></div>
+<details><summary>是否支持中断后从原来的步数继续？</summary><p>当前 App 云端 worker <strong>不支持自动断点续训</strong>。已有工作目录会被拒绝复用。正常完成后可直接下载；失败重试请重新上传同一个任务包，让笔记本创建新目录。底层训练文件若仍保留，可供进一步诊断，但这份操作流程不会承诺自动恢复此前步数。</p></details>
+</section><section id="view"><h2>07 · 查看模型、操作物品、保存成果</h2>
+<div class="table-wrap"><table><thead><tr><th>操作</th><th>怎么做</th></tr></thead><tbody><tr><td>旋转 / 缩放 / 平移</td><td>左键拖拽 / 鼠标滚轮 / 右键拖拽；触控板可使用滚动与右键手势</td></tr><tr><td>恢复视角</td><td>点击场景上方“重置视角”</td></tr><tr><td>寻找熊</td><td>右侧搜索栏输入“熊”；也可在底部输入“找到熊”</td></tr><tr><td>定位 / 隔离 / 隐藏</td><td>选择右侧物品，再点对应按钮；隔离表示只看所选物品及其相关层级</td></tr><tr><td>自然语言操作</td><td>例如“聚焦熊”“隐藏熊”“只显示熊”“显示全部”“撤销”</td></tr><tr><td>撤销</td><td>点击撤销按钮，或 ⌘Z（Windows 用 Ctrl+Z）；删除类指令也是可逆隐藏</td></tr><tr><td>查看核心区域</td><td>勾选“仅显示核心区域”，调整“范围”；可“以所选物品为核心”</td></tr><tr><td>查看全部内容</td><td>点击“显示全部”，关闭范围、来源和语义可见性过滤</td></tr><tr><td>物体 / 部件层级</td><td>在右侧展开已识别节点；层级是否完整取决于实际监督和匹配</td></tr><tr><td>重要物品效果</td><td>若结果包含完成的细化证据，打开“重点增强前后”查看同视角图像与区域指标</td></tr></tbody></table></div>
+<p><strong>完整载入与当前可见数量是两回事。</strong>核心范围、隐藏状态和视锥会影响当前可见高斯；App 保留来源模型的全部高斯及原有球谐系数。若输入本来只有 SH1，不会凭空生成 SH3。关闭核心范围后可以查看远处背景，但模糊区域也可能重新出现。</p>
+<p>熊的精细处理是在重建时，对确认区域增加训练关注，并在总预算内安排更高分辨率细化和有限增密。导入后的重点标记和“为所选物品配置精细重建”用于准备下一次训练；后者会带入物品名称，仍需提供原照片并重新确认。<strong>不会在 Mac 上立即启动远程再训练</strong>。前后对比来自相同训练视角，不是独立测试集上的精度保证。</p>
+<p>点击右上角 <strong>保存成果</strong>，选择保存位置，默认文件名取创建场景时的名字，例如 <code>teatime.splat.jsonl</code>。保存当前显示设置之后，再导入会恢复相关可见性设置；原始高斯仍然保留。</p>
+<div class="table-wrap"><table><thead><tr><th>文件</th><th>内容</th><th>何时使用</th></tr></thead><tbody><tr><td>teatime.splat.jsonl / scene.splat.jsonl</td><td>完整高斯、原有颜色/球谐信息、物品语义和层级（如有）、当前显示设置</td><td>推荐作为 App 打开与分享的单文件成果</td></tr><tr><td>point_cloud.ply</td><td>原始高斯点云及其属性</td><td>外部工具，或与配套语义包一起导入</td></tr><tr><td>semantics.zip</td><td>与此 PLY 匹配的语义数据；仅对应语义产物存在时生成</td><td>和对应的 PLY 成对导入</td></tr><tr><td>priority-review.zip</td><td>照片中的重要物品区域与确认信息</td><td>仅在重建前“导入云端重点确认包”使用</td></tr><tr><td>results 整个目录</td><td>JSONL、PLY、语义附件、任务和结果清单等</td><td>建议保留，便于重新导入和核对结果</td></tr></tbody></table></div>
+<p>这些是高斯场景产物，<strong>不是 OBJ/STL 三角网格</strong>，也不是完整断点训练包。下载或保留整个 results 目录，不要把文件名改成其他后缀来当作网格使用。</p>
+</section><section id="sparse"><h2>08 · 再测试 6 张和 2 张照片</h2>
+<p>先完成上面的完整集试验，然后分别新建两个场景，方便比较。不要在已确认的完整场景里直接替换照片。</p>
+<div class="table-wrap"><table><thead><tr><th>场景名示例</th><th>输入</th><th>预期提示</th><th>建议设置</th></tr></thead><tbody><tr><td>teatime_sparse6</td><td>Teatime-稀疏 / 6张</td><td>稀疏重建，按需补全</td><td>均衡；第一次可仅 RGB，减少确认步骤</td></tr><tr><td>teatime_two_views</td><td>Teatime-稀疏 / 2张</td><td>极少视角 / 补全建议</td><td>勾选需要时尝试补全和首次资源下载</td></tr></tbody></table></div>
+<ol><li>命名、导入对应组照片，等待分析后再确认稀疏或补全建议。</li><li>选择是否识别物品、质量和 Colab A100。设置了重点时，依然先经过确认包流程。</li><li>导出任务；在配套笔记本从第 2 步重新运行。需要几何模型时，第 5 步会自动安装，首次约需额外 2.3 GB 权重空间。</li><li>完成后导回 JSONL，比较可见部分的形状、空洞、重影、漂浮噪声和物品边缘。若失败，保存错误说明并补拍有位移、重叠的视角。</li></ol>
+<p>稀疏流程根据本次上传的照片恢复相机和几何。补全会引入经过检查的可见区域几何推断，<strong>不等于生成了真实的未拍摄背面</strong>。两张照片也可能由于纹理、视差或重叠不足而失败。</p>
+<p>在高级选项中可以要求“尝试学习式可见区域补全”；保持默认自动通常即可。当前 CUDA 成品流程不支持“外接补全程序”的背面生成路径。对真实物品测量，应补拍缺失面。</p>
+</section><section id="import"><h2>09 · 导入已经重建好的模型</h2>
+<ol class="steps"><li>首页选择 <strong>导入已有重建</strong>。</li><li>选择“仅 RGB 外观”或“包含物品语义”。</li><li>如果有本 App 的 <strong>JSONL / JSON 完整场景</strong>，只选这个文件即可。不要再附加一个独立语义 ZIP。</li><li>如果使用 <strong>PLY</strong>，仅 RGB 可以单独导入；包含语义时必须同时选择与这个 PLY 一起生成的 <strong>semantics.zip</strong>。</li><li>完成后使用第 7 节的操作，点击“保存成果”保存新的显示状态。</li></ol>
+<p>语义包和 PLY 会核对模型身份与高斯数量，不同场景、不同训练轮次的文件不能任意组合。<code>priority-review.zip</code> 不是这里要用的语义包。普通摄影测量点云或网格 PLY 也不一定具有 3DGS 所需的完整高斯属性。</p>
+<p>单独导入一个已有 RGB 场景，不会自动补出语义。如果要重新训练其语义，还需要原照片、相机、完整模型和掩码；当前向导提供的是“从照片重建并生成语义”的云端任务流程。</p>
+</section><section id="server"><h2>10 · 按你的设备配置环境</h2>
+<p class="lead">先确定 App 在哪里打开，再确定 GPU 在哪里计算。</p>
+<p>本章给出每一种当前适用环境的操作路线。云端统一采用任务文件交换：App 导出 ZIP → GPU 机器运行 → 下载确认包或结果 → 回 App 继续。当前没有填写服务器地址后自动连接、自动上传或实时同步进度的功能。</p>
+<div class="table-wrap"><table><thead><tr><th>你的环境</th><th>打开 App</th><th>完整重建在哪里运行</th><th>照着哪一节做</th></tr></thead><tbody>
+<tr><td>Apple Silicon Mac</td><td>现有 Splat Studio.app</td><td>Colab 或 NVIDIA 服务器</td><td><a href="#env-mac">A · Mac</a> + <a href="#colab">第 4–6 章 Colab</a> / <a href="#env-linux">C · Linux 服务器</a></td></tr>
+<tr><td>Windows 10 / 11 x64，没有 NVIDIA</td><td>解压 Windows 包，运行 EXE</td><td>Colab 或 NVIDIA 服务器</td><td><a href="#env-win">B · Windows 客户端</a> + 云端章节</td></tr>
+<tr><td>Windows x64，有 NVIDIA</td><td>Windows EXE</td><td>配置 CUDA 后可在本机计算，也可以使用云端</td><td><a href="#env-local">D · Windows 本机训练</a></td></tr>
+<tr><td>Linux x86_64，有 NVIDIA</td><td>可作为服务器；有桌面时可从源码打开 App</td><td>本机 GPU</td><td><a href="#env-linux">C · Linux 服务器</a> / <a href="#env-linux-desktop">F · Linux 桌面</a></td></tr>
+<tr><td>Windows NVIDIA 云服务器</td><td>自己的 Mac / Windows 作为客户端</td><td>远端 Windows GPU</td><td><a href="#env-win-server">E · Windows 服务器</a></td></tr>
+<tr><td>WSL2 / NVIDIA 容器 / 租用平台 Jupyter</td><td>自己的 Mac / Windows 作为客户端</td><td>可见 GPU 的 Linux 环境</td><td><a href="#env-container">G · WSL2、容器和托管环境</a></td></tr>
+</tbody></table></div>
+<div class="note">Mac MPS、AMD/Intel 显卡以及纯 CPU 当前不执行完整原始 3DGS + 语义训练。Intel Mac、Windows ARM 和 Linux ARM 未提供经过验证的本机安装包；不要把 x64 或 Apple Silicon 包当作对应架构版本。Linux 暂无单独安装包。运行条件不满足时，使用受支持的客户端与 NVIDIA 云端。</div>
+<h3 id="env-mac">A · Mac：打开就能做哪些事</h3>
+<ol><li>打开保留目录里的 <strong>Splat Studio.app</strong>。已有内置环境，不需要自行安装 Python、Node 或 CUDA。</li><li>从 0 开始：命名 → 上传照片 → 照片检查 → 确认策略 → 是否识别物品 → 重要物品 → 质量。</li><li>设备选择<strong>云端 GPU</strong>。Colab 按第 4–6 章；其他 Linux 服务器按本章 C；Windows 服务器按 E。</li><li>重要物品先导出识别任务，取回 <code>priority-review.zip</code>，在同一项目确认区域，再导出正式训练任务。仅 RGB 跳过识别确认。</li><li>取回完整 <code>scene.splat.jsonl</code>，导入已有重建，操作后保存为你命名的场景。</li></ol>
+<p>仅查看已有成果不需要云端。没有缓存时的自动物品检测可能需要模型下载；Mac 上更方便的路线是把识别任务交给云端。Mac 自己的照片不需要提前标注每张图的拍摄角度；预检和正式相机恢复的区别见第 2 章。</p>
+<h3 id="env-win">B · Windows：解压、启动、查看和使用云端</h3>
+<p><a class="button" href="WINDOWS-PORTABLE.zh-CN.md">Windows x64 应用 ZIP</a></p>
+<ol><li>把 ZIP 下载或复制到 Windows，右键“全部解压”。建议解压到 <code>C:\SplatStudio</code> 这类较短的本地目录。必须保留整个文件夹，不能只复制 EXE，也不要在 ZIP 内双击运行。</li><li>首次使用先运行文件夹里的 <strong>Install-Runtime.cmd</strong>，按微软安装提示完成 VC++ x64 运行库安装；已安装时可能显示修复或无需更改。也可以直接打开随包的 <code>VC_redist.x64.exe</code>。</li><li>双击 <strong>Splat Studio.exe</strong>。普通使用无需安装 Python、Node 或 CUDA。该包是便携版，不会创建开始菜单入口；可以自行创建快捷方式。</li><li>先运行 <strong>Self-Test.cmd</strong>。成功时最后显示 <code>status: passed</code>；它检查依赖、图片、接口、前端与云任务，不下载模型、不训练、不访问你的已有项目。报告在 <code>%LOCALAPPDATA%\Splat-Studio-Diagnostics\self-test.json</code>。</li><li>没有本地 NVIDIA 时，在 App 选择云端 GPU。Colab 使用同一份笔记本；其他服务器按 C / E。操作步骤与 Mac 一样。</li><li>已有成果：首页 → 导入已有重建 → 选择仅 RGB 或包含物品语义 → 导入完整 JSONL，或配套 PLY 与 semantics.zip。</li></ol>
+<p>Windows 包内置 Python 3.13.15、CPU PyTorch 2.11.0、torchvision 0.26.0 和语义依赖。它们负责客户端功能；本地 CUDA 训练使用 D 节的独立环境，不要往内置 Python 里安装 GPU 依赖。<a href="https://docs.python.org/3.13/using/windows.html#the-embeddable-package">Python 嵌入式发行说明</a> · <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">微软运行库说明</a></p>
+<p><strong>验证状态：</strong>本包在 Mac 上组装，已校验官方运行时 SHA、57 个 wheel 的 RECORD 与 Windows 依赖关系、PE 架构，并完成共享代码测试；还没有在真实 Windows 上启动，也没有运行 Windows GPU 训练。包内不含应用作者的 Windows 签名证书；出现启动拦截时先核对来源和 SHA，不要关闭系统防护。Windows 上以 Self-Test 结果和实际 App 操作为准。</p>
+<h3 id="env-linux">C · Linux NVIDIA 服务器：从上传任务到拿回结果</h3>
+<p>适用于 Ubuntu x86_64 服务器、远端工作站以及带 SSH/Jupyter 的租用 GPU。建议使用已装 NVIDIA 驱动、CUDA Toolkit 12.8、Python 3.12 的开发环境。首次准备需下载依赖、模型和上游源码，建议预留至少 30 GB 可用磁盘；实际训练规模大时还需更多空间。A100 是参考设备，其余 NVIDIA GPU 应按实际显存与测试结果选择质量。</p>
+<ol><li>先在 App 的设备页选择 <strong>云端 GPU → 其他 NVIDIA 云服务器</strong>，GPU 型号按实际选择。勾选首次资源下载，导出识别或重建任务 ZIP。</li><li>上传本目录的整个 <strong>环境配置</strong> 文件夹和任务 ZIP 到服务器。例如放在 <code>/workspace/splat-tools</code> 和 <code>/workspace/task.zip</code>。不需要上传整个 Mac / Windows App。</li><li>在服务器终端执行下面的系统检查和准备命令；所有命令都在服务器执行。没有 sudo 时让平台管理员提供这些系统包，或选预装镜像。</li></ol>
+<div class="codebox"><div class="codebar"><span>Linux / bash</span><button class="copy" type="button">复制</button></div><pre><code>nvidia-smi
+nvcc --version
+python3 --version
+# 推荐 Ubuntu 22.04/24.04，Python 3.12。
+sudo apt-get update
+sudo apt-get install -y git build-essential ninja-build python3-venv colmap libgl1 libglib2.0-0 tmux
+export PATH=&quot;/usr/local/cuda-12.8/bin:$PATH&quot;
+# 再检查：nvcc 必须显示 release 12.8。
+nvcc --version
+cd /workspace/splat-tools
+python3 splat_env.py prepare --task /workspace/task.zip --base /workspace/splat-gpu</code></pre></div><p>没有 nvcc 时，按 <a href="https://docs.nvidia.com/cuda/archive/12.8.0/cuda-installation-guide-linux/index.html">NVIDIA 对应发行版的 CUDA 12.8 安装步骤</a>配置软件源，安装 <code>cuda-toolkit-12-8</code>。现有云 GPU 驱动由平台管理，不要为了安装编译器随意更换驱动。<code>nvidia-smi</code> 显示的 CUDA Version 不是本机 nvcc 版本。</p>
+<p><strong>prepare 成功</strong>会显示 <code>Prepared, not started</code> 和唯一任务目录，例如 <code>/workspace/splat-gpu/task-20260911-120000-ab12cd</code>。脚本会校验 ZIP，创建独立 Python 环境，安装 PyTorch cu128 组合与任务依赖，编译固定 3DGS 扩展，需要时安装学习式几何，最后再次校验任务。它尚未训练。</p>
+<p>脚本为 Linux COLMAP 选择 CPU 特征提取/匹配选项，兼容新旧参数名称，适用于 apt 版和无显示器环境；后面的高斯与语义仍用 CUDA。<a href="https://colmap.github.io/install.html">COLMAP 安装说明</a>。</p>
+<div class="codebox"><div class="codebar"><span>Linux / bash</span><button class="copy" type="button">复制</button></div><pre><code># 用 prepare 打印的真实目录替换下面路径。
+cd /workspace/splat-tools
+tmux new -s splat
+python3 splat_env.py run --job /workspace/splat-gpu/task-20260911-120000-ab12cd
+# 想退出远程终端但保留任务：按 Ctrl+B，松开后按 D。
+# 重新连接后：tmux attach -t splat</code></pre></div><ol start="4"><li>执行后查看该任务的 <code>run/worker-status.json</code>。识别任务成功为 <code>awaiting_user_confirmation</code>；正式训练成功为 <code>completed</code>。其他状态先查看日志，不要导入半成品。</li><li>识别任务：通过 Jupyter 文件管理器、SFTP 或 SCP 下载 <code>run/priority-review.zip</code> → 回同一 App 项目“导入云端重点确认包” → 检查并确认区域 → 导出新的正式训练 ZIP。</li><li>新 ZIP 上传后再次执行 prepare，<code>--base</code> 保持相同，自动复用环境和通过校验的扩展；用打印的新任务目录 run。</li><li>训练完成：下载 <code>run/results/scene.splat.jsonl</code>，回 App 导入。建议同时保存整个 <code>run/results</code> 目录，它含 PLY、语义包和元数据等实际生成的文件。</li></ol>
+<p>可用 Jupyter 文件管理器完成上传下载，也可以在<strong>自己的电脑</strong>终端使用 SSH/SCP。把用户名、地址和路径换成你的实际值：</p>
+<div class="codebox"><div class="codebar"><span>文件传输示例</span><button class="copy" type="button">复制</button></div><pre><code># 自己的 Mac / Windows 终端，不在服务器中执行。
+scp -r &quot;/本地/环境配置&quot; user@server:/workspace/splat-tools
+scp &quot;/本地/任务.zip&quot; user@server:/workspace/task.zip
+# 识别结束下载确认包：
+scp user@server:/workspace/splat-gpu/实际任务目录/run/priority-review.zip .
+# 正式重建结束下载整个结果：
+scp -r user@server:/workspace/splat-gpu/实际任务目录/run/results .</code></pre></div><p>如果目标 <code>/workspace/splat-tools</code> 已存在，先通过文件管理器确认 <code>splat_env.py</code> 直接位于该目录，避免上传成重复嵌套目录。Windows 本地路径使用如 <code>C:\SplatTools</code>。断开 SSH 可以依靠 tmux 保持任务，服务器自身关机/回收则不保证继续；worker 当前不自动从中断步数恢复。</p>
+<h3 id="env-local">D · Windows NVIDIA：在自己的电脑完整训练</h3>
+<p>Windows App 默认是 CPU 客户端；以下一次性配置完成后，使用启动命令切换到独立 CUDA Python。建议训练环境和源码放在短的英文路径，减少 C++/CUDA 构建路径问题。至少确认 GPU 支持本说明的 CUDA/PyTorch 组合，当前没有针对每一张消费级显卡做过实测。</p>
+<ol><li>安装 NVIDIA 驱动，确认 <code>nvidia-smi</code> 成功。</li><li>安装<strong>标准 Python 3.12 x64</strong>（不是 App 内置 Python），并安装 Git for Windows。</li><li>安装 <strong>Visual Studio 2022 / Build Tools</strong>，勾选“使用 C++ 的桌面开发”、Windows SDK，以及与 CUDA 12.8 兼容的 MSVC v143 工具集。CUDA 12.8 官方表列出 MSVC 193x；若安装器带来更高版本编译器，选择兼容的 v143 14.3x 组件。</li><li>安装 <strong>CUDA Toolkit 12.8</strong>，确认 <code>nvcc --version</code>。<a href="https://docs.nvidia.com/cuda/archive/12.8.0/cuda-installation-guide-microsoft-windows/index.html">NVIDIA Windows 安装与编译器兼容表</a>。</li><li>按 <a href="https://colmap.github.io/install.html#windows">COLMAP 官方安装说明</a>下载 Windows CUDA 发行包，完整解压到例如 <code>C:\COLMAP</code>。根目录下应有 <code>bin\colmap.exe</code> 及配套 lib/plugins；不要只拷贝 EXE。先运行它的 <code>COLMAP.bat -h</code>。</li><li>把“环境配置”文件夹放到 <code>C:\SplatTools</code>，把源码备份 ZIP 解压到 <code>C:\SplatSource</code>，得到 <code>C:\SplatSource\splat-studio</code>。</li><li>从开始菜单打开 <strong>Developer PowerShell for VS 2022</strong>。必须能找到 <code>cl</code>；普通 PowerShell 不一定包含 C++ 编译环境。执行：</li></ol>
+<div class="codebox"><div class="codebar"><span>Windows / Developer PowerShell</span><button class="copy" type="button">复制</button></div><pre><code>nvidia-smi
+nvcc --version
+Get-Command cl
+py -3.12 --version
+&amp; &quot;C:\COLMAP\COLMAP.bat&quot; -h
+cd C:\SplatTools
+py -3.12 splat_env.py local --source C:\SplatSource\splat-studio --base C:\SplatGPU --colmap-root C:\COLMAP --geometry</code></pre></div><p>上面的 <code>--geometry</code> 会准备极少视角初始化所需的固定模型，权重约 2.3 GB；只做完整照片集时可以暂时省略，试 6 张或 2 张前再加该参数运行一次。脚本会配置 PATH 和 Qt 插件目录，并检查实际 colmap.exe 能运行。若发行包目录布局不同，按其官方 COLMAP.bat 设置 DLL/插件路径，直到 colmap.exe -h 成功。</p>
+<p>看到 <code>Local CUDA environment ready</code> 后，保存当前 App 中需要保留的工作并正常退出 App，然后在同一终端启动：</p>
+<div class="codebox"><div class="codebar"><span>Windows / Developer PowerShell</span><button class="copy" type="button">复制</button></div><pre><code>cd C:\SplatTools
+py -3.12 splat_env.py launch --base C:\SplatGPU --app &quot;C:\SplatStudio\Splat-Studio-Windows\Splat Studio.exe&quot;</code></pre></div><p>EXE 路径取决于你的解压位置，以资源管理器里的实际路径为准。这个启动方式会设置 <code>SPLAT_PYTHON</code> 指向 <code>C:\SplatGPU\env\Scripts\python.exe</code>，并传入固定上游和几何资源路径。直接双击 EXE 仍然使用内置 CPU 环境。</p>
+<ol start="8"><li>App：首页 → 从 0 开始 → 命名 → 照片 → 策略 → 是否识别物品 → 重点 → 质量。</li><li>设备选择<strong>本机 NVIDIA GPU</strong>，刷新/重新检测设备，确认 CUDA 和原始训练能力就绪。</li><li>有重点时点击“识别并核对区域”，等待本机识别，确认绿色掩码确实覆盖目标。无需云端 ZIP 往返。</li><li>检查时间估计 → 开始重建。训练期间保持 App 和电脑运行；结束后直接查看、操作、保存 <code>场景名.splat.jsonl</code>。</li></ol>
+<p>如果识别只给出词语而没有像素区域，就还不能启动重点细化；检查下载选项、真实掩码和确认状态。窗口关闭或电脑休眠会影响本地训练，不要把 App 当成后台服务器。</p>
+<h3 id="env-win-server">E · Windows NVIDIA 云服务器：远端计算，自己的 App 查看</h3>
+<p>先在服务器完成 D 节 1–5 的驱动、标准 Python、C++、CUDA、COLMAP 安装。App 仍在你自己的 Mac / Windows 上操作，选择“其他 NVIDIA 云服务器”。通过远程桌面、SFTP 或服务器文件管理器把环境配置文件夹和 App 任务 ZIP 上传。</p>
+<div class="codebox"><div class="codebar"><span>Windows 服务器 / PowerShell</span><button class="copy" type="button">复制</button></div><pre><code># 在远端服务器的 Developer PowerShell for VS 2022 中执行。
+cd C:\SplatTools
+py -3.12 splat_env.py prepare --task C:\SplatTasks\task.zip --base C:\SplatGPU --colmap-root C:\COLMAP
+# 下面换成 prepare 打印的真实任务目录：
+py -3.12 splat_env.py run --job C:\SplatGPU\task-20260911-120000-ab12cd</code></pre></div><ol><li>识别完成，取回对应任务 <code>run\priority-review.zip</code>，在自己电脑的 App 确认区域。</li><li>把新的正式重建 ZIP 上传，再 prepare，再 run。不要重新使用旧识别任务代替正式训练。</li><li>训练成功后取回 <code>run\results\scene.splat.jsonl</code> 或整个 results，导入自己的 App。</li></ol>
+<p>保持远端进程和服务器运行。远程桌面“断开连接”和“注销/关机”效果不同，实际会话超时由服务器策略决定；需要持续任务时使用平台的任务执行功能。当前脚本没有安装 Windows 服务，也不自动恢复中断训练。</p>
+<h3 id="env-linux-desktop">F · Linux 桌面：从源码运行本机 App</h3>
+<p>这是一条源码运行路线，目前没有给出 Linux 安装包，也未完成 Linux 桌面真机验证。需要 x86_64 Linux、可用图形桌面、NVIDIA GPU 和 C 节系统环境；无图形服务器只运行 worker 即可。</p>
+<ol><li>安装 Node.js 22 和支持当前平台的标准 Python 3.12；把源码 ZIP 解压到 <code>/workspace</code>，得到 <code>/workspace/splat-studio</code>。</li><li>按下面命令配置 GPU 环境、构建前端，再启动 Electron。不要以 root 运行 Electron；桌面会话使用普通用户。</li></ol>
+<div class="codebox"><div class="codebar"><span>Linux 桌面 / bash</span><button class="copy" type="button">复制</button></div><pre><code>cd /workspace/splat-tools
+python3 splat_env.py local --source /workspace/splat-studio --base /workspace/splat-gpu --geometry
+cd /workspace/splat-studio
+npm install --global corepack
+corepack enable
+corepack prepare pnpm@11.19.0 --activate
+pnpm install --frozen-lockfile
+pnpm run build
+cd /workspace/splat-tools
+python3 splat_env.py desktop-source --source /workspace/splat-studio --base /workspace/splat-gpu</code></pre></div><p>进入 App 后选择“本机 NVIDIA GPU”，随后流程与 D 节相同。若系统缺少 Electron 动态库，按 Electron 的 Linux 运行要求补齐；本次没有在服务器开放网页端口，也无需公网访问本地接口。</p>
+<h3 id="env-container">G · WSL2、Docker 和租用平台 Jupyter</h3>
+<ul><li><strong>WSL2（Windows + NVIDIA）：</strong>先按 <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">NVIDIA CUDA on WSL 文档</a>配置 Windows 驱动和 WSL2。进入 Ubuntu 后确认 nvidia-smi 能看到 GPU；在 WSL 内安装编译工具时不要安装 Linux 显卡驱动。其后按 C 节执行，训练数据放 Linux 文件系统中的短英文目录。Windows App 选择云端/其他服务器，通过任务 ZIP 交换。不要把 SPLAT_PYTHON 指向 WSL 的 Linux Python 来启动 Windows App。</li><li><strong>Docker / 容器：</strong>宿主机必须有 NVIDIA 驱动与 NVIDIA Container Toolkit，容器需要 GPU 透传，且选带 nvcc 的 CUDA 12.8 <em>devel</em> 环境。按照 <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">官方容器工具说明</a>配置后，在容器里运行 C 节。把 /workspace 挂载到持久磁盘；不要把唯一结果放在容器临时层。</li><li><strong>租用平台 Jupyter：</strong>文件面板上传环境配置和 ZIP，使用 Jupyter 的 Terminal 执行 C 节。没有 Terminal 时，使用平台提供的终端入口或 SSH。下载 run 下的确认包和结果。无需 google.colab 模块，也不需要 Google Drive。</li><li><strong>集群 / 作业调度：</strong>在带 GPU 的计算节点配置和运行同一 prepare/run，按平台规则提交作业；登录节点上看不到 GPU 时不要误认为训练已可用。跨节点复用环境要确保 GPU 架构、系统、Python 和 CUDA 一致。脚本记录并检查扩展缓存对应的 GPU 架构。</li></ul>
+<h3 id="env-flow">H · 所有环境都要完成的收尾</h3>
+<div class="table-wrap"><table><thead><tr><th>当前状态</th><th>取回什么</th><th>回 App 做什么</th></tr></thead><tbody>
+<tr><td>awaiting_user_confirmation</td><td>priority-review.zip</td><td>回原项目导入重点确认包，确认区域，重新导出正式任务</td></tr>
+<tr><td>completed</td><td>results/scene.splat.jsonl</td><td>导入已有重建，按训练时是否有语义选择类型，查看和保存</td></tr>
+<tr><td>failed / interrupted</td><td>worker-status.json 及日志，保留原 ZIP</td><td>查明错误；修正设置后重新 prepare，用新任务目录重跑</td></tr>
+</tbody></table></div>
+<p>完整 JSONL 包含所有高斯、源模型实际具有的 SH 系数、语义（如有）和显示状态。PLY 单独不等于完整语义项目；使用 PLY 路线时要同时导入对应的 semantics.zip。保存后的命名是 <code>场景名.splat.jsonl</code>，不是 OBJ/STL 网格，也不是可继续训练的完整 checkpoint。</p>
+<h3>可选：LLM 服务</h3><p>普通中文操作指令可以本地解析，不要求 LLM。已有兼容服务时，可在启动 App 的终端设置 <code>SPLAT_LLM_BASE_URL</code>、<code>SPLAT_LLM_MODEL</code>、<code>SPLAT_LLM_API_KEY</code>；视觉服务对应 <code>SPLAT_VISION_BASE_URL</code>、<code>SPLAT_VISION_MODEL</code>、<code>SPLAT_VISION_API_KEY</code>。再勾选 App 的对应选项。凭据不会随任务 ZIP 自动传输；云端需要自己设置。这些服务不会代替 CUDA 训练，也不能把仅有名称的物品自动当成已确认像素监督。</p>
+<p class="small">脚本命令默认会安装 Python 依赖并按任务需要下载上游代码/模型，但不会替你购买云服务器、安装驱动、执行付费 API 或自动开始训练。prepare / local 负责环境准备；run 才执行任务。当前报告未声称已经完成每一种 GPU 环境的实测。</p>
+</section><section id="problems"><h2>11 · 常见卡点与处理</h2><div class="table-wrap"><table><thead><tr><th>现象 / 报错</th><th>处理</th></tr></thead><tbody><tr><td>App 显示“已就绪”，但无法本地训练</td><td>已就绪表示本地服务可用，不代表 CUDA 已就绪。Mac 请选择云端。</td></tr><tr><td>准备云端重建按钮灰色</td><td>检查是否设置了重点但还未确认真实区域；先完成 priority-review.zip 往返。</td></tr><tr><td>上传任务后仍显示等待</td><td>上传或解压不会开始计算；运行笔记本第 6 步。App 不同步云端进度。</td></tr><tr><td>A100 不可选 / GPU 名称不符</td><td>实际可用型号取决于 Colab 权限和资源；选择可用 A100，或回 App 按实际设备重新导出。</td></tr><tr><td>CUDA 不可用 / 扩展无法导入</td><td>确认第 4、5 步全部成功，并使用配套虚拟环境的 Python。看 cuda-extensions.log / extensions-check.log。</td></tr><tr><td>找不到 nvcc / CUDA 版本不匹配</td><td>检查 Toolkit 12.8 与 CUDA_HOME/PATH；nvidia-smi 中的 CUDA Version 不等于已安装编译器版本。</td></tr><tr><td>找不到 cuda-toolkit-12-8 包</td><td>按 NVIDIA 文档为对应 Linux 发行版配置 CUDA 软件源，再安装 toolkit 包。不要安装会更换驱动的 cuda 元包。</td></tr><tr><td>torchvision 算子、NumPy 或 transformers 导入错误</td><td>不要混用 Colab 全局环境；运行第 4 步的独立环境安装。不要只升级其中一个库。</td></tr><tr><td>COLMAP 报 OpenGL / display / Qt 错误</td><td>运行第 5 步的 CPU 包装脚本并确认 PATH；它只影响 COLMAP 的特征阶段。</td></tr><tr><td>没有模型缓存 / 网络下载失败</td><td>在 App 勾选首次资源下载并重新导出；检查 Colab 到模型仓库的网络。不要手改 ZIP 内的配置。</td></tr><tr><td>重点类别没有有效像素监督</td><td>检查名称、照片中的可见性；更换描述或手动标注后重新确认，不能只补一个文字标签。</td></tr><tr><td>确认包与照片不匹配</td><td>保持原照片文件、顺序和设置；不要将另一组或另一轮的确认包混入当前项目。必要时重新识别。</td></tr><tr><td>SHA / worker 版本不一致</td><td>不要修改 ZIP；使用这个任务自带的 runtime，重新导出损坏或过期任务。</td></tr><tr><td>工作目录已经存在</td><td>成功任务直接下载；失败重试回第 2 步创建新的目录。不要覆盖旧结果。</td></tr><tr><td>显存不足</td><td>停止本次任务；回 App 改快速或减少分辨率较大的输入，重新导出。确认同一 GPU 没有其他训练。</td></tr><tr><td>相机无法注册 / 深度锚点不足</td><td>补拍有重叠且有相机位移的照片。少视角先检查补全资源；补全也不能保证成功。</td></tr><tr><td>导入结果后没有物品列表</td><td>确认结果训练时开启语义，导入时选择“包含物品语义”，并使用完整 JSONL 或匹配的 PLY + semantics.zip。</td></tr><tr><td>物品或边缘被裁掉</td><td>先点“显示全部”，排除核心区域/隐藏/隔离过滤；再看原始结果是否本身不完整。</td></tr><tr><td>导入大模型内存不足</td><td>关闭其他大型场景和占内存软件后重试。核心过滤只减少可见内容，不会减少完整载入的数据量。</td></tr><tr><td>Colab 断开、额度耗尽</td><td>先检查运行时是否仍在和 Drive 是否已有成果。当前流程不自动恢复已完成步数；必要时新目录重跑。</td></tr></tbody></table></div>
+<p>需要排查时保留Colab 本次目录中的 <code>worker.log</code>、<code>run/worker-status.json</code> 和 <code>run/data/项目ID/job-任务ID.json</code>。完整构建日志在本次目录的各个 <code>*-setup.log</code> 和 <code>cuda-extensions.log</code>。其他服务器脚本的构建日志位于 --base 指定目录的 compiler/work/cuda-setup-logs，执行状态在对应 task-*/run/worker-status.json，终端显示训练输出。必要时用平台终端日志功能保存。这些信息比只截“训练失败”更有用。</p>
+</section><section id="commands"><h2>12 · 可复制的完整 Colab 单元格</h2>
+<p>推荐直接使用配套笔记本。下面与笔记本使用同一份代码，便于你查看或复制；<strong>按编号顺序执行，单独复制中间某段可能缺少变量</strong>。所有代码块都是 Python，不需要在每行前添加 <code>!</code>。</p>
+<details class="code-section"><summary>1 · 初始化并检查 GPU</summary><p>每次新连接 Colab 时运行一次。需要 Linux、Python 3.11–3.13 和 NVIDIA GPU；本次请在 Colab 选择 A100。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>from pathlib import Path, PurePosixPath
+import os, sys, json, zipfile, hashlib, shutil, subprocess, stat, time, uuid, re, signal, threading
+assert sys.platform == &#x27;linux&#x27;, &#x27;此笔记本在 Colab / Linux GPU 环境运行，不在 Mac 上运行。&#x27;
+assert (3,11) &lt;= sys.version_info[:2] &lt;= (3,13), &#x27;需要 Python 3.11–3.13；建议使用 Python 3.12 环境。&#x27;
+BASE = Path(&#x27;/content/splat-studio-v041&#x27;)
+BASE.mkdir(parents=True, exist_ok=True)
+ENV_DIR = BASE / &#x27;env&#x27;
+PY = ENV_DIR / &#x27;bin/python&#x27;
+DRIVE_ROOT = None
+
+def digest(path):
+    with Path(path).open(&#x27;rb&#x27;) as f:
+        return hashlib.file_digest(f, &#x27;sha256&#x27;).hexdigest()
+
+def run(args, log=None, cwd=None):
+    args = [str(x) for x in args]
+    stream = open(log, &#x27;w&#x27;) if log else None
+    proc = subprocess.Popen(args, cwd=cwd, env=os.environ.copy(), stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True, bufsize=1, start_new_session=True)
+    try:
+        for line in proc.stdout:
+            print(line, end=&#x27;&#x27;, flush=True)
+            if stream: stream.write(line); stream.flush()
+        if proc.wait(): raise RuntimeError(f&#x27;命令失败，日志：{log or &quot;上方输出&quot;}&#x27;)
+    except BaseException:
+        # 只停止本单元格启动的进程及其训练子进程。
+        if proc.poll() is None:
+            os.killpg(proc.pid, signal.SIGTERM)
+            try: proc.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                os.killpg(proc.pid, signal.SIGKILL); proc.wait()
+        raise
+    finally:
+        if stream: stream.close()
+
+def unpack_task(package, destination):
+    &quot;&quot;&quot;在执行包内代码前检查大小、路径和每个文件的 SHA256。&quot;&quot;&quot;
+    package, destination = Path(package), Path(destination)
+    if destination.exists(): raise ValueError(&#x27;解压目录必须是新目录。&#x27;)
+    if package.stat().st_size &gt; 4*1024**3: raise ValueError(&#x27;任务包超过 4 GiB。&#x27;)
+    with zipfile.ZipFile(package) as z:
+        infos=z.infolist(); seen=set(); total=0
+        if len(infos)&gt;20001: raise ValueError(&#x27;任务文件过多。&#x27;)
+        for info in infos:
+            name=info.filename; parts=name.split(&#x27;/&#x27;); mode=info.external_attr&gt;&gt;16
+            if (not name or len(name)&gt;512 or any(c in name for c in (&#x27;\\&#x27;,&#x27;:&#x27;,&#x27;\x00&#x27;))
+                or PurePosixPath(name).is_absolute() or any(p in (&#x27;&#x27;,&#x27;.&#x27;,&#x27;..&#x27;) for p in parts)
+                or name.casefold() in seen or info.is_dir() or info.flag_bits&amp;1
+                or stat.S_IFMT(mode) not in (0,stat.S_IFREG)):
+                raise ValueError(&#x27;不支持的任务 ZIP 路径或文件类型。&#x27;)
+            seen.add(name.casefold()); total+=info.file_size
+            if info.file_size&gt;512*1024**2 or total&gt;4*1024**3: raise ValueError(&#x27;解压内容过大。&#x27;)
+        if &#x27;manifest.json&#x27; not in seen: raise ValueError(&#x27;请选择 App 导出的任务 ZIP，不是确认包、结果包或源码包。&#x27;)
+        if z.getinfo(&#x27;manifest.json&#x27;).file_size&gt;8*1024**2: raise ValueError(&#x27;清单过大。&#x27;)
+        manifest=json.loads(z.read(&#x27;manifest.json&#x27;))
+        if manifest.get(&#x27;format&#x27;)!=&#x27;splat-studio-cloud-task/1&#x27;:
+            raise ValueError(&#x27;请选择 App 导出的任务 ZIP，不是源码 ZIP、确认包或结果包。&#x27;)
+        declared=set()
+        for row in manifest[&#x27;files&#x27;]:
+            name=row[&#x27;path&#x27;]
+            if name in declared or name==&#x27;manifest.json&#x27;: raise ValueError(&#x27;任务清单有重复。&#x27;)
+            declared.add(name)
+            if z.getinfo(name).file_size!=row[&#x27;bytes&#x27;]: raise ValueError(&#x27;文件长度不匹配。&#x27;)
+            with z.open(name) as f: value=hashlib.file_digest(f,&#x27;sha256&#x27;).hexdigest()
+            if value!=row[&#x27;sha256&#x27;]: raise ValueError(&#x27;文件校验失败：&#x27;+name)
+        if declared|{&#x27;manifest.json&#x27;}!={i.filename for i in infos}: raise ValueError(&#x27;任务清单与内容不一致。&#x27;)
+        destination.mkdir()
+        for info in infos:
+            target=destination/info.filename; target.parent.mkdir(parents=True,exist_ok=True)
+            with z.open(info) as src, target.open(&#x27;xb&#x27;) as dst: shutil.copyfileobj(src,dst)
+    return manifest
+
+run([&#x27;nvidia-smi&#x27;,&#x27;--query-gpu=name,memory.total,driver_version&#x27;,&#x27;--format=csv&#x27;])
+print(&#x27;Python:&#x27;,sys.version.split()[0])
+print(&#x27;初始化完成。下一步只上传一个 App 任务 ZIP。&#x27;)</code></pre></div></details><details class="code-section"><summary>2 · 上传本次任务 ZIP</summary><p>第一次上传“物品识别任务”。在 App 确认区域后，再运行本单元格上传新的“重建任务”。不覆盖此前任务。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>from google.colab import files
+BATCH = BASE / (&#x27;task-&#x27; + time.strftime(&#x27;%Y%m%d-%H%M%S&#x27;) + &#x27;-&#x27; + uuid.uuid4().hex[:6])
+BATCH.mkdir()
+previous_cwd=Path.cwd()
+try:
+    os.chdir(BATCH)
+    uploaded=files.upload()
+finally:
+    os.chdir(previous_cwd)
+if len(uploaded)!=1: raise ValueError(&#x27;每次只选择一个 App 导出的任务 ZIP。请重新运行本单元格。&#x27;)
+filename=next(iter(uploaded)); del uploaded
+PACKAGE=BATCH/filename
+if PACKAGE.suffix.lower()!=&#x27;.zip&#x27;: raise ValueError(&#x27;请选择任务 ZIP。&#x27;)
+EXTRACTED=BATCH/&#x27;unpacked&#x27;
+MANIFEST=unpack_task(PACKAGE,EXTRACTED)
+RUNTIME=EXTRACTED/&#x27;runtime&#x27;
+CONFIG=MANIFEST[&#x27;worker_config&#x27;]
+PROJECT=json.loads((EXTRACTED/&#x27;project/project.json&#x27;).read_text())
+PHOTO_COUNT=len(PROJECT[&#x27;images&#x27;])
+STAGE=CONFIG.get(&#x27;priority_task_stage&#x27;,&#x27;train&#x27;)
+RUN_DIR=BATCH/&#x27;run&#x27;  # 保持不存在，由 worker 创建。
+_READY_TASK_ID=None
+print(&#x27;任务类型：&#x27;,&#x27;物品识别 / 等待你确认区域&#x27; if STAGE==&#x27;review&#x27; else &#x27;正式重建&#x27;)
+print(&#x27;照片：&#x27;,PHOTO_COUNT,&#x27;；质量：&#x27;,CONFIG.get(&#x27;mode&#x27;),&#x27;；重点：&#x27;,CONFIG.get(&#x27;priority_request&#x27;,&#x27;无&#x27;))
+print(&#x27;ZIP SHA256:&#x27;,digest(PACKAGE))
+print(&#x27;本次目录：&#x27;,BATCH)
+if not 2&lt;=PHOTO_COUNT&lt;=300: raise ValueError(&#x27;当前任务支持 2–300 张照片。&#x27;)
+if CONFIG.get(&#x27;cloud_gpu&#x27;)==&#x27;a100&#x27;:
+    gpu_names=subprocess.check_output([&#x27;nvidia-smi&#x27;,&#x27;--query-gpu=name&#x27;,&#x27;--format=csv,noheader&#x27;],text=True)
+    if &#x27;A100&#x27; not in gpu_names: raise ValueError(&#x27;App 选的是 A100，但当前 GPU 不符。切换 Colab 为 A100，或回 App 修改设备后重新导出。&#x27;)
+if (CONFIG.get(&#x27;semantics&#x27;) or CONFIG.get(&#x27;priority_objects&#x27;)) and not CONFIG.get(&#x27;allow_model_download&#x27;):
+    print(&#x27;注意：任务没有允许首次下载识别模型；如果云端没有缓存，请回 App 勾选“首次使用时下载所需资源”后重新导出。&#x27;)</code></pre></div></details><details class="code-section"><summary>3 · 设置结果备份</summary><p>建议打开。Google Drive 挂载会请求你的授权；每次任务完成后复制结果，失败时保存可用日志。它不提供自动断点续训。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>SAVE_TO_DRIVE = True  # @param {type:&quot;boolean&quot;}
+DRIVE_ROOT=None
+if SAVE_TO_DRIVE:
+    from google.colab import drive
+    drive.mount(&#x27;/content/drive&#x27;)
+    DRIVE_ROOT=Path(&#x27;/content/drive/MyDrive/Splat-Studio&#x27;)
+    DRIVE_ROOT.mkdir(parents=True,exist_ok=True)
+    backup=DRIVE_ROOT/BATCH.name; backup.mkdir(exist_ok=True)
+    shutil.copy2(PACKAGE,backup/PACKAGE.name)
+    print(&#x27;本次任务包已备份：&#x27;,backup)
+else:
+    print(&#x27;未启用 Drive 备份。任务完成后及时下载结果。&#x27;)</code></pre></div></details><details class="code-section"><summary>4 · 安装云端环境</summary><p>第一次需要下载依赖并编译扩展。采用独立 Python 环境，固定 PyTorch 2.11.0 + torchvision 0.26.0 + CUDA 12.8。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>INSTALL_CUDA_128_IF_NEEDED = True  # @param {type:&quot;boolean&quot;}
+run([&#x27;apt-get&#x27;,&#x27;update&#x27;],log=BATCH/&#x27;apt-update.log&#x27;)
+run([&#x27;apt-get&#x27;,&#x27;install&#x27;,&#x27;-y&#x27;,&#x27;git&#x27;,&#x27;build-essential&#x27;,&#x27;ninja-build&#x27;,&#x27;python3-venv&#x27;,
+     &#x27;colmap&#x27;,&#x27;libgl1&#x27;,&#x27;libglib2.0-0&#x27;],log=BATCH/&#x27;system-setup.log&#x27;)
+
+def locate_cuda_128():
+    candidates=[Path(&#x27;/usr/local/cuda-12.8/bin/nvcc&#x27;)]
+    located=shutil.which(&#x27;nvcc&#x27;)
+    if located: candidates.append(Path(located).resolve())
+    for candidate in candidates:
+        if candidate.is_file():
+            version=subprocess.check_output([str(candidate),&#x27;--version&#x27;],text=True)
+            if re.search(r&#x27;release\s+12\.8\b&#x27;,version): return candidate.parent.parent
+    return None
+
+CUDA_ROOT=locate_cuda_128()
+if CUDA_ROOT is None and INSTALL_CUDA_128_IF_NEEDED:
+    # 只安装开发工具包，不更换 Colab 的 NVIDIA 驱动。
+    run([&#x27;apt-get&#x27;,&#x27;install&#x27;,&#x27;-y&#x27;,&#x27;cuda-toolkit-12-8&#x27;],log=BATCH/&#x27;cuda-toolkit-setup.log&#x27;)
+    CUDA_ROOT=locate_cuda_128()
+if CUDA_ROOT is None:
+    raise RuntimeError(&#x27;没有找到 CUDA 12.8 的 nvcc。按使用说明配置 NVIDIA 软件源/工具包；不要只看 nvidia-smi 的 CUDA Version。&#x27;)
+os.environ[&#x27;CUDA_HOME&#x27;]=str(CUDA_ROOT)
+os.environ[&#x27;PATH&#x27;]=str(CUDA_ROOT/&#x27;bin&#x27;)+os.pathsep+os.environ.get(&#x27;PATH&#x27;,&#x27;&#x27;)
+os.environ[&#x27;MAX_JOBS&#x27;]=&#x27;2&#x27;
+os.environ[&#x27;QT_QPA_PLATFORM&#x27;]=&#x27;offscreen&#x27;
+os.environ[&#x27;PYTHONUNBUFFERED&#x27;]=&#x27;1&#x27;
+os.environ[&#x27;HF_HOME&#x27;]=str(BASE/&#x27;model-cache&#x27;)
+os.environ[&#x27;SPLAT_GEOMETRY_HOME&#x27;]=str(BASE/&#x27;geometry&#x27;)
+if not PY.exists(): run([sys.executable,&#x27;-m&#x27;,&#x27;venv&#x27;,ENV_DIR],log=BATCH/&#x27;venv-setup.log&#x27;)
+constraints=BASE/&#x27;constraints.txt&#x27;
+constraints.write_text(&#x27;torch==2.11.0\ntorchvision==0.26.0\nnumpy==2.2.6\n&#x27;)
+os.environ[&#x27;PIP_CONSTRAINT&#x27;]=str(constraints)
+run([PY,&#x27;-m&#x27;,&#x27;pip&#x27;,&#x27;install&#x27;,&#x27;--upgrade&#x27;,&#x27;pip&#x27;,&#x27;setuptools&#x27;,&#x27;wheel&#x27;],log=BATCH/&#x27;pip-setup.log&#x27;)
+run([PY,&#x27;-m&#x27;,&#x27;pip&#x27;,&#x27;install&#x27;,&#x27;torch==2.11.0&#x27;,&#x27;torchvision==0.26.0&#x27;,
+     &#x27;--index-url&#x27;,&#x27;https://download.pytorch.org/whl/cu128&#x27;],log=BATCH/&#x27;torch-setup.log&#x27;)
+run([PY,&#x27;-m&#x27;,&#x27;pip&#x27;,&#x27;install&#x27;,&#x27;-r&#x27;,RUNTIME/&#x27;requirements-semantic.txt&#x27;],log=BATCH/&#x27;requirements-setup.log&#x27;)
+run([PY,&#x27;-c&#x27;,&quot;import torch,torchvision; assert torch.cuda.is_available(); assert torch.version.cuda==&#x27;12.8&#x27;; print(&#x27;CUDA 可用：&#x27;,torch.cuda.get_device_name(0)); print(torch.__version__,torchvision.__version__)&quot;],log=BATCH/&#x27;torch-check.log&#x27;)
+print(&#x27;Python/CUDA 环境已就绪。下一步配置训练扩展。&#x27;)</code></pre></div></details><details class="code-section"><summary>5 · 配置训练扩展、相机恢复和按需补全</summary><p>自动区分完整照片与少视角输入，并做真实导入检查。COLMAP 特征提取/匹配使用 CPU，3DGS 和语义训练使用 A100。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>COLMAP_WRAPPER_SOURCE = &quot;import os,sys,subprocess\nREAL=&#x27;/usr/bin/colmap&#x27;\nargs=sys.argv[1:]\ncommand=args[0] if args else &#x27;&#x27;\nchoices={\n &#x27;feature_extractor&#x27;:(&#x27;FeatureExtraction.use_gpu&#x27;,&#x27;SiftExtraction.use_gpu&#x27;),\n &#x27;exhaustive_matcher&#x27;:(&#x27;FeatureMatching.use_gpu&#x27;,&#x27;SiftMatching.use_gpu&#x27;),\n}\nif command in choices:\n    options=choices[command]\n    if not any(a.split(&#x27;=&#x27;)[0] in [&#x27;--&#x27;+o for o in options] for a in args):\n        result=subprocess.run([REAL,command,&#x27;-h&#x27;],capture_output=True,text=True)\n        help_text=result.stdout+result.stderr\n        option=next((o for o in options if o in help_text),None)\n        if option is None: raise SystemExit(&#x27;无法识别 COLMAP 的 CPU 选项，请检查 COLMAP 版本。&#x27;)\n        args += [&#x27;--&#x27;+option,&#x27;0&#x27;]\nos.execv(REAL,[REAL]+args)\n&quot;
+# apt 的 COLMAP 通常不带 CUDA。通过独立启动脚本指定 CPU，避免无显示器环境的 OpenGL 错误。
+wrapper_dir=BASE/&#x27;bin&#x27;; wrapper_dir.mkdir(exist_ok=True)
+WRAPPER=wrapper_dir/&#x27;colmap&#x27;
+WRAPPER.write_text(&#x27;#!&#x27;+str(PY)+&#x27;\n&#x27;+COLMAP_WRAPPER_SOURCE)
+WRAPPER.chmod(0o755)
+os.environ[&#x27;PATH&#x27;]=str(wrapper_dir)+os.pathsep+str(CUDA_ROOT/&#x27;bin&#x27;)+os.pathsep+str(ENV_DIR/&#x27;bin&#x27;)+os.pathsep+os.environ.get(&#x27;PATH&#x27;,&#x27;&#x27;)
+cache_file=BASE/&#x27;upstream-cache.json&#x27;
+setup_hash=digest(RUNTIME/&#x27;scripts/setup_upstream.py&#x27;)
+cache=json.loads(cache_file.read_text()) if cache_file.is_file() else {}
+reuse=cache.get(&#x27;setup_sha256&#x27;)==setup_hash and Path(cache.get(&#x27;repo&#x27;,&#x27;/nonexistent&#x27;)).joinpath(&#x27;train.py&#x27;).is_file()
+if reuse:
+    repo=Path(cache[&#x27;repo&#x27;])
+    # 缓存必须仍然是此版本固定的原始仓库。
+    reuse=subprocess.check_output([&#x27;git&#x27;,&#x27;-C&#x27;,str(repo),&#x27;rev-parse&#x27;,&#x27;HEAD&#x27;],text=True).strip()==&#x27;54c035f7834b564019656c3e3fcc3646292f727d&#x27;
+    reuse=reuse and not subprocess.check_output([&#x27;git&#x27;,&#x27;-C&#x27;,str(repo),&#x27;status&#x27;,&#x27;--porcelain&#x27;,&#x27;--untracked-files=no&#x27;],text=True).strip()
+if not reuse:
+    run([PY,RUNTIME/&#x27;scripts/setup_upstream.py&#x27;,&#x27;--cuda&#x27;],log=BATCH/&#x27;cuda-extensions.log&#x27;)
+    repo=RUNTIME/&#x27;vendor/gaussian-splatting&#x27;
+    cache_file.write_text(json.dumps({&#x27;setup_sha256&#x27;:setup_hash,&#x27;repo&#x27;:str(repo)}))
+os.environ[&#x27;SPLAT_3DGS_REPO&#x27;]=str(repo)
+needs_geometry=(STAGE!=&#x27;review&#x27; and 2&lt;=PHOTO_COUNT&lt;=12 and
+                (CONFIG.get(&#x27;sparse_completion&#x27;,&#x27;auto&#x27;)!=&#x27;none&#x27; or CONFIG.get(&#x27;geometry_backend&#x27;)==&#x27;dust3r&#x27;))
+if needs_geometry:
+    run([PY,RUNTIME/&#x27;scripts/setup_geometry.py&#x27;,&#x27;--root&#x27;,BASE/&#x27;geometry&#x27;],log=BATCH/&#x27;geometry-setup.log&#x27;)
+    # 已经显式运行安装命令，并按固定 SHA 校验几何权重。
+else:
+    print(&#x27;本任务无需安装学习式几何补全模型。&#x27;)
+run([PY,&#x27;-c&#x27;,&quot;import torch,diff_gaussian_rasterization,simple_knn._C,fused_ssim; from transformers import AutoModelForZeroShotObjectDetection,AutoProcessor,SamModel,SamProcessor; assert torch.cuda.is_available(); print(&#x27;3DGS 扩展和物品识别组件导入成功&#x27;)&quot;],log=BATCH/&#x27;extensions-check.log&#x27;)
+run([PY,RUNTIME/&#x27;scripts/cloud_worker.py&#x27;,PACKAGE,&#x27;--verify-only&#x27;],log=BATCH/&#x27;task-verification.log&#x27;)
+_READY_TASK_ID=MANIFEST[&#x27;id&#x27;]
+print(&#x27;环境与任务校验通过。任务尚未开始；运行下一单元格。&#x27;)</code></pre></div></details><details class="code-section"><summary>6 · 执行本次任务并保存结果</summary><p>识别任务结束后回 App 核对区域；正式重建任务结束后回 App 导入场景。每次运行目录不同，不会覆盖之前结果。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>if _READY_TASK_ID!=MANIFEST[&#x27;id&#x27;]: raise RuntimeError(&#x27;请先完成第 5 步校验。&#x27;)
+if RUN_DIR.exists(): raise RuntimeError(&#x27;本次运行目录已存在。先看 worker-status.json；成功则去第 7 步下载，失败则重新运行第 2 步创建新任务目录。&#x27;)
+stop_monitor=threading.Event()
+def monitor():
+    last=None
+    while not stop_monitor.wait(20):
+        try:
+            status_path=RUN_DIR/&#x27;worker-status.json&#x27;
+            if not status_path.exists(): continue
+            status=json.loads(status_path.read_text())
+            job_path=RUN_DIR/&#x27;data&#x27;/MANIFEST[&#x27;project_id&#x27;]/(&#x27;job-&#x27;+MANIFEST[&#x27;id&#x27;]+&#x27;.json&#x27;)
+            job=json.loads(job_path.read_text()) if job_path.exists() else {}
+            description=job.get(&#x27;message&#x27;) or job.get(&#x27;stage&#x27;) or status.get(&#x27;status&#x27;)
+            message=(description,round(float(job.get(&#x27;progress&#x27;,0))*100,1))
+            if message!=last:
+                print(f&#x27;[{time.strftime(&quot;%H:%M:%S&quot;)}] {message[0]} · {message[1]}%&#x27;,flush=True); last=message
+        except (OSError,ValueError): pass
+monitor_thread=threading.Thread(target=monitor,daemon=True);monitor_thread.start()
+started=time.monotonic()
+try:
+    run([PY,RUNTIME/&#x27;scripts/cloud_worker.py&#x27;,PACKAGE,&#x27;--work-dir&#x27;,RUN_DIR],log=BATCH/&#x27;worker.log&#x27;)
+finally:
+    stop_monitor.set();monitor_thread.join(timeout=2)
+    print(&#x27;本次 worker 耗时：&#x27;,round((time.monotonic()-started)/60,2),&#x27;分钟（不含前面的环境安装）&#x27;)
+    if DRIVE_ROOT:
+        target=DRIVE_ROOT/BATCH.name; target.mkdir(exist_ok=True)
+        for path in BATCH.glob(&#x27;*.log&#x27;): shutil.copy2(path,target/path.name)
+        if (RUN_DIR/&#x27;worker-status.json&#x27;).is_file(): shutil.copy2(RUN_DIR/&#x27;worker-status.json&#x27;,target/&#x27;worker-status.json&#x27;)
+        for path in (RUN_DIR/&#x27;data&#x27;).glob(&#x27;*/job-*.json&#x27;): shutil.copy2(path,target/path.name)
+        if (RUN_DIR/&#x27;priority-review.zip&#x27;).is_file(): shutil.copy2(RUN_DIR/&#x27;priority-review.zip&#x27;,target/&#x27;priority-review.zip&#x27;)
+        if (RUN_DIR/&#x27;results&#x27;).is_dir(): shutil.copytree(RUN_DIR/&#x27;results&#x27;,target/&#x27;results&#x27;,dirs_exist_ok=True)
+        print(&#x27;已保存当前可用日志/结果到 Drive：&#x27;,target)
+state=json.loads((RUN_DIR/&#x27;worker-status.json&#x27;).read_text())
+print(&#x27;最终状态：&#x27;,state[&#x27;status&#x27;])
+if state[&#x27;status&#x27;]==&#x27;awaiting_user_confirmation&#x27;:
+    print(&#x27;物品识别完成。下一步下载 priority-review.zip，在 App 导入并确认区域。&#x27;)
+elif state[&#x27;status&#x27;]==&#x27;completed&#x27;:
+    print(&#x27;完整重建已完成。下一步下载 results/scene.splat.jsonl，在 App 导入。&#x27;)
+else:
+    raise RuntimeError(state.get(&#x27;error&#x27;,&#x27;任务尚未完成，请检查日志。&#x27;))</code></pre></div></details><details class="code-section"><summary>7 · 下载到当前电脑</summary><p>只下载对应阶段的文件。大文件可从 Google Drive 下载；不要把 priority-review.zip 当作语义成品包。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>from google.colab import files
+state_path=RUN_DIR/&#x27;worker-status.json&#x27;
+if not state_path.is_file(): raise RuntimeError(&#x27;还没有执行结果，请先完成第 6 步。&#x27;)
+state=json.loads(state_path.read_text())
+if state.get(&#x27;status&#x27;)==&#x27;awaiting_user_confirmation&#x27;:
+    files.download(str(RUN_DIR/&#x27;priority-review.zip&#x27;))
+    print(&#x27;回 App：导入云端重点确认包 → 检查绿色区域 → 确认所选区域用于训练 → 准备云端重建。&#x27;)
+    print(&#x27;拿到新的重建 ZIP 后，回到本笔记本，从第 2 步开始再运行到第 7 步。&#x27;)
+elif state.get(&#x27;status&#x27;)==&#x27;completed&#x27;:
+    files.download(str(RUN_DIR/&#x27;results/scene.splat.jsonl&#x27;))
+    print(&#x27;回 App：导入已有重建 → 包含物品语义（或仅 RGB）→ 选择 scene.splat.jsonl。&#x27;)
+    print(&#x27;建议保留整个 results 目录。Drive 备份位置：&#x27;,str(DRIVE_ROOT/BATCH.name) if DRIVE_ROOT else &#x27;未开启&#x27;)
+else:
+    raise RuntimeError(&#x27;任务尚未成功，不要导入半成品。请查看 worker-status.json 和 worker.log。&#x27;)</code></pre></div></details>
+<details><summary>服务器使用 apt COLMAP 时的 CPU 启动脚本</summary><p>将下方内容保存为你自己的 <code>bin/colmap</code>，首行添加指向实际 Python 的 shebang，例如 <code>#!/path/to/splat-env/bin/python</code>，然后 <code>chmod +x</code>，将该 bin 放到 PATH 前面。脚本中的 <code>/usr/bin/colmap</code> 必须指向真实安装的 COLMAP，不能指回包装脚本。</p><div class="codebox"><div class="codebar"><span>python</span><button class="copy" type="button">复制</button></div><pre><code>import os,sys,subprocess
+REAL=&#x27;/usr/bin/colmap&#x27;
+args=sys.argv[1:]
+command=args[0] if args else &#x27;&#x27;
+choices={
+ &#x27;feature_extractor&#x27;:(&#x27;FeatureExtraction.use_gpu&#x27;,&#x27;SiftExtraction.use_gpu&#x27;),
+ &#x27;exhaustive_matcher&#x27;:(&#x27;FeatureMatching.use_gpu&#x27;,&#x27;SiftMatching.use_gpu&#x27;),
+}
+if command in choices:
+    options=choices[command]
+    if not any(a.split(&#x27;=&#x27;)[0] in [&#x27;--&#x27;+o for o in options] for a in args):
+        result=subprocess.run([REAL,command,&#x27;-h&#x27;],capture_output=True,text=True)
+        help_text=result.stdout+result.stderr
+        option=next((o for o in options if o in help_text),None)
+        if option is None: raise SystemExit(&#x27;无法识别 COLMAP 的 CPU 选项，请检查 COLMAP 版本。&#x27;)
+        args += [&#x27;--&#x27;+option,&#x27;0&#x27;]
+os.execv(REAL,[REAL]+args)</code></pre></div></details></section><section id="finish"><h2>13 · 完成一次试验的检查表</h2>
+<div class="checklist">
+<label><input type="checkbox"> App 正确读取了 177 张照片，并推荐直接重建。</label>
+<label><input type="checkbox"> 选择均衡、A100、语义、重点“熊”，允许首次资源下载。</label>
+<label><input type="checkbox"> Colab 实际 GPU 是 A100，环境与 CUDA 扩展校验通过。</label>
+<label><input type="checkbox"> 下载并导入 priority-review.zip，确认熊的正确区域。</label>
+<label><input type="checkbox"> 上传新的正式任务包，最终状态为 completed。</label>
+<label><input type="checkbox"> App 成功导入 scene.splat.jsonl，可旋转、缩放并定位熊。</label>
+<label><input type="checkbox"> 测试隐藏 / 隔离 / 撤销，以及核心区域与显示全部。</label>
+<label><input type="checkbox"> 查看重点细化证据（若有），保存 teatime.splat.jsonl。</label>
+<label><input type="checkbox"> 重新导入已保存文件，确认外观、语义和显示设置。</label>
+<label><input type="checkbox"> 单独建立 6 张和 2 张场景，测试稀疏与补全流程。</label>
+</div>
+<p class="small">文档对应 App 0.4.2，依据保留源码、实际界面和任务格式编写。代码单元格进行了本地语法与任务包/启动包装逻辑检查；本次新增 Windows 包与跨环境脚本，完成 712 项 Python 测试、17 个子测试和 115 项桌面/前端测试；尚未在真实 Windows 上运行，也未重新运行 GPU 训练。模型效果以你的实际输出为准。</p>
+<p class="small">参考：<a href="https://research.google.com/colaboratory/faq.html">Colab FAQ</a> · <a href="https://pytorch.org/get-started/previous-versions/">PyTorch 版本表</a> · <a href="https://docs.nvidia.com/cuda/archive/12.8.0/cuda-installation-guide-linux/index.html">NVIDIA CUDA 12.8 安装</a> · <a href="https://colmap.github.io/install.html">COLMAP 安装</a> · <a href="https://github.com/graphdeco-inria/gaussian-splatting">原始 3DGS 环境要求</a></p>
+</section><footer>Splat Studio · 使用说明与配套笔记本。训练结果以实际运行输出为准。</footer></main></div><div data-guide-language="en" hidden><nav><div class="brand">Splat Studio</div><div class="sub">User guide · v0.4.2</div><div class="toc">
+<a href="#en-start">01 · Choose your route</a><a href="#en-prepare">02 · Open the app and prepare photos</a><a href="#en-app">03 · Create a scene</a><a href="#en-colab">04 · Set up Colab</a><a href="#en-priority">05 · Confirm priority regions</a><a href="#en-train">06 · Train and import</a><a href="#en-view">07 · Explore and save</a><a href="#en-sparse">08 · Try sparse views</a><a href="#en-import">09 · Import existing scenes</a><a href="#en-server">10 · Every environment, step by step</a><a href="#en-problems">11 · Troubleshooting</a><a href="#en-commands">12 · Colab code cells</a><a href="#en-finish">13 · End-to-end checklist</a></div></nav>
+<main><header class="hero"><div class="eyebrow">FROM PHOTOS TO YOUR SCENE</div><h1>From your first photo<br>to an editable 3D scene.</h1><p>A complete guide to Mac, Windows, Linux, Colab and GPU servers. Create a scene, refine important objects, explore its hierarchy, and save the result.</p><span class="badge">Version 0.4.2 · September 12, 2026</span></header>
+<section id="en-start"><h2>01 · Choose your route</h2><p class="lead">The same guided app flow works with local NVIDIA training or a cloud GPU.</p><div class="recipe"><span>177 Teatime photos</span><span>Balanced</span><span>Identify objects</span><span>Priority: bear</span><span>Colab · A100</span></div><div class="flow"><div><b>1</b>Create a scene</div><div><b>2</b>Recognize objects</div><div><b>3</b>Confirm regions</div><div><b>4</b>Reconstruct</div><div><b>5</b>Explore and save</div></div>
+<p>For a first run, use the complete Teatime set and the bear as one priority object. For appearance only, skip object recognition. Select <strong>中文 / EN</strong> in the app header or this guide. Switching the app language keeps your scene name, inputs, chosen settings, and current step. The app remembers the preference across restarts. The guide remembers its preference separately.</p>
+<p>The desktop app prepares and reviews your task and displays results. A cloud GPU runs exported ZIP packages. You transfer files between the app and the GPU environment; a task export itself does not start training.</p><p><a class="button" href="../colab/Splat-Studio-User-Guide.ipynb" download>Download Colab notebook</a><button class="button secondary" onclick="window.print()">Print / save PDF</button></p>
+<p>Go to <a href="#en-env-mac">Mac</a>, <a href="#en-env-win">Windows client</a>, <a href="#en-env-local">Windows local GPU</a>, <a href="#en-env-linux">Linux server</a>, <a href="#en-env-win-server">Windows server</a>, <a href="#en-env-linux-desktop">Linux desktop</a>, or <a href="#en-env-container">WSL2 / containers / Jupyter</a>. Sections 4–6 use Colab; section 10 provides the equivalent steps for other environments.</p></section>
+<section id="en-prepare"><h2>02 · Open the app and prepare photos</h2><p>On an Apple Silicon Mac, open <strong>Splat Studio.app</strong>. Python and the local backend are bundled. For Windows, follow <a href="#en-env-win">section 10B</a>. Viewing an existing scene does not require a cloud GPU.</p>
+<table><thead><tr><th>Folder</th><th>Use</th></tr></thead><tbody><tr><td>Teatime-完整-177张</td><td>All 177 JPG photos for a complete first run</td></tr><tr><td>Teatime-稀疏 / 6张</td><td>Six real views for a separate sparse reconstruction</td></tr><tr><td>Teatime-稀疏 / 2张</td><td>Two real views for extreme sparse geometry and completion</td></tr><tr><td>源码备份</td><td>Source ZIP for development or server configuration</td></tr></tbody></table>
+<p>Choose photos from one folder at a time. Use ⌘A on Mac or Ctrl+A on Windows to select all. Supported formats: JPG, PNG and WEBP. Convert HEIC photos to JPG first. Cloud tasks accept 2–300 photos, with a maximum ZIP size of 4 GiB. The GitHub source repository does not include the Teatime photo files; the retained local distribution does.</p>
+<details><summary>Can I use my own photos? Do I need camera angles?</summary><p>Yes. You do not need to enter a pose for every photo. The initial check examines count, duplicates, sharpness, and feature overlap. Reconstruction later estimates camera position and orientation from matches. <strong>Photo connectivity is not angular coverage and does not establish a 360° capture.</strong></p><ul><li>Move around a static scene and keep substantial overlap between neighboring photos.</li><li>Capture different sides and heights. Turning the camera without changing position provides weak depth information.</li><li>Keep lighting and focal length stable. Avoid motion blur and a subject dominated by reflections, transparency, or textureless surfaces.</li><li>Do not mix unrelated rooms or objects that moved between shots. Duplicate photos do not add views.</li><li>A known coverage angle is optional guidance. Intrinsics JSON is for calibrated users; leave it blank for the first run. External camera poses and distortion parameters are not imported.</li></ul></details></section>
+<section id="en-app"><h2>03 · Create a scene</h2><ol class="steps"><li>Choose <strong>Reconstruct from photos</strong>. Name the scene, for example <code>teatime</code>.</li><li>Add all photos from <code>Teatime-完整-177张</code>. The app proceeds to the photo check automatically.</li><li>Review the recommendation and choose <strong>Confirm approach</strong>. The full set normally receives a standard reconstruction recommendation. This is a preliminary check; final camera recovery still happens during training.</li><li>Choose <strong>Identify objects too</strong>. Select <strong>Appearance only</strong> to skip semantics.</li><li>Enter <code>bear</code> under priority objects. Keep one priority for the first run. Leaving the field blank gives uniform reconstruction while still allowing ordinary semantics.</li><li>Keep automatic recognition selected. No API key is needed for this route. Separate multiple priorities with commas. Each priority ultimately needs confirmed pixel regions.</li><li>Choose <strong>Balanced → Cloud GPU → Google Colab → NVIDIA A100</strong>.</li><li>Enable the first-use resource download if models are not cached. Leave the measured rate blank if unknown.</li><li>Review your choices. Click <strong>Identify and review regions</strong>, then <strong>Download recognition task</strong>.</li></ol>
+<div class="note">If you entered priority objects, the reconstruction button remains disabled until their pixel regions are confirmed. Object names alone do not identify which Gaussians should receive additional detail.</div>
+<p>The estimate is a planning range derived from the selected device and settings. Installation, model downloads and file transfers take additional time. The guide uses CPU feature extraction for COLMAP, with CUDA for subsequent Gaussian and semantic training.</p>
+<table><thead><tr><th>Mode</th><th>RGB steps</th><th>Image scale</th><th>Semantic views</th><th>Base semantic steps</th><th>Priority refinement</th></tr></thead><tbody><tr><td>Fast</td><td>7,000</td><td>¼ width and height</td><td>Up to 12</td><td>400</td><td>400 steps</td></tr><tr><td>Balanced</td><td>15,000</td><td>½ width and height</td><td>Up to 24</td><td>1,200</td><td>1,200 steps</td></tr><tr><td>Fine</td><td>22,000</td><td>Original scale</td><td>All available training views</td><td>2,400</td><td>2,400 steps</td></tr></tbody></table>
+<p>Priority refinement is included in the RGB total. Every mode uses hierarchy processing and cross-view confidence. Semantic optimization runs after RGB; additional steps may be needed to cover valid supervision pairs. With fewer available views, the actual count is used. More computation does not guarantee higher quality for every object.</p></section>
+<section id="en-colab"><h2>04 · Set up Colab</h2><ol class="steps"><li>Download <code>Splat-Studio-Colab使用.ipynb</code> from this guide.</li><li>Open <a href="https://colab.research.google.com/">Google Colab</a> and upload the notebook.</li><li>Choose Runtime → Change runtime type → GPU / A100, then connect. Check the actual GPU shown by the first cell; availability depends on your account and current resources.</li><li>Run cells in order, <strong>1 → 2 → 3 → 4 → 5 → 6 → 7</strong>, using the play button or Shift+Enter.</li></ol>
+<table><thead><tr><th>Cell</th><th>Action</th><th>Expected result</th></tr></thead><tbody><tr><td>1 · GPU check</td><td>Run and verify A100</td><td>GPU, memory, driver and Python version</td></tr><tr><td>2 · Task upload</td><td>Select the recognition ZIP</td><td>Task stage, photo count, mode, priorities and hash</td></tr><tr><td>3 · Backup</td><td>Keep SAVE_TO_DRIVE=True and authorize Drive</td><td>Task copied under MyDrive / Splat-Studio</td></tr><tr><td>4 · Environment</td><td>Install and wait</td><td>CUDA available; torch / torchvision versions</td></tr><tr><td>5 · Extensions</td><td>Set up training and required geometry resources</td><td>Imports and task validation pass</td></tr><tr><td>6 · Execute</td><td>Start the actual computation</td><td>Recognition finishes as awaiting_user_confirmation</td></tr><tr><td>7 · Download</td><td>Save the output</td><td>priority-review.zip</td></tr></tbody></table>
+<p>Cells 4–5 prepare the environment; cell 6 executes the task. The notebook creates an isolated Python environment. Keep its compatible dependencies together rather than separately upgrading torch.</p>
+<details><summary>Environment details</summary><p>The helper uses Python 3.11–3.13 (3.12 recommended), torch 2.11.0 with torchvision 0.26.0 from the official cu128 index, CUDA Toolkit 12.8, and the task's semantic requirements including transformers 4.57.6. It checks the actual nvcc compiler, compiles the pinned 3DGS extensions, and prepares DUSt3R when required. Dependencies and verified code are reused within the same runtime.</p><p>Install <code>cuda-toolkit-12-8</code> using the <a href="https://docs.nvidia.com/cuda/archive/12.8.0/cuda-installation-guide-linux/index.html">NVIDIA instructions for the distribution</a> if nvcc is missing. Do not replace the platform-managed Colab GPU driver. <code>nvidia-smi</code>'s CUDA version is not the installed compiler version. See the <a href="https://pytorch.org/get-started/previous-versions/">PyTorch version table</a> and <a href="https://colmap.github.io/install.html">COLMAP installation guide</a>.</p></details>
+<p>Colab has runtime, idle and quota limits. A sleeping Mac does not necessarily stop cloud work, but continued execution is not guaranteed. Download results promptly. Drive backup runs after completion or a normal caught failure; it cannot guarantee that intermediate files survive an abrupt runtime deletion. See the <a href="https://research.google.com/colaboratory/faq.html">Colab FAQ</a>.</p></section>
+<section id="en-priority"><h2>05 · Confirm priority regions</h2><ol class="steps"><li>Return to the same app project and choose <strong>Import cloud review package</strong>. Select <code>priority-review.zip</code>.</li><li>Inspect each green overlay. Confirm it covers the intended bear, including its boundary, and does not include neighboring cups or the table.</li><li>Keep correct regions and deselect incorrect ones. Prefer several clear, overlapping views of the same instance.</li><li>Choose <strong>Confirm selected regions for training</strong>. Check the confirmed count and labels.</li><li>Choose <strong>Prepare cloud task</strong> and download the <strong>new reconstruction ZIP</strong>.</li></ol>
+<p>One priority object can have several confirmed photo regions. Identical labels do not automatically establish that two detections are the same physical instance.</p>
+<details><summary>Fix incorrect or missing detections</summary><p>Use a specific visible object name, such as <code>teddy bear</code>. For manual corrections, open recognition settings → <strong>Annotate objects / parts</strong>. Select a photo, enter the object name and cross-view ID, click at least three polygon vertices along the contour, and save. Repeat across photos with the same ID for the same instance. Use different IDs for different instances. Annotate a parent before its parts and specify the real relationship.</p><p>Match and confirm again after changes. Names alone cannot replace pixel masks. Changing photos or priorities invalidates earlier confirmation; do not manually edit an exported task ZIP.</p></details></section>
+<section id="en-train"><h2>06 · Train and import</h2><ol class="steps"><li>Return to the same Colab runtime and restart from <strong>cell 2</strong>. Upload the new reconstruction ZIP, not the recognition task.</li><li>Continue through cells 3–7. The environment is reused, while each task gets a fresh work directory.</li><li>Cell 6 recovers cameras, reconstructs Gaussians, refines priority regions, trains hierarchical semantics, and writes results. Semantic optimization and export can continue after RGB steps finish.</li><li>Wait for <code>completed</code>, then download <code>scene.splat.jsonl</code> with cell 7, or from the task's Drive directory.</li><li>In the app, choose <strong>Import reconstruction</strong>, or Home → Import a reconstruction → <strong>With object semantics</strong>.</li><li>Wait for all Gaussians to load. Select the bear in the object panel and click Focus.</li></ol>
+<p>For cloud tasks, progress is shown by the worker on the GPU machine. The app's “awaiting cloud execution” screen is not live remote telemetry. Read <code>worker-status.json</code> and the actual outputs.</p>
+<table><thead><tr><th>Status</th><th>Next step</th></tr></thead><tbody><tr><td>preparing / preparing_semantics</td><td>Wait for preparation, downloads, and detection</td></tr><tr><td>awaiting_user_confirmation</td><td>Download the review package and confirm regions in the app</td></tr><tr><td>running</td><td>Read stage messages; RGB completion is not overall completion</td></tr><tr><td>completed</td><td>Download and import the complete result</td></tr><tr><td>failed</td><td>Inspect status and logs; retry in a fresh work directory</td></tr></tbody></table>
+<p>The worker does not automatically resume interrupted iterations. It refuses to reuse an existing run directory. Keep the original task ZIP, fix the reported issue, and prepare a new run when retrying.</p></section>
+<section id="en-view"><h2>07 · Explore and save</h2><table><thead><tr><th>Action</th><th>Control</th></tr></thead><tbody><tr><td>Rotate / zoom / pan</td><td>Left drag / wheel or trackpad / right drag</td></tr><tr><td>Reset camera</td><td>Reset view in the toolbar</td></tr><tr><td>Find an object</td><td>Search its actual label in the panel, or enter “find bear”</td></tr><tr><td>Focus / isolate / hide</td><td>Select a hierarchy item, then use its action buttons</td></tr><tr><td>Natural language</td><td>“focus bear”, “hide bear”, “isolate bear”, “show all”, “undo”</td></tr><tr><td>Undo</td><td>Undo button or ⌘Z / Ctrl+Z. Delete commands use reversible hiding.</td></tr><tr><td>Core region</td><td>Enable Show core region only; adjust Range or Center on selection</td></tr><tr><td>Complete view</td><td>Show all clears range, source and semantic filters</td></tr><tr><td>Hierarchy</td><td>Expand object and part nodes supported by the imported semantics</td></tr><tr><td>Priority evidence</td><td>Open the before/after comparison when the result includes completed refinement evidence</td></tr></tbody></table>
+<p><strong>Loaded and currently visible are different counts.</strong> Core filtering, hiding and the camera frustum affect visibility. All input Gaussians and their original SH coefficients remain loaded; SH1 input is not upgraded to SH3. Input labels remain unchanged when the interface language changes. Use the label present in the scene when searching.</p>
+<p>Priority refinement weights confirmed object regions more strongly and allocates higher-resolution refinement and bounded densification within the total RGB budget. Imported results can supply targets for a new reconstruction, but need original photos and new region confirmation. Before/after training views illustrate the refinement; they are not held-out quality measurements.</p>
+<p>Choose <strong>Save result</strong>. The suggested name is your scene name, such as <code>teatime.splat.jsonl</code>. Importing it again restores the complete scene and saved visibility state.</p>
+<table><thead><tr><th>Output</th><th>Contents / use</th></tr></thead><tbody><tr><td>scene-name.splat.jsonl</td><td>Complete Gaussians, original SH/color, semantics and hierarchy if present, and display settings. Recommended app exchange format.</td></tr><tr><td>point_cloud.ply</td><td>Original Gaussian attributes; use with compatible external tools or the matching semantic ZIP.</td></tr><tr><td>semantics.zip</td><td>Semantic sidecar tied to the exact PLY; generated when semantic outputs are available.</td></tr><tr><td>priority-review.zip</td><td>Pre-training region review package, imported in the priority step.</td></tr><tr><td>results directory</td><td>Keep the full directory for point clouds, sidecars, metadata and exported scene files.</td></tr></tbody></table><p>These are Gaussian scene outputs, not OBJ/STL triangle meshes or complete resumable training checkpoints.</p></section>
+<section id="en-sparse"><h2>08 · Try sparse views</h2><ol class="steps"><li>Create a separate scene named <code>teatime-6</code>, then add only the six photos from the sparse folder.</li><li>Review the sparse reconstruction suggestion. Keep completion enabled if you want the worker to check whether additional visible geometry is needed.</li><li>Use Balanced and your GPU environment. For a quick first check, choose appearance only; semantics and priorities follow the same confirmed-region workflow when enabled.</li><li>Run the full exported task, import its completed JSONL, and inspect both the core and full view.</li><li>Repeat with two photos as <code>teatime-2</code>. Check the completion recommendation and allow geometry resources to download.</li></ol>
+<p>The worker first attempts photo-grounded geometry. Sparse or weakly connected captures can use DUSt3R initialization and additional visible points that pass alignment and consistency checks. The source filter distinguishes observed, inferred and unknown-provenance Gaussians. <strong>Unseen backsides remain unknown</strong>; two views cannot reliably recover every surface. Add overlapping views when the scene remains incomplete.</p><p>Sparse/completion choices are shown after photo analysis. They are tied to the selected capture rather than permanently displayed as an unrelated option.</p></section>
+<section id="en-import"><h2>09 · Import an existing reconstruction</h2><ol class="steps"><li>Home → <strong>Import a reconstruction</strong>.</li><li>Choose <strong>RGB appearance only</strong> or <strong>With object semantics</strong>.</li><li>For a complete scene, select <code>.splat.jsonl</code> or supported JSON. Its semantic data is already included.</li><li>For a point cloud, select <code>.ply</code>. If you chose semantics, also supply its matching <code>semantics.zip</code>.</li><li>Open the scene, explore it, adjust visibility, and save a new named JSONL.</li></ol><p>A review ZIP is not a semantic sidecar. A sidecar from another PLY cannot be used safely: Gaussian order and identity must match. Large scenes should use streaming JSONL instead of plain JSON.</p></section>
+<section id="en-server"><h2>10 · Every environment, step by step</h2><p class="lead">Choose where the app opens and where the NVIDIA GPU computes.</p>
+<table><thead><tr><th>Environment</th><th>App</th><th>Training</th></tr></thead><tbody><tr><td>Apple Silicon Mac</td><td>Bundled .app</td><td>Colab or GPU server</td></tr><tr><td>Windows 10 / 11 x64</td><td>Portable EXE</td><td>Cloud, or separately configured local NVIDIA GPU</td></tr><tr><td>Linux x86_64 server</td><td>Mac / Windows client</td><td>Server worker</td></tr><tr><td>Linux x86_64 desktop</td><td>Electron from source</td><td>Local NVIDIA GPU</td></tr><tr><td>Windows NVIDIA server</td><td>Mac / Windows client</td><td>Remote Windows worker</td></tr><tr><td>WSL2 / NVIDIA container / Jupyter</td><td>Mac / Windows client</td><td>GPU-visible Linux worker</td></tr></tbody></table>
+<p>Full original-3DGS and semantic training requires NVIDIA CUDA. MPS, CPU, AMD and Intel graphics serve client functions rather than this full training path. This distribution provides Apple Silicon Mac and Windows x64 packages. Windows execution and Linux desktop packaging have not been verified on physical machines in this release; use the diagnostics described below.</p>
+<h3 id="en-env-mac">A · Mac client</h3><ol><li>Open <strong>Splat Studio.app</strong>; no Python, Node or CUDA installation is needed for normal use.</li><li>Follow section 3 to create a scene. Select Cloud GPU.</li><li>Use Colab (sections 4–6), a Linux server (C), or a Windows server (E).</li><li>For priorities, run recognition, import and confirm the review package, then export a fresh training task.</li><li>Import the completed JSONL and save your named scene. Existing scenes can be viewed without cloud access.</li></ol>
+<h3 id="en-env-win">B · Windows client</h3><p><a class="button" href="WINDOWS-PORTABLE.zh-CN.md">Windows x64 application ZIP</a></p><ol><li>Copy the ZIP to Windows and use Extract All into a short local path such as <code>C:\SplatStudio</code>. Keep the entire folder; do not run inside the ZIP or copy only the EXE.</li><li>Run <strong>Install-Runtime.cmd</strong> and complete Microsoft's VC++ x64 runtime installation. The bundled <code>VC_redist.x64.exe</code> can also be opened directly.</li><li>Run <strong>Splat Studio.exe</strong>. Normal client use does not need a separate Python, Node or CUDA installation.</li><li>Run <strong>Self-Test.cmd</strong>. A successful diagnostic ends with <code>status: passed</code>. It tests imports, photos, APIs, frontend and cloud packaging without downloading models, training, or accessing existing projects. Report: <code>%LOCALAPPDATA%\Splat-Studio-Diagnostics\self-test.json</code>.</li><li>Choose Cloud GPU and follow the same app flow as Mac. For local NVIDIA training, use section D.</li></ol><p>The portable client includes Python 3.13.15, CPU torch 2.11.0 and torchvision 0.26.0. Keep GPU training in the separate environment below. The package was assembled and statically checked on Mac; real Windows startup and GPU execution still need testing. It has no publisher signing certificate. Verify the source and SHA rather than disabling system protections. <a href="https://docs.python.org/3.13/using/windows.html#the-embeddable-package">Python embeddable package</a> · <a href="https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170">Microsoft runtime</a>.</p>
+<h3 id="en-env-linux">C · Linux NVIDIA server</h3><p>Use an x86_64 Linux GPU server with NVIDIA drivers, CUDA Toolkit 12.8 and Python 3.12. Allow at least 30 GB free disk for setup, with more for larger runs. In the app choose Cloud GPU → Other NVIDIA cloud server, select the real GPU, and export a task.</p><ol><li>Upload the local <code>环境配置</code> folder (or the repository's <code>scripts/splat_env.py</code> and <code>scripts/task_exchange.py</code>) to <code>/workspace/splat-tools</code>. Upload the task ZIP as <code>/workspace/task.zip</code>.</li><li>Run the following on the server. Without sudo, ask the platform to provide the system packages or choose an appropriate image.</li></ol>
+<div class="codebox"><div class="codebar"><span>Linux / bash</span><button class="copy">Copy</button></div><pre><code>nvidia-smi
+nvcc --version
+python3 --version
+sudo apt-get update
+sudo apt-get install -y git build-essential ninja-build python3-venv colmap libgl1 libglib2.0-0 tmux
+export PATH="/usr/local/cuda-12.8/bin:$PATH"
+nvcc --version
+cd /workspace/splat-tools
+python3 splat_env.py prepare --task /workspace/task.zip --base /workspace/splat-gpu</code></pre></div>
+<p>If nvcc is missing, install <code>cuda-toolkit-12-8</code> using NVIDIA's distribution-specific instructions. Keep the cloud provider's GPU driver. The helper validates the ZIP, creates an isolated environment, installs compatible dependencies, compiles pinned CUDA extensions, prepares geometry resources as needed and validates the task again. Linux COLMAP feature extraction and matching use CPU for compatibility; Gaussian and semantic training use CUDA.</p><p>Success prints <code>Prepared, not started</code> and a unique task directory. Substitute that actual directory below:</p>
+<div class="codebox"><div class="codebar"><span>Linux / bash</span><button class="copy">Copy</button></div><pre><code>cd /workspace/splat-tools
+tmux new -s splat
+python3 splat_env.py run --job /workspace/splat-gpu/TASK_DIRECTORY
+# Detach: Ctrl+B, release, then D.
+# Reattach: tmux attach -t splat</code></pre></div>
+<ol start="3"><li>Read <code>run/worker-status.json</code>. For <code>awaiting_user_confirmation</code>, download <code>run/priority-review.zip</code> and confirm it in the original app project.</li><li>Export the new reconstruction ZIP. Upload and prepare it using the same base directory to reuse dependencies. Run the newly printed task directory.</li><li>For <code>completed</code>, download <code>run/results/scene.splat.jsonl</code>. Retain the entire results folder when possible.</li></ol>
+<p>Use a Jupyter file manager, SFTP or SCP. The following commands run on your own computer; replace username, host and paths:</p><div class="codebox"><div class="codebar"><span>Local file transfer</span><button class="copy">Copy</button></div><pre><code>scp -r /local/splat-tools user@server:/workspace/splat-tools
+scp /local/task.zip user@server:/workspace/task.zip
+scp user@server:/workspace/splat-gpu/TASK_DIRECTORY/run/priority-review.zip .
+scp -r user@server:/workspace/splat-gpu/TASK_DIRECTORY/run/results .</code></pre></div><p>Check that <code>splat_env.py</code> sits directly in splat-tools after upload. tmux can survive SSH disconnection, but not server shutdown or reclamation. Interrupted training is restarted in a new directory.</p>
+<h3 id="en-env-local">D · Windows local NVIDIA training</h3><ol><li>Install the NVIDIA driver and check <code>nvidia-smi</code>.</li><li>Install standard <strong>Python 3.12 x64</strong> and Git for Windows, separate from the app's embedded Python.</li><li>Install Visual Studio 2022 / Build Tools with Desktop development with C++, Windows SDK, and a CUDA 12.8-compatible MSVC v143 toolset. The CUDA 12.8 compatibility table lists MSVC 193x; select the corresponding 14.3x component when newer compilers are also installed.</li><li>Install CUDA Toolkit 12.8 and verify <code>nvcc --version</code>. See <a href="https://docs.nvidia.com/cuda/archive/12.8.0/cuda-installation-guide-microsoft-windows/index.html">NVIDIA's Windows compiler compatibility table</a>.</li><li>Download the official <a href="https://colmap.github.io/install.html#windows">COLMAP Windows CUDA distribution</a>, extract the entire bundle to <code>C:\COLMAP</code>, and verify <code>COLMAP.bat -h</code>. Keep its DLL and plugin folders.</li><li>Place helper scripts in <code>C:\SplatTools</code> and extracted source in <code>C:\SplatSource\splat-studio</code>.</li><li>Open <strong>Developer PowerShell for VS 2022</strong>, where <code>cl</code> is available, then run:</li></ol>
+<div class="codebox"><div class="codebar"><span>Windows / Developer PowerShell</span><button class="copy">Copy</button></div><pre><code>nvidia-smi
+nvcc --version
+Get-Command cl
+py -3.12 --version
+&amp; "C:\COLMAP\COLMAP.bat" -h
+cd C:\SplatTools
+py -3.12 splat_env.py local --source C:\SplatSource\splat-studio --base C:\SplatGPU --colmap-root C:\COLMAP --geometry</code></pre></div>
+<p><code>--geometry</code> prepares the fixed sparse-view geometry model, including about 2.3 GB of weights. It can be omitted for the initial full-photo run and added before sparse experiments. The helper configures COLMAP DLL and Qt plugin paths and checks that its executable runs.</p><p>When <code>Local CUDA environment ready</code> appears, save your app work, quit normally, and launch with the prepared environment:</p>
+<div class="codebox"><div class="codebar"><span>Windows / Developer PowerShell</span><button class="copy">Copy</button></div><pre><code>cd C:\SplatTools
+py -3.12 splat_env.py launch --base C:\SplatGPU --app "C:\SplatStudio\Splat-Studio-Windows\Splat Studio.exe"</code></pre></div>
+<p>Use the actual extracted EXE path. This sets SPLAT_PYTHON and the upstream/geometry paths. Double-clicking the EXE instead uses its bundled CPU client environment.</p><ol start="8"><li>Create a scene and choose <strong>Local NVIDIA GPU</strong>. Click Check again and confirm training readiness.</li><li>For priorities, run recognition locally and confirm the green regions. No cloud ZIP round trip is needed.</li><li>Start reconstruction, keep the app and computer running, then inspect and save the resulting scene.</li></ol>
+<h3 id="en-env-win-server">E · Windows NVIDIA server</h3><p>Install the driver, standard Python, compiler, CUDA and COLMAP as in D1–D5 on the server. Keep the app on your own computer and choose Other NVIDIA cloud server. Upload the helper folder and task ZIP using Remote Desktop file transfer, SFTP or the platform file manager.</p>
+<div class="codebox"><div class="codebar"><span>Remote Developer PowerShell</span><button class="copy">Copy</button></div><pre><code>cd C:\SplatTools
+py -3.12 splat_env.py prepare --task C:\SplatTasks\task.zip --base C:\SplatGPU --colmap-root C:\COLMAP
+# Substitute the directory printed by prepare:
+py -3.12 splat_env.py run --job C:\SplatGPU\TASK_DIRECTORY</code></pre></div>
+<p>Download <code>run\priority-review.zip</code> for confirmation, export and upload a new training task, then repeat prepare/run. Download <code>run\results\scene.splat.jsonl</code> after completion. Keep the remote process alive: disconnecting a desktop session differs from signing out or shutting down; platform session policies apply.</p>
+<h3 id="en-env-linux-desktop">F · Linux desktop from source</h3><p>Use an ordinary user account with a graphical Linux x86_64 desktop, NVIDIA GPU, Node.js 22 and Python 3.12. Prepare the system packages from C. A headless server needs only the worker. This route is documented for source use; it has not been tested on a physical Linux desktop in this release.</p>
+<div class="codebox"><div class="codebar"><span>Linux desktop / bash</span><button class="copy">Copy</button></div><pre><code>cd /workspace/splat-tools
+python3 splat_env.py local --source /workspace/splat-studio --base /workspace/splat-gpu --geometry
+cd /workspace/splat-studio
+npm install --global corepack
+corepack enable
+corepack prepare pnpm@11.19.0 --activate
+pnpm install --frozen-lockfile
+pnpm run build
+cd /workspace/splat-tools
+python3 splat_env.py desktop-source --source /workspace/splat-studio --base /workspace/splat-gpu</code></pre></div>
+<p>Select Local NVIDIA GPU in the app and follow D8–D10. Install any missing Electron system libraries for your distribution. Do not run Electron as root or expose the local API publicly.</p>
+<h3 id="en-env-container">G · WSL2, containers, Jupyter and clusters</h3><ul><li><strong>WSL2:</strong> Follow <a href="https://docs.nvidia.com/cuda/wsl-user-guide/index.html">NVIDIA's CUDA on WSL guide</a>. Verify GPU visibility inside Ubuntu. Install compiler tools without replacing the Windows driver with a Linux driver. Follow C with data in the Linux filesystem. The Windows app exchanges task ZIPs; do not point SPLAT_PYTHON at a WSL Linux executable.</li><li><strong>Docker:</strong> The host needs NVIDIA drivers and the <a href="https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html">NVIDIA Container Toolkit</a>. Expose the GPU and use a CUDA 12.8 <em>devel</em> environment containing nvcc. Follow C inside the container and mount /workspace on persistent storage.</li><li><strong>Hosted Jupyter:</strong> Upload helper scripts and task ZIP in the file panel, then run C in Jupyter Terminal or the platform's SSH terminal. Download files from run. Google Colab modules and Drive are not needed.</li><li><strong>Scheduled clusters:</strong> Run prepare/run on an allocated GPU compute node according to platform scheduling rules. A login node is not a GPU allocation. Reused environments must match GPU architecture, OS, Python and CUDA; the helper checks the extension-cache architecture.</li></ul>
+<h3 id="en-env-flow">H · Finish every route</h3><p><code>awaiting_user_confirmation</code> → bring back the review ZIP and confirm in the original app project. <code>completed</code> → import the complete JSONL. <code>failed</code> → keep status/logs and the original task ZIP, fix the issue, and prepare a fresh run. Save the scene under its original name after editing.</p>
+<h3>Optional LLM services</h3><p>Local commands support common scene actions. To use a compatible LLM service, set <code>SPLAT_LLM_BASE_URL</code>, <code>SPLAT_LLM_MODEL</code> and <code>SPLAT_LLM_API_KEY</code> before launching the app. Vision services use <code>SPLAT_VISION_BASE_URL</code>, <code>SPLAT_VISION_MODEL</code> and <code>SPLAT_VISION_API_KEY</code>. Enable the corresponding app option. Credentials are not included automatically in task ZIPs; configure them separately in the cloud if needed. Vision-proposed names still require masks and confirmation.</p></section>
+<section id="en-problems"><h2>11 · Troubleshooting</h2><table><thead><tr><th>Issue</th><th>What to check</th></tr></thead><tbody><tr><td>Cannot continue past priorities</td><td>Import the review ZIP in the same project, inspect regions, and confirm. All requested priorities need matched regions.</td></tr><tr><td>Review package rejected</td><td>Use the package from the current photos, order and request. Changed inputs require a new review.</td></tr><tr><td>Engine disconnected</td><td>Open the native app, or start the configured source backend. Check backend.log in the app's user-data directory.</td></tr><tr><td>CUDA unavailable</td><td>Check the actual driver, GPU torch environment, nvcc and compiled extensions. The packaged Windows client uses CPU by default.</td></tr><tr><td>COLMAP fails</td><td>Check executable and DLL/plugin paths, photo overlap and texture. Linux helpers use CPU feature matching; CUDA is still needed for training.</td></tr><tr><td>Out of memory</td><td>Use Fast or a smaller capture, close other large scenes, or use a GPU with more memory. Full model loading does not silently reduce Gaussians or SH.</td></tr><tr><td>Cloud task appears unchanged in the app</td><td>Read progress on the GPU machine. The app uses file exchange.</td></tr><tr><td>No objects after import</td><td>Select semantic import and use complete JSONL or the exact matching PLY + semantic ZIP.</td></tr><tr><td>Blurred or missing surfaces</td><td>Check source photos and geometry. Add overlapping views; more training cannot guarantee recovery of unseen surfaces.</td></tr><tr><td>Interrupted run</td><td>Keep logs and the task ZIP. Retry in a new work directory; automatic iteration resume is not provided.</td></tr><tr><td>Language switched but object labels remain Chinese</td><td>Expected: scene names, filenames, labels and annotations are user data. They are preserved.</td></tr></tbody></table></section>
+<section id="en-commands"><h2>12 · Colab code cells</h2><p>The following executable cells are the same cells supplied in the downloadable notebook, in the same order. Run them in Colab after selecting the GPU. File paths and variable names are kept intact. Use section 4 for the English explanation of each cell.</p><details class="code-section"><summary>Cell 1</summary><div class="codebox"><div class="codebar"><span>Colab · Python</span><button class="copy">Copy</button></div><pre><code>from pathlib import Path, PurePosixPath
+import os, sys, json, zipfile, hashlib, shutil, subprocess, stat, time, uuid, re, signal, threading
+assert sys.platform == &#x27;linux&#x27;, &#x27;此笔记本在 Colab / Linux GPU 环境运行，不在 Mac 上运行。&#x27;
+assert (3,11) &lt;= sys.version_info[:2] &lt;= (3,13), &#x27;需要 Python 3.11–3.13；建议使用 Python 3.12 环境。&#x27;
+BASE = Path(&#x27;/content/splat-studio-v041&#x27;)
+BASE.mkdir(parents=True, exist_ok=True)
+ENV_DIR = BASE / &#x27;env&#x27;
+PY = ENV_DIR / &#x27;bin/python&#x27;
+DRIVE_ROOT = None
+
+def digest(path):
+    with Path(path).open(&#x27;rb&#x27;) as f:
+        return hashlib.file_digest(f, &#x27;sha256&#x27;).hexdigest()
+
+def run(args, log=None, cwd=None):
+    args = [str(x) for x in args]
+    stream = open(log, &#x27;w&#x27;) if log else None
+    proc = subprocess.Popen(args, cwd=cwd, env=os.environ.copy(), stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True, bufsize=1, start_new_session=True)
+    try:
+        for line in proc.stdout:
+            print(line, end=&#x27;&#x27;, flush=True)
+            if stream: stream.write(line); stream.flush()
+        if proc.wait(): raise RuntimeError(f&#x27;命令失败，日志：{log or &quot;上方输出&quot;}&#x27;)
+    except BaseException:
+        # 只停止本单元格启动的进程及其训练子进程。
+        if proc.poll() is None:
+            os.killpg(proc.pid, signal.SIGTERM)
+            try: proc.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                os.killpg(proc.pid, signal.SIGKILL); proc.wait()
+        raise
+    finally:
+        if stream: stream.close()
+
+def unpack_task(package, destination):
+    &quot;&quot;&quot;在执行包内代码前检查大小、路径和每个文件的 SHA256。&quot;&quot;&quot;
+    package, destination = Path(package), Path(destination)
+    if destination.exists(): raise ValueError(&#x27;解压目录必须是新目录。&#x27;)
+    if package.stat().st_size &gt; 4*1024**3: raise ValueError(&#x27;任务包超过 4 GiB。&#x27;)
+    with zipfile.ZipFile(package) as z:
+        infos=z.infolist(); seen=set(); total=0
+        if len(infos)&gt;20001: raise ValueError(&#x27;任务文件过多。&#x27;)
+        for info in infos:
+            name=info.filename; parts=name.split(&#x27;/&#x27;); mode=info.external_attr&gt;&gt;16
+            if (not name or len(name)&gt;512 or any(c in name for c in (&#x27;\\&#x27;,&#x27;:&#x27;,&#x27;\x00&#x27;))
+                or PurePosixPath(name).is_absolute() or any(p in (&#x27;&#x27;,&#x27;.&#x27;,&#x27;..&#x27;) for p in parts)
+                or name.casefold() in seen or info.is_dir() or info.flag_bits&amp;1
+                or stat.S_IFMT(mode) not in (0,stat.S_IFREG)):
+                raise ValueError(&#x27;不支持的任务 ZIP 路径或文件类型。&#x27;)
+            seen.add(name.casefold()); total+=info.file_size
+            if info.file_size&gt;512*1024**2 or total&gt;4*1024**3: raise ValueError(&#x27;解压内容过大。&#x27;)
+        if &#x27;manifest.json&#x27; not in seen: raise ValueError(&#x27;请选择 App 导出的任务 ZIP，不是确认包、结果包或源码包。&#x27;)
+        if z.getinfo(&#x27;manifest.json&#x27;).file_size&gt;8*1024**2: raise ValueError(&#x27;清单过大。&#x27;)
+        manifest=json.loads(z.read(&#x27;manifest.json&#x27;))
+        if manifest.get(&#x27;format&#x27;)!=&#x27;splat-studio-cloud-task/1&#x27;:
+            raise ValueError(&#x27;请选择 App 导出的任务 ZIP，不是源码 ZIP、确认包或结果包。&#x27;)
+        declared=set()
+        for row in manifest[&#x27;files&#x27;]:
+            name=row[&#x27;path&#x27;]
+            if name in declared or name==&#x27;manifest.json&#x27;: raise ValueError(&#x27;任务清单有重复。&#x27;)
+            declared.add(name)
+            if z.getinfo(name).file_size!=row[&#x27;bytes&#x27;]: raise ValueError(&#x27;文件长度不匹配。&#x27;)
+            with z.open(name) as f: value=hashlib.file_digest(f,&#x27;sha256&#x27;).hexdigest()
+            if value!=row[&#x27;sha256&#x27;]: raise ValueError(&#x27;文件校验失败：&#x27;+name)
+        if declared|{&#x27;manifest.json&#x27;}!={i.filename for i in infos}: raise ValueError(&#x27;任务清单与内容不一致。&#x27;)
+        destination.mkdir()
+        for info in infos:
+            target=destination/info.filename; target.parent.mkdir(parents=True,exist_ok=True)
+            with z.open(info) as src, target.open(&#x27;xb&#x27;) as dst: shutil.copyfileobj(src,dst)
+    return manifest
+
+run([&#x27;nvidia-smi&#x27;,&#x27;--query-gpu=name,memory.total,driver_version&#x27;,&#x27;--format=csv&#x27;])
+print(&#x27;Python:&#x27;,sys.version.split()[0])
+print(&#x27;初始化完成。下一步只上传一个 App 任务 ZIP。&#x27;)
+</code></pre></div></details><details class="code-section"><summary>Cell 2</summary><div class="codebox"><div class="codebar"><span>Colab · Python</span><button class="copy">Copy</button></div><pre><code>from google.colab import files
+BATCH = BASE / (&#x27;task-&#x27; + time.strftime(&#x27;%Y%m%d-%H%M%S&#x27;) + &#x27;-&#x27; + uuid.uuid4().hex[:6])
+BATCH.mkdir()
+previous_cwd=Path.cwd()
+try:
+    os.chdir(BATCH)
+    uploaded=files.upload()
+finally:
+    os.chdir(previous_cwd)
+if len(uploaded)!=1: raise ValueError(&#x27;每次只选择一个 App 导出的任务 ZIP。请重新运行本单元格。&#x27;)
+filename=next(iter(uploaded)); del uploaded
+PACKAGE=BATCH/filename
+if PACKAGE.suffix.lower()!=&#x27;.zip&#x27;: raise ValueError(&#x27;请选择任务 ZIP。&#x27;)
+EXTRACTED=BATCH/&#x27;unpacked&#x27;
+MANIFEST=unpack_task(PACKAGE,EXTRACTED)
+RUNTIME=EXTRACTED/&#x27;runtime&#x27;
+CONFIG=MANIFEST[&#x27;worker_config&#x27;]
+PROJECT=json.loads((EXTRACTED/&#x27;project/project.json&#x27;).read_text())
+PHOTO_COUNT=len(PROJECT[&#x27;images&#x27;])
+STAGE=CONFIG.get(&#x27;priority_task_stage&#x27;,&#x27;train&#x27;)
+RUN_DIR=BATCH/&#x27;run&#x27;  # 保持不存在，由 worker 创建。
+_READY_TASK_ID=None
+print(&#x27;任务类型：&#x27;,&#x27;物品识别 / 等待你确认区域&#x27; if STAGE==&#x27;review&#x27; else &#x27;正式重建&#x27;)
+print(&#x27;照片：&#x27;,PHOTO_COUNT,&#x27;；质量：&#x27;,CONFIG.get(&#x27;mode&#x27;),&#x27;；重点：&#x27;,CONFIG.get(&#x27;priority_request&#x27;,&#x27;无&#x27;))
+print(&#x27;ZIP SHA256:&#x27;,digest(PACKAGE))
+print(&#x27;本次目录：&#x27;,BATCH)
+if not 2&lt;=PHOTO_COUNT&lt;=300: raise ValueError(&#x27;当前任务支持 2–300 张照片。&#x27;)
+if CONFIG.get(&#x27;cloud_gpu&#x27;)==&#x27;a100&#x27;:
+    gpu_names=subprocess.check_output([&#x27;nvidia-smi&#x27;,&#x27;--query-gpu=name&#x27;,&#x27;--format=csv,noheader&#x27;],text=True)
+    if &#x27;A100&#x27; not in gpu_names: raise ValueError(&#x27;App 选的是 A100，但当前 GPU 不符。切换 Colab 为 A100，或回 App 修改设备后重新导出。&#x27;)
+if (CONFIG.get(&#x27;semantics&#x27;) or CONFIG.get(&#x27;priority_objects&#x27;)) and not CONFIG.get(&#x27;allow_model_download&#x27;):
+    print(&#x27;注意：任务没有允许首次下载识别模型；如果云端没有缓存，请回 App 勾选“首次使用时下载所需资源”后重新导出。&#x27;)
+</code></pre></div></details><details class="code-section"><summary>Cell 3</summary><div class="codebox"><div class="codebar"><span>Colab · Python</span><button class="copy">Copy</button></div><pre><code>SAVE_TO_DRIVE = True  # @param {type:&quot;boolean&quot;}
+DRIVE_ROOT=None
+if SAVE_TO_DRIVE:
+    from google.colab import drive
+    drive.mount(&#x27;/content/drive&#x27;)
+    DRIVE_ROOT=Path(&#x27;/content/drive/MyDrive/Splat-Studio&#x27;)
+    DRIVE_ROOT.mkdir(parents=True,exist_ok=True)
+    backup=DRIVE_ROOT/BATCH.name; backup.mkdir(exist_ok=True)
+    shutil.copy2(PACKAGE,backup/PACKAGE.name)
+    print(&#x27;本次任务包已备份：&#x27;,backup)
+else:
+    print(&#x27;未启用 Drive 备份。任务完成后及时下载结果。&#x27;)
+</code></pre></div></details><details class="code-section"><summary>Cell 4</summary><div class="codebox"><div class="codebar"><span>Colab · Python</span><button class="copy">Copy</button></div><pre><code>INSTALL_CUDA_128_IF_NEEDED = True  # @param {type:&quot;boolean&quot;}
+run([&#x27;apt-get&#x27;,&#x27;update&#x27;],log=BATCH/&#x27;apt-update.log&#x27;)
+run([&#x27;apt-get&#x27;,&#x27;install&#x27;,&#x27;-y&#x27;,&#x27;git&#x27;,&#x27;build-essential&#x27;,&#x27;ninja-build&#x27;,&#x27;python3-venv&#x27;,
+     &#x27;colmap&#x27;,&#x27;libgl1&#x27;,&#x27;libglib2.0-0&#x27;],log=BATCH/&#x27;system-setup.log&#x27;)
+
+def locate_cuda_128():
+    candidates=[Path(&#x27;/usr/local/cuda-12.8/bin/nvcc&#x27;)]
+    located=shutil.which(&#x27;nvcc&#x27;)
+    if located: candidates.append(Path(located).resolve())
+    for candidate in candidates:
+        if candidate.is_file():
+            version=subprocess.check_output([str(candidate),&#x27;--version&#x27;],text=True)
+            if re.search(r&#x27;release\s+12\.8\b&#x27;,version): return candidate.parent.parent
+    return None
+
+CUDA_ROOT=locate_cuda_128()
+if CUDA_ROOT is None and INSTALL_CUDA_128_IF_NEEDED:
+    # 只安装开发工具包，不更换 Colab 的 NVIDIA 驱动。
+    run([&#x27;apt-get&#x27;,&#x27;install&#x27;,&#x27;-y&#x27;,&#x27;cuda-toolkit-12-8&#x27;],log=BATCH/&#x27;cuda-toolkit-setup.log&#x27;)
+    CUDA_ROOT=locate_cuda_128()
+if CUDA_ROOT is None:
+    raise RuntimeError(&#x27;没有找到 CUDA 12.8 的 nvcc。按使用说明配置 NVIDIA 软件源/工具包；不要只看 nvidia-smi 的 CUDA Version。&#x27;)
+os.environ[&#x27;CUDA_HOME&#x27;]=str(CUDA_ROOT)
+os.environ[&#x27;PATH&#x27;]=str(CUDA_ROOT/&#x27;bin&#x27;)+os.pathsep+os.environ.get(&#x27;PATH&#x27;,&#x27;&#x27;)
+os.environ[&#x27;MAX_JOBS&#x27;]=&#x27;2&#x27;
+os.environ[&#x27;QT_QPA_PLATFORM&#x27;]=&#x27;offscreen&#x27;
+os.environ[&#x27;PYTHONUNBUFFERED&#x27;]=&#x27;1&#x27;
+os.environ[&#x27;HF_HOME&#x27;]=str(BASE/&#x27;model-cache&#x27;)
+os.environ[&#x27;SPLAT_GEOMETRY_HOME&#x27;]=str(BASE/&#x27;geometry&#x27;)
+if not PY.exists(): run([sys.executable,&#x27;-m&#x27;,&#x27;venv&#x27;,ENV_DIR],log=BATCH/&#x27;venv-setup.log&#x27;)
+constraints=BASE/&#x27;constraints.txt&#x27;
+constraints.write_text(&#x27;torch==2.11.0\ntorchvision==0.26.0\nnumpy==2.2.6\n&#x27;)
+os.environ[&#x27;PIP_CONSTRAINT&#x27;]=str(constraints)
+run([PY,&#x27;-m&#x27;,&#x27;pip&#x27;,&#x27;install&#x27;,&#x27;--upgrade&#x27;,&#x27;pip&#x27;,&#x27;setuptools&#x27;,&#x27;wheel&#x27;],log=BATCH/&#x27;pip-setup.log&#x27;)
+run([PY,&#x27;-m&#x27;,&#x27;pip&#x27;,&#x27;install&#x27;,&#x27;torch==2.11.0&#x27;,&#x27;torchvision==0.26.0&#x27;,
+     &#x27;--index-url&#x27;,&#x27;https://download.pytorch.org/whl/cu128&#x27;],log=BATCH/&#x27;torch-setup.log&#x27;)
+run([PY,&#x27;-m&#x27;,&#x27;pip&#x27;,&#x27;install&#x27;,&#x27;-r&#x27;,RUNTIME/&#x27;requirements-semantic.txt&#x27;],log=BATCH/&#x27;requirements-setup.log&#x27;)
+run([PY,&#x27;-c&#x27;,&quot;import torch,torchvision; assert torch.cuda.is_available(); assert torch.version.cuda==&#x27;12.8&#x27;; print(&#x27;CUDA 可用：&#x27;,torch.cuda.get_device_name(0)); print(torch.__version__,torchvision.__version__)&quot;],log=BATCH/&#x27;torch-check.log&#x27;)
+print(&#x27;Python/CUDA 环境已就绪。下一步配置训练扩展。&#x27;)
+</code></pre></div></details><details class="code-section"><summary>Cell 5</summary><div class="codebox"><div class="codebar"><span>Colab · Python</span><button class="copy">Copy</button></div><pre><code>COLMAP_WRAPPER_SOURCE = &quot;import os,sys,subprocess\nREAL=&#x27;/usr/bin/colmap&#x27;\nargs=sys.argv[1:]\ncommand=args[0] if args else &#x27;&#x27;\nchoices={\n &#x27;feature_extractor&#x27;:(&#x27;FeatureExtraction.use_gpu&#x27;,&#x27;SiftExtraction.use_gpu&#x27;),\n &#x27;exhaustive_matcher&#x27;:(&#x27;FeatureMatching.use_gpu&#x27;,&#x27;SiftMatching.use_gpu&#x27;),\n}\nif command in choices:\n    options=choices[command]\n    if not any(a.split(&#x27;=&#x27;)[0] in [&#x27;--&#x27;+o for o in options] for a in args):\n        result=subprocess.run([REAL,command,&#x27;-h&#x27;],capture_output=True,text=True)\n        help_text=result.stdout+result.stderr\n        option=next((o for o in options if o in help_text),None)\n        if option is None: raise SystemExit(&#x27;无法识别 COLMAP 的 CPU 选项，请检查 COLMAP 版本。&#x27;)\n        args += [&#x27;--&#x27;+option,&#x27;0&#x27;]\nos.execv(REAL,[REAL]+args)\n&quot;
+# apt 的 COLMAP 通常不带 CUDA。通过独立启动脚本指定 CPU，避免无显示器环境的 OpenGL 错误。
+wrapper_dir=BASE/&#x27;bin&#x27;; wrapper_dir.mkdir(exist_ok=True)
+WRAPPER=wrapper_dir/&#x27;colmap&#x27;
+WRAPPER.write_text(&#x27;#!&#x27;+str(PY)+&#x27;\n&#x27;+COLMAP_WRAPPER_SOURCE)
+WRAPPER.chmod(0o755)
+os.environ[&#x27;PATH&#x27;]=str(wrapper_dir)+os.pathsep+str(CUDA_ROOT/&#x27;bin&#x27;)+os.pathsep+str(ENV_DIR/&#x27;bin&#x27;)+os.pathsep+os.environ.get(&#x27;PATH&#x27;,&#x27;&#x27;)
+cache_file=BASE/&#x27;upstream-cache.json&#x27;
+setup_hash=digest(RUNTIME/&#x27;scripts/setup_upstream.py&#x27;)
+cache=json.loads(cache_file.read_text()) if cache_file.is_file() else {}
+reuse=cache.get(&#x27;setup_sha256&#x27;)==setup_hash and Path(cache.get(&#x27;repo&#x27;,&#x27;/nonexistent&#x27;)).joinpath(&#x27;train.py&#x27;).is_file()
+if reuse:
+    repo=Path(cache[&#x27;repo&#x27;])
+    # 缓存必须仍然是此版本固定的原始仓库。
+    reuse=subprocess.check_output([&#x27;git&#x27;,&#x27;-C&#x27;,str(repo),&#x27;rev-parse&#x27;,&#x27;HEAD&#x27;],text=True).strip()==&#x27;54c035f7834b564019656c3e3fcc3646292f727d&#x27;
+    reuse=reuse and not subprocess.check_output([&#x27;git&#x27;,&#x27;-C&#x27;,str(repo),&#x27;status&#x27;,&#x27;--porcelain&#x27;,&#x27;--untracked-files=no&#x27;],text=True).strip()
+if not reuse:
+    run([PY,RUNTIME/&#x27;scripts/setup_upstream.py&#x27;,&#x27;--cuda&#x27;],log=BATCH/&#x27;cuda-extensions.log&#x27;)
+    repo=RUNTIME/&#x27;vendor/gaussian-splatting&#x27;
+    cache_file.write_text(json.dumps({&#x27;setup_sha256&#x27;:setup_hash,&#x27;repo&#x27;:str(repo)}))
+os.environ[&#x27;SPLAT_3DGS_REPO&#x27;]=str(repo)
+needs_geometry=(STAGE!=&#x27;review&#x27; and 2&lt;=PHOTO_COUNT&lt;=12 and
+                (CONFIG.get(&#x27;sparse_completion&#x27;,&#x27;auto&#x27;)!=&#x27;none&#x27; or CONFIG.get(&#x27;geometry_backend&#x27;)==&#x27;dust3r&#x27;))
+if needs_geometry:
+    run([PY,RUNTIME/&#x27;scripts/setup_geometry.py&#x27;,&#x27;--root&#x27;,BASE/&#x27;geometry&#x27;],log=BATCH/&#x27;geometry-setup.log&#x27;)
+    # 已经显式运行安装命令，并按固定 SHA 校验几何权重。
+else:
+    print(&#x27;本任务无需安装学习式几何补全模型。&#x27;)
+run([PY,&#x27;-c&#x27;,&quot;import torch,diff_gaussian_rasterization,simple_knn._C,fused_ssim; from transformers import AutoModelForZeroShotObjectDetection,AutoProcessor,SamModel,SamProcessor; assert torch.cuda.is_available(); print(&#x27;3DGS 扩展和物品识别组件导入成功&#x27;)&quot;],log=BATCH/&#x27;extensions-check.log&#x27;)
+run([PY,RUNTIME/&#x27;scripts/cloud_worker.py&#x27;,PACKAGE,&#x27;--verify-only&#x27;],log=BATCH/&#x27;task-verification.log&#x27;)
+_READY_TASK_ID=MANIFEST[&#x27;id&#x27;]
+print(&#x27;环境与任务校验通过。任务尚未开始；运行下一单元格。&#x27;)
+</code></pre></div></details><details class="code-section"><summary>Cell 6</summary><div class="codebox"><div class="codebar"><span>Colab · Python</span><button class="copy">Copy</button></div><pre><code>if _READY_TASK_ID!=MANIFEST[&#x27;id&#x27;]: raise RuntimeError(&#x27;请先完成第 5 步校验。&#x27;)
+if RUN_DIR.exists(): raise RuntimeError(&#x27;本次运行目录已存在。先看 worker-status.json；成功则去第 7 步下载，失败则重新运行第 2 步创建新任务目录。&#x27;)
+stop_monitor=threading.Event()
+def monitor():
+    last=None
+    while not stop_monitor.wait(20):
+        try:
+            status_path=RUN_DIR/&#x27;worker-status.json&#x27;
+            if not status_path.exists(): continue
+            status=json.loads(status_path.read_text())
+            job_path=RUN_DIR/&#x27;data&#x27;/MANIFEST[&#x27;project_id&#x27;]/(&#x27;job-&#x27;+MANIFEST[&#x27;id&#x27;]+&#x27;.json&#x27;)
+            job=json.loads(job_path.read_text()) if job_path.exists() else {}
+            description=job.get(&#x27;message&#x27;) or job.get(&#x27;stage&#x27;) or status.get(&#x27;status&#x27;)
+            message=(description,round(float(job.get(&#x27;progress&#x27;,0))*100,1))
+            if message!=last:
+                print(f&#x27;[{time.strftime(&quot;%H:%M:%S&quot;)}] {message[0]} · {message[1]}%&#x27;,flush=True); last=message
+        except (OSError,ValueError): pass
+monitor_thread=threading.Thread(target=monitor,daemon=True);monitor_thread.start()
+started=time.monotonic()
+try:
+    run([PY,RUNTIME/&#x27;scripts/cloud_worker.py&#x27;,PACKAGE,&#x27;--work-dir&#x27;,RUN_DIR],log=BATCH/&#x27;worker.log&#x27;)
+finally:
+    stop_monitor.set();monitor_thread.join(timeout=2)
+    print(&#x27;本次 worker 耗时：&#x27;,round((time.monotonic()-started)/60,2),&#x27;分钟（不含前面的环境安装）&#x27;)
+    if DRIVE_ROOT:
+        target=DRIVE_ROOT/BATCH.name; target.mkdir(exist_ok=True)
+        for path in BATCH.glob(&#x27;*.log&#x27;): shutil.copy2(path,target/path.name)
+        if (RUN_DIR/&#x27;worker-status.json&#x27;).is_file(): shutil.copy2(RUN_DIR/&#x27;worker-status.json&#x27;,target/&#x27;worker-status.json&#x27;)
+        for path in (RUN_DIR/&#x27;data&#x27;).glob(&#x27;*/job-*.json&#x27;): shutil.copy2(path,target/path.name)
+        if (RUN_DIR/&#x27;priority-review.zip&#x27;).is_file(): shutil.copy2(RUN_DIR/&#x27;priority-review.zip&#x27;,target/&#x27;priority-review.zip&#x27;)
+        if (RUN_DIR/&#x27;results&#x27;).is_dir(): shutil.copytree(RUN_DIR/&#x27;results&#x27;,target/&#x27;results&#x27;,dirs_exist_ok=True)
+        print(&#x27;已保存当前可用日志/结果到 Drive：&#x27;,target)
+state=json.loads((RUN_DIR/&#x27;worker-status.json&#x27;).read_text())
+print(&#x27;最终状态：&#x27;,state[&#x27;status&#x27;])
+if state[&#x27;status&#x27;]==&#x27;awaiting_user_confirmation&#x27;:
+    print(&#x27;物品识别完成。下一步下载 priority-review.zip，在 App 导入并确认区域。&#x27;)
+elif state[&#x27;status&#x27;]==&#x27;completed&#x27;:
+    print(&#x27;完整重建已完成。下一步下载 results/scene.splat.jsonl，在 App 导入。&#x27;)
+else:
+    raise RuntimeError(state.get(&#x27;error&#x27;,&#x27;任务尚未完成，请检查日志。&#x27;))
+</code></pre></div></details><details class="code-section"><summary>Cell 7</summary><div class="codebox"><div class="codebar"><span>Colab · Python</span><button class="copy">Copy</button></div><pre><code>from google.colab import files
+state_path=RUN_DIR/&#x27;worker-status.json&#x27;
+if not state_path.is_file(): raise RuntimeError(&#x27;还没有执行结果，请先完成第 6 步。&#x27;)
+state=json.loads(state_path.read_text())
+if state.get(&#x27;status&#x27;)==&#x27;awaiting_user_confirmation&#x27;:
+    files.download(str(RUN_DIR/&#x27;priority-review.zip&#x27;))
+    print(&#x27;回 App：导入云端重点确认包 → 检查绿色区域 → 确认所选区域用于训练 → 准备云端重建。&#x27;)
+    print(&#x27;拿到新的重建 ZIP 后，回到本笔记本，从第 2 步开始再运行到第 7 步。&#x27;)
+elif state.get(&#x27;status&#x27;)==&#x27;completed&#x27;:
+    files.download(str(RUN_DIR/&#x27;results/scene.splat.jsonl&#x27;))
+    print(&#x27;回 App：导入已有重建 → 包含物品语义（或仅 RGB）→ 选择 scene.splat.jsonl。&#x27;)
+    print(&#x27;建议保留整个 results 目录。Drive 备份位置：&#x27;,str(DRIVE_ROOT/BATCH.name) if DRIVE_ROOT else &#x27;未开启&#x27;)
+else:
+    raise RuntimeError(&#x27;任务尚未成功，不要导入半成品。请查看 worker-status.json 和 worker.log。&#x27;)
+</code></pre></div></details></section>
+<section id="en-finish"><h2>13 · End-to-end checklist</h2><div class="checklist"><label><input type="checkbox"> Open the app and switch 中文 / EN without losing input.</label><label><input type="checkbox"> Name the scene and add one coherent photo set.</label><label><input type="checkbox"> Confirm the suggested reconstruction approach.</label><label><input type="checkbox"> Choose appearance or semantics, quality and actual device.</label><label><input type="checkbox"> For priorities, confirm correct regions across clear views.</label><label><input type="checkbox"> Run the reconstruction task and wait for completed.</label><label><input type="checkbox"> Import the complete scene, rotate, zoom and focus an object.</label><label><input type="checkbox"> Try hide, isolate, undo, core-region filtering and Show all.</label><label><input type="checkbox"> Inspect priority refinement evidence when included.</label><label><input type="checkbox"> Save the named JSONL and import it again.</label><label><input type="checkbox"> Try six-view and two-view captures as separate scenes.</label></div><p class="small">This guide describes the source and task format shipped with version 0.4.2. Environment instructions are distinct from hardware validation. Rendering quality depends on the actual input model and completed training result.</p></section>
+<footer>Splat Studio · User guide and companion notebook.</footer></main>
+</div><script>
+(()=>{const key='splat-studio-language';let language='zh';try{language=localStorage.getItem(key)==='en'?'en':'zh';}catch{}
+function choose(value,updateHash=true){language=value==='en'?'en':'zh';document.documentElement.lang=language==='en'?'en':'zh-CN';document.title=language==='en'?'Splat Studio 0.4.2 · User guide':'Splat Studio 0.4.2 · 完整使用说明';document.querySelectorAll('[data-guide-language]').forEach(p=>p.hidden=p.dataset.guideLanguage!==language);document.querySelectorAll('[data-guide-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.guideChoice===language)));try{localStorage.setItem(key,language);}catch{}if(updateHash&&location.hash){const base=location.hash.slice(1).replace(/^en-/,'');const next=(language==='en'?'en-':'')+base;if(document.getElementById(next)){history.replaceState(null,'','#'+next);document.getElementById(next).scrollIntoView();}}}
+document.querySelectorAll('[data-guide-choice]').forEach(b=>b.onclick=()=>choose(b.dataset.guideChoice));
+if(location.hash.startsWith('#en-'))language='en';choose(language,false);
+window.addEventListener('hashchange',()=>{if(location.hash)choose(location.hash.startsWith('#en-')?'en':'zh',false);});
+document.querySelectorAll('.copy').forEach(button=>button.onclick=async()=>{const text=button.closest('.codebox').querySelector('code').textContent;let ok=false;try{await navigator.clipboard.writeText(text);ok=true;}catch{const area=document.createElement('textarea');area.value=text;document.body.append(area);area.select();ok=document.execCommand('copy');area.remove();}button.textContent=language==='en'?(ok?'Copied':'Copy manually'):(ok?'已复制':'请手动复制');setTimeout(()=>button.textContent=language==='en'?'Copy':'复制',1600);});
+window.addEventListener('beforeprint',()=>document.querySelectorAll('[data-guide-language]:not([hidden]) details:not(.code-section)').forEach(d=>{d.dataset.wasOpen=d.open?'1':'0';d.open=true;}));window.addEventListener('afterprint',()=>document.querySelectorAll('details[data-was-open]').forEach(d=>{d.open=d.dataset.wasOpen==='1';delete d.dataset.wasOpen;}));
+})();</script></body></html>

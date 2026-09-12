@@ -1,0 +1,1 @@
+"""Splat Studio local backend."""

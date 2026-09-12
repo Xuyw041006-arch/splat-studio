@@ -1,0 +1,12 @@
+import {spawn} from 'node:child_process';
+import {existsSync} from 'node:fs';
+import {resolve} from 'node:path';
+const root=resolve(import.meta.dirname,'..');
+const local=resolve(root,'.venv',process.platform==='win32'?'Scripts/python.exe':'bin/python');
+const python=process.env.SPLAT_PYTHON||(existsSync(local)?local:process.platform==='win32'?'python':'python3');
+const backend=spawn(python,['-m','backend.app'],{cwd:root,stdio:'inherit',env:process.env});
+const frontend=spawn(process.execPath,[resolve(root,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1'],{cwd:root,stdio:'inherit'});
+const stop=()=>{backend.kill();frontend.kill();};
+process.on('SIGINT',stop);process.on('SIGTERM',stop);process.on('exit',stop);
+backend.on('error',e=>{console.error(e.message);stop();process.exitCode=1;});
+frontend.on('error',e=>{console.error(e.message);stop();process.exitCode=1;});

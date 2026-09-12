@@ -1,0 +1,13 @@
+# Third-party code, models and research
+
+Splat Studio uses the official GRAPHDECO [3D Gaussian Splatting](https://github.com/graphdeco-inria/gaussian-splatting) implementation. The setup script installs the pinned revision `54c035f7834b564019656c3e3fcc3646292f727d` and its CUDA extensions. The upstream source is downloaded during setup, rather than included in this Git repository. Retain and follow its [license](https://github.com/graphdeco-inria/gaussian-splatting/blob/54c035f7834b564019656c3e3fcc3646292f727d/LICENSE.md) when using or redistributing upstream source or binaries. App integration does not replace those terms.
+
+The optional [DUSt3R](https://github.com/naver/dust3r) initializer and CroCo dependency are installed at pinned revisions with source and checkpoint integrity checks. Their source, checkpoint and dataset terms apply separately. See the upstream repository and the pinned model information in `backend/learned_geometry.py`.
+
+Mask preparation uses [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO) and [Segment Anything](https://github.com/facebookresearch/segment-anything), through Transformers. Optional checkpoints are [Grounding DINO tiny](https://huggingface.co/IDEA-Research/grounding-dino-tiny) and [SAM ViT base](https://huggingface.co/facebook/sam-vit-base); source and model-card terms apply. Model weights are not included in this source repository.
+
+[SAGA](https://github.com/Jumpat/SegAnyGAussians) and [LaGa](https://github.com/SJTU-DeepVisionLab/LaGa) are credited research references for semantic Gaussian interaction and view-dependent semantics. Splat Studio implements its own geometry-based association, confidence/hierarchy-aware probability optimization, and LaGa-format region importer. The README describes those concrete methods; paper results belong to their authors.
+
+Other components retain their own licenses, including [Electron](https://github.com/electron/electron/blob/main/LICENSE), [Three.js](https://github.com/mrdoob/three.js/blob/dev/LICENSE), [PyTorch](https://github.com/pytorch/pytorch/blob/main/LICENSE), [Transformers](https://github.com/huggingface/transformers/blob/main/LICENSE), [OpenCV](https://github.com/opencv/opencv/blob/4.x/LICENSE), and dependencies listed in the lockfiles. Packaged runtimes must retain their supplied notices, including Electron's Chromium notices and the Microsoft redistributable's own terms.
+
+User photos, benchmark datasets, downloaded weights and trained results are not part of this public source release. Use datasets according to their original distribution terms. The workflow SVG is a project diagram, not a reconstruction-quality sample.
