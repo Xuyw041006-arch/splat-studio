@@ -2,7 +2,7 @@
   "format": "splat-studio-fine-execution/1",
   "scene": "Teatime",
   "training_base_commit": "f513390a26b3b83612e06fcce8e88b878269d471",
-  "native_app_version": "0.4.3",
+  "native_app_version": "0.4.4",
   "runs": {
     "full": {
       "input_views": 171,
@@ -459,5 +459,40 @@
       "seconds": 0.45299599999999995
     }
   },
-  "local_frontend_import_scope": "Both downloaded model files passed the actual frontend JSONL reader, preserving every Gaussian source index and all 48 SH3 coefficients. This does not measure native GPU rendering or interaction."
+  "local_frontend_import_scope": "Both downloaded model files passed the actual frontend JSONL reader, preserving every Gaussian source index and all 48 SH3 coefficients. This does not measure native GPU rendering or interaction.",
+  "native_interaction": {
+    "native_app_version": "0.4.4",
+    "full_model_loaded": true,
+    "full_semantic_selection": true,
+    "full_priority_evidence_panel": true,
+    "full_isolation_and_undo": true,
+    "full_hide_and_undo": true,
+    "full_to_sparse_switch": "A graphics context reset was reported during the switch. The App was restarted before independently checking the sparse scene.",
+    "sparse_independent_verification": "passed in 0.4.4 after restart",
+    "full_interaction_capture_version": "0.4.3",
+    "sparse_priority_evidence_panel": true,
+    "sparse_save_and_reimport": true,
+    "display_validation": "Original 3DGS covariance FoV guard and 0.2 near clipping applied. Sparse native view verified; source model and CUDA benchmark scores unchanged.",
+    "full_independent_verification": "passed in 0.4.4 after restart; complete model rendered and bilingual hero recaptured"
+  },
+  "native_export": {
+    "status": "passed",
+    "file": "exports/Teatime Fine · 6 views.splat.jsonl",
+    "bytes": 145298245,
+    "sha256": "f82da23df5fd01ba1bad556e15da90a77af46707e7f3cc25cfe92219a49ca8ce",
+    "gaussian_count": 84748,
+    "all_source_indices_preserved": true,
+    "sh_degree": 3,
+    "sh_coefficients_per_gaussian": 48,
+    "geometry_appearance_and_semantic_fields_unchanged": true,
+    "saved_core_visibility": {
+      "format": "splat-studio-core-region/1",
+      "enabled": true,
+      "multiplier": 1.25,
+      "target": "scene",
+      "object_ids": []
+    },
+    "native_app_version": "0.4.4",
+    "native_reimport": "passed: exported scene reopened in native App 0.4.4; rendered geometry, semantic hierarchy and saved core-region visibility verified"
+  }
 }

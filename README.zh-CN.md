@@ -8,21 +8,19 @@
 
 [English](README.md) · **简体中文** · [完整使用说明](docs/user-guide.html) · [Colab 笔记本](colab/Splat-Studio-User-Guide.ipynb) · [精细实测展示](docs/fine-evaluation/README.md)
 
-![Fine Teatime: held-out photograph and actual rendering](docs/fine-evaluation/measurements/full-held-out-comparison.jpg)
+![Splat Studio · Fine · Teatime](docs/fine-evaluation/screenshots/12-full-viewer-zh.png)
 
 </div>
 
 ## 看实际运行效果
 
-[**查看中英文精细模式实测与操作截图 →**](docs/fine-evaluation/README.md)
+[**查看中英文精细模式截图展示 →**](docs/fine-evaluation/README.md)
 
-两组实际 **A100、22,000 步**训练，分别使用 **171 张照片**与 **6 张稀疏照片及可见几何补全**。展示包含独立测试图像对照、整体画质、重点物品和分割指标，并列出相同测试视角的对比。
-
-[完整项目报告](docs/fine-evaluation/项目报告.html) · [全部精度指标](docs/fine-evaluation/精度评测.html) · [此前的快速模式原生交互展示](docs/demo/README.md)。
+两组实际 **A100、22,000 步**训练，展示 **171 张照片的常规重建**与 **6 张照片的稀疏重建及可见几何补全**，随后完成层级语义与原生物品编辑。
 
 **整体 PSNR 26.08 dB · 咖啡杯区域 SSIM 0.921 · 小熊玩偶 IoU 94.2%**
 
-整体 PSNR 取完整输入组的 6 个独立测试视角；重点细节取两个预先指定重点类别中平均区域 SSIM 较高的咖啡杯（5 个标注测试视角）；语义亮点取至少两个标注视角的最佳类别汇总分数（171 张输入组、5 个测试视角），完整报告保留全部类别和覆盖范围。
+整体 PSNR 取完整输入组的六个独立测试视角；咖啡杯区域 SSIM 为五个标注视角的平均值，是两个预先指定重点类别中平均 SSIM 较高的一类；语义亮点按至少两个标注视角的最佳类别汇总分数选择，所属实验及全部类别分数见[完整评测](docs/fine-evaluation/精度评测.html)。[协议与指标](docs/fine-evaluation/README.md) · [执行记录](docs/fine-evaluation/execution-record.json)。
 
 ## 从输入照片，到保存可交互的场景
 

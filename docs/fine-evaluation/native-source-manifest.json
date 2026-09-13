@@ -35,7 +35,7 @@
   "backend/gaussian_io.py": "0c5f3706a5be753941d86f6bca163f304e740753010e9750161785b84b09a6e5",
   "backend/semantic_package.py": "3fac5904aa7f01d468c4afc3264b046dec68cd190280aa731fb093f6b4f0697b",
   "desktop/scene-export.cjs": "7b7a6dbd79007e5801aa959059b61f911dcc88623187701f85998eccd49d54a2",
-  "desktop/preload.cjs": "4b7e63efb7467c13e23bcee2c1b9ce07708ae591a901d84fc07e16be9da504b4",
+  "desktop/preload.cjs": "4b46aaef92f97a19f1da4bc7b29db11e7b834e033b754ce5439f1be01a717189",
   "desktop/startup.cjs": "60e6c7a0a568b440e76e36ff9a1107df9027ff5f7aaf370b6f464de45de7d7aa",
   "desktop/language.cjs": "60bef95d69930491dc80938e51c80f4fa17de6b716f91064512e649f0688f9f5",
   "desktop/main.cjs": "078ef3034cba6b1cb745614628e54540571a246abb931f4af022aaecb887781e",
@@ -45,7 +45,7 @@
   "frontend/wizard.css": "60f8ec43ad2015896236b300bf3ca12aa82f7669b89cc8ebd18a39af49db2f21",
   "frontend/scene_transport.js": "5e6ab0bf6ec6ca032c8f7a9ee0c519151210d26ab5321f6a0d11547d5ed982ea",
   "frontend/scene_flow.js": "75b94989353c87c1493db04c58bc90b6e6706ba27cac7cf9a55207ff80596321",
-  "frontend/index.html": "4a6dee431fda07b3db0f219cf70b70bfe3aa28be2259069ac3b9d61dbef3d7f0",
+  "frontend/index.html": "f9b48bea3bfc87ca2c5ecef134fdf9a01acf2b78218b6eae64dc02cf6fc24e82",
   "frontend/user_workflow.js": "820785b988585fbb8dcd540f3a9da3ef9d5293a6437d9f8762ce14d4e05ec1d5",
   "frontend/styles.css": "c79428020f1b0f78175f8ddd7f9144e159c0fac3043d03f197710079ac1558ec",
   "frontend/scene_visibility.js": "c2244e2324e29256fd18e46d0ab276c7e772bc6f571f3a4b3d6eb87221c9e2f7",
@@ -56,7 +56,7 @@
   "frontend/viewer_camera.js": "8868b7c77bad8f363529f44446e42195703ade836777fce755555f3279798866",
   "frontend/scene_limits.js": "7967200d8e1c8b90c1ac169ff7810c38d825c33a9b5bd7fac7a3f9e538c7d77e",
   "frontend/depth_sort.js": "7932109c360865ba2b0e5ca7f133a81af6f89b565248cc9aac0bf64c185b0efb",
-  "frontend/viewer.js": "c96fe9c5a4f3d66bc6fa8e3f34a754a4a2f7c7c1593e8e93735a13a3d525445e",
+  "frontend/viewer.js": "60f5f12f2b158c963dd6f299217a4e5bfd064ca65522b0497b8b47eaa7c3663c",
   "frontend/core_region.js": "c94257c21d55ee2639f23df0934e15b5209a5ff56dcd2ced050fc40159d7b8f8",
   "frontend/result_library.js": "e6965be0e765774306b6de1da9e767b646197137b3c6459433fbeb3d926d3844",
   "frontend/main.js": "a9f38a12b345bca2a971d8b70345c73b8908f3a678a58b73b33b6d65796c2be5",
@@ -68,5 +68,5 @@
   "frontend/i18n.js": "e46d0ddda76e5133f0924bbd58dd214cccab0876c8384cde1284ff4ed7a36e1b",
   "frontend/settings.js": "a020a9ca40f3a39c20b3bead40810ddfd7b40776d3a13653f45b4529a96f0c64",
   "frontend/locales/en.json": "11ec907362a36531cc05da8dcccc5d88f755eeb1abb4a69f0c2721f70ea63296",
-  "package.json": "a7ff8f6a1be596512014d3a5aad576d4458371cb1d416a102211be20d4b2bd84"
+  "package.json": "39affa8bbd9f3861d5cf792a051ff9cbcd8be00eebf1b586ae2626ba13a6fb51"
 }

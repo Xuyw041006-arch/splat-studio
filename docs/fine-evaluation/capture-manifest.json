@@ -1,9 +1,9 @@
 {
   "format": "splat-studio-fine-showcase/1",
   "training_base_commit": "f513390a26b3b83612e06fcce8e88b878269d471",
-  "native_app_version": "0.4.3",
-  "native_source_manifest_sha256": "cca17d2157bb517861939616fa58878a131fcea59fefd232edca6616a6b3d192",
-  "execution_record_sha256": "651e8fd248298d7f761b58e52fb5cd4da8ddd4ab0915ad67aa5ac5ddd6c5ef6b",
+  "native_app_version": "0.4.4",
+  "native_source_manifest_sha256": "4819073eb618bb26d86d474d34398f73a8e38487b4faeec299bc6c180bbf0a69",
+  "execution_record_sha256": "a089cead1da3026ece2a5282b418a447207dfbe94d4ed0e1f10713b2cc073af0",
   "evaluator_source_sha256": "c8474980c99fd458673e1aac7cdb016577e1da3e6316c139692d5ae78e6cce34",
   "runs": {
     "full": {
@@ -165,7 +165,295 @@
       ],
       "native_app_version": "0.4.2",
       "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/10-import-type-zh.png",
+      "language": "zh",
+      "bytes": 55240,
+      "sha256": "4821cabaa28f633ba5e53e953dc6fe2af46bf2d3a93f62515ce7c8a69a9bf502",
+      "caption": [
+        "导入已有场景",
+        "选择仅外观或包含语义的场景。包含语义时，可以继续查找、定位和隐藏物品。"
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture during the verified 171-photo Fine model import workflow."
+    },
+    {
+      "path": "screenshots/10-import-type-en.png",
+      "language": "en",
+      "bytes": 60580,
+      "sha256": "d6e87aea826c3ee1dc61579a36cd57bb5de64a8f3c1025bed6219d722990d136",
+      "caption": [
+        "Import an existing scene",
+        "Choose appearance only or a scene with semantics. Semantic scenes support object search, focus and hiding."
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture during the verified 171-photo Fine model import workflow."
+    },
+    {
+      "path": "screenshots/11-import-file-zh.png",
+      "language": "zh",
+      "bytes": 56412,
+      "sha256": "c83dbf94ab6135b1dea59de4f2ce055909794bd1a4dc70d57d0816fd26cf72ca",
+      "caption": [
+        "一个文件，恢复完整场景",
+        "导入已经完成训练的完整 JSONL。它包含高斯、三阶球谐系数、语义与层级，无需再选择独立语义包。"
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture during the verified 171-photo Fine model import workflow."
+    },
+    {
+      "path": "screenshots/11-import-file-en.png",
+      "language": "en",
+      "bytes": 55268,
+      "sha256": "25ccc145e08d787349564ed1cda0e27b67c3210a92e4980bf510e1696837845c",
+      "caption": [
+        "One file restores the complete scene",
+        "Import the trained JSONL, including Gaussians, degree-three SH, semantics and hierarchy. A separate semantic package is unnecessary."
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture during the verified 171-photo Fine model import workflow."
+    },
+    {
+      "path": "screenshots/12-full-viewer-zh.png",
+      "language": "zh",
+      "bytes": 169976,
+      "sha256": "db305b39cd6055311fe1feeb0a55d7ac6185d0852cce1be1ce30899dfe3754a4",
+      "caption": [
+        "精细重建，在原生 App 中浏览",
+        "171 张照片、22,000 步训练，完整载入 2,162,260 个高斯及三阶球谐系数。本画面启用核心区域显示；模型数据保持完整。"
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App 0.4.4 capture after independently importing the complete 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/12-full-viewer-en.png",
+      "language": "en",
+      "bytes": 171972,
+      "sha256": "3e297cb45b2e16284a57877410a19177997edd547314ff55e0332f6d14dd8b1e",
+      "caption": [
+        "Explore the Fine reconstruction in the native App",
+        "171 photos and 22,000 training steps produce 2,162,260 Gaussians, all loaded with degree-three SH. This view enables core-region visibility while retaining the complete model."
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App 0.4.4 capture after independently importing the complete 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/13-priority-refinement-zh.png",
+      "language": "zh",
+      "bytes": 126971,
+      "sha256": "73607b8c699bc2902637ae353f20c42e4a99da2c366ea087cad41ef9368ad36e",
+      "caption": [
+        "查看重点细化的实际过程",
+        "熊与咖啡杯使用总预算内最后 2,400 步细化，新增 16,000 个高斯。对照来自相同训练相机，三组结果及局部误差上升均保留，不将其作为独立消融增益。"
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App screenshot after importing the verified 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/13-priority-refinement-en.png",
+      "language": "en",
+      "bytes": 131431,
+      "sha256": "b492be71a409df5ac5722904474ed2ada578b2505d1d1859352f824edc8b033c",
+      "caption": [
+        "Inspect the executed priority refinement",
+        "The bear and coffee mug receive 2,400 refinement steps within the total budget, adding 16,000 Gaussians. Comparisons use the same training cameras; all three results, including local error increases, are retained and are not a matched ablation."
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App screenshot after importing the verified 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/14-bear-selection-zh.png",
+      "language": "zh",
+      "bytes": 180477,
+      "sha256": "7c443271fca1240ec984a80b248a3b75edd0a4550b4fe80da7138addd238e500",
+      "caption": [
+        "查找物品，核对跨视角可信度",
+        "通过名称查找小熊，再选中具有部件层级的区域。面板显示该区域的 127,470 个高斯和 54% 跨视角可信度；此可信度不是分割 IoU。"
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture of an interaction with the verified 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/14-bear-selection-en.png",
+      "language": "en",
+      "bytes": 184487,
+      "sha256": "7da8cb42eec1b24ecf867d8c01a062cfd0482d9a2aaa74562fde8d13c33b4502",
+      "caption": [
+        "Find an object and inspect cross-view confidence",
+        "Search for the bear and select a region with a parts hierarchy. The panel reports 127,470 Gaussians and 54% cross-view confidence for that region; confidence is distinct from segmentation IoU."
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture of an interaction with the verified 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/15-bear-isolate-zh.png",
+      "language": "zh",
+      "bytes": 100029,
+      "sha256": "4c2121b8cf000beebfdd78a8e78186e378a075f671ed88869049f98292974355",
+      "caption": [
+        "隔离物品，检查局部三维区域",
+        "只显示选中的小熊区域及其层级后代，便于检查重建形状。画面保留真实预测中的残余噪声；隐藏其他物品不会删除原始数据。"
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture of an interaction with the verified 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/15-bear-isolate-en.png",
+      "language": "en",
+      "bytes": 104709,
+      "sha256": "0139d05f5956f1fccbf9739b66ca00e568696f40d1f1b92a6bedc11ed682d0a9",
+      "caption": [
+        "Isolate an object to inspect its 3D region",
+        "Show the selected bear region and its hierarchy descendants to inspect the reconstructed shape. Residual prediction noise remains visible; hiding other objects does not delete source data."
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture of an interaction with the verified 171-photo Fine model."
+    },
+    {
+      "path": "screenshots/16-undo-zh.png",
+      "language": "zh",
+      "bytes": 182702,
+      "sha256": "3eb65c78676701d697e874c4021794cb49e527bcd21ae33dc7aafc0e90436937",
+      "caption": [
+        "一句撤销，恢复场景",
+        "执行 undo 后，刚才隔离的场景重新完整显示。撤销恢复显示状态，不需要重新训练或重新导入。"
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture after a successful local undo command on the Fine model."
+    },
+    {
+      "path": "screenshots/16-undo-en.png",
+      "language": "en",
+      "bytes": 187711,
+      "sha256": "dfe839c84fa69006188fb3ed72a4a93d82c7314dbcfe8107bce60335ef008371",
+      "caption": [
+        "Undo restores the scene",
+        "The undo command restores the scene after isolation. Visibility is restored without retraining or reimporting the model."
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture after a successful local undo command on the Fine model."
+    },
+    {
+      "path": "screenshots/17-hide-zh.png",
+      "language": "zh",
+      "bytes": 182480,
+      "sha256": "e1163f3d638091a0bc65a8bbe767cfdf712c431b0e24c1cfbae9cde145d99705",
+      "caption": [
+        "按语义区域隐藏物品",
+        "用 hide stuffed bear 隐藏匹配的小熊语义区域。截图保留真实的残余部件与遮挡区域，展示的是可撤销的可见性编辑；不会生成被物体遮挡的背景。"
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture after hiding all matching stuffed-bear semantic tracks."
+    },
+    {
+      "path": "screenshots/17-hide-en.png",
+      "language": "en",
+      "bytes": 185367,
+      "sha256": "7a47b440af85356b34a5e2eb5d5033d135495b49af01e02ed40f676269b6e5ec",
+      "caption": [
+        "Hide matching semantic regions",
+        "The hide stuffed bear command hides matching bear regions. Residual parts and occlusions remain as measured: this is reversible visibility editing and does not synthesize background hidden behind the object."
+      ],
+      "native_app_version": "0.4.3",
+      "provenance": "Unmodified native App capture after hiding all matching stuffed-bear semantic tracks."
+    },
+    {
+      "path": "screenshots/19-sparse-viewer-zh.png",
+      "language": "zh",
+      "bytes": 147526,
+      "sha256": "d1a2cc34b1092974c7894da6619e8832b2299ce73d53668a0e666c227d549ecf",
+      "caption": [
+        "六视角的实际重建成果",
+        "仅用六张训练照片，按需补全可见几何后完成 22,000 步训练。全部 84,748 个高斯及三阶球谐载入 App；画面保留稀疏输入产生的边缘残余。"
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
+    },
+    {
+      "path": "screenshots/19-sparse-viewer-en.png",
+      "language": "en",
+      "bytes": 150309,
+      "sha256": "cc389f9fa128295e0e74ce98f0202a02a8448a88b963d0a750f5dc3d97572405",
+      "caption": [
+        "The actual six-view reconstruction",
+        "Six training photographs, conditional visible-geometry completion and 22,000 training steps. All 84,748 Gaussians and degree-three SH load in the App; sparse-input edge artifacts remain visible."
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
+    },
+    {
+      "path": "screenshots/20-sparse-priority-zh.png",
+      "language": "zh",
+      "bytes": 128000,
+      "sha256": "049a4193e1ef889810727ed0b30baed96e4568e1803491917af84abd2273b4b0",
+      "caption": [
+        "稀疏输入也执行重点细化",
+        "六视角任务在总预算内执行最后 2,400 步重点细化，新增 16,000 个高斯。面板提供三组同相机的训练前后对照；独立测试视角指标另列于精度评测。"
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
+    },
+    {
+      "path": "screenshots/20-sparse-priority-en.png",
+      "language": "en",
+      "bytes": 132459,
+      "sha256": "9966e0574d59acf9dd1a4ba79f26f0a86faf2c1ab1838ceaed63960b6c15758a",
+      "caption": [
+        "Priority refinement also runs with sparse input",
+        "The six-view task executes 2,400 final refinement steps within its total budget, adding 16,000 Gaussians. The panel retains three same-camera training comparisons; held-out quality is reported separately in Measurements."
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
+    },
+    {
+      "path": "screenshots/21-save-dialog-zh.png",
+      "language": "zh",
+      "bytes": 16475,
+      "sha256": "c3f950b0a353a6bbfc86c11084fe822193aa51cb6f4a9dce102a3b28b81e2cbe",
+      "caption": [
+        "用场景名称保存完整成果",
+        "实际通过原生保存窗口导出 Teatime Fine · 6 views.splat.jsonl。文件包含高斯、球谐、语义、层级与核心区域显示设置，可再次导入。"
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
+    },
+    {
+      "path": "screenshots/21-save-dialog-en.png",
+      "language": "en",
+      "bytes": 16484,
+      "sha256": "71a6f4851a9a0e6107ef0a446b6fc564c8b5f02696dfd536f69c1c2d147fb4cc",
+      "caption": [
+        "Save the complete result under its scene name",
+        "The native Save dialog exports Teatime Fine · 6 views.splat.jsonl, containing Gaussians, SH, semantics, hierarchy and core-region visibility settings for reimport."
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
+    },
+    {
+      "path": "screenshots/22-reimport-zh.png",
+      "language": "zh",
+      "bytes": 147409,
+      "sha256": "76ae3c529ab3851abdfbf43c86755a5e250324ddc4bdaab472ceca95c872e45c",
+      "caption": [
+        "保存后再次打开，继续操作",
+        "已将刚导出的文件重新导入原生 App。逐项核对全部 84,748 个高斯，几何、颜色、球谐与语义字段保持一致；层级和核心区域显示设置恢复。"
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
+    },
+    {
+      "path": "screenshots/22-reimport-en.png",
+      "language": "en",
+      "bytes": 150449,
+      "sha256": "6887e7ff2d80fbfaa707d5e9b8b7b8d4e572303a16b968bd84f5ac9b4cac8bbc",
+      "caption": [
+        "Reopen the saved result and keep exploring",
+        "The exported file is reimported in the native App. All 84,748 Gaussians preserve geometry, appearance, SH and semantic fields; hierarchy and core-region visibility settings are restored."
+      ],
+      "native_app_version": "0.4.4",
+      "provenance": "Unmodified native App capture of the actual six-view Fine result, independently loaded after an App restart."
     }
   ],
-  "showcase_status": "measurements_complete_native_result_captures_pending"
+  "showcase_status": "complete"
 }

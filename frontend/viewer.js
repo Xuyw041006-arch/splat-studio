@@ -27,20 +27,26 @@ attribute vec4 quaternion;
 attribute vec4 rgba;
 attribute float highlight;
 uniform vec2 viewport;
+uniform float nearClip;
 varying vec2 gaussianUV;
 varying vec4 splatColor;
 ${gaussianSHShader}
 vec3 rotateQ(vec3 v, vec4 q) { return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v); }
 void main() {
   vec4 p = modelViewMatrix * vec4(center, 1.0);
-  if (p.z > -0.01 || rgba.a < 0.001) { gl_Position = vec4(2.0,2.0,2.0,1.0); gaussianUV=vec2(4.0); splatColor=vec4(0.0); return; }
+  if (p.z >= -nearClip || rgba.a < 0.001) { gl_Position = vec4(2.0,2.0,2.0,1.0); gaussianUV=vec2(4.0); splatColor=vec4(0.0); return; }
   vec3 a = mat3(modelViewMatrix) * rotateQ(vec3(splatScale.x, 0., 0.), quaternion);
   vec3 b = mat3(modelViewMatrix) * rotateQ(vec3(0., splatScale.y, 0.), quaternion);
   vec3 c = mat3(modelViewMatrix) * rotateQ(vec3(0., 0., splatScale.z), quaternion);
   vec2 focal = vec2(projectionMatrix[0][0], projectionMatrix[1][1]) * viewport * 0.5;
   float invZ = 1.0 / -p.z;
-  vec3 jx = vec3(focal.x * invZ, 0., focal.x * p.x * invZ * invZ);
-  vec3 jy = vec3(0., focal.y * invZ, focal.y * p.y * invZ * invZ);
+  // Match the original rasterizer's computeCov2D field-of-view guard.
+  // Only the covariance Jacobian is bounded; the center and stored Gaussian
+  // remain unchanged. Off-screen centers must not stretch across the viewport.
+  vec2 slopeLimit = 1.3 / vec2(projectionMatrix[0][0], projectionMatrix[1][1]);
+  vec2 slope = clamp(p.xy * invZ, -slopeLimit, slopeLimit);
+  vec3 jx = vec3(focal.x * invZ, 0., focal.x * slope.x * invZ);
+  vec3 jy = vec3(0., focal.y * invZ, focal.y * slope.y * invZ);
   vec2 pa = vec2(dot(jx,a),dot(jy,a));
   vec2 pb = vec2(dot(jx,b),dot(jy,b));
   vec2 pc = vec2(dot(jx,c),dot(jy,c));
@@ -116,6 +122,10 @@ export class GaussianViewer {
     if(!Array.isArray(data.gaussians))throw new Error('场景缺少 gaussians 数组。');
     assertSceneCapacity(data.gaussians.length);
     this.clear(); this.initialView=savedViewerCamera(data.metadata?.viewer_camera);
+    // The original CUDA rasterizer excludes camera-space depth <= 0.2.
+    // Keep that convention for its trained results; otherwise near-camera
+    // Gaussians unseen by the trainer can cover the scene with large streaks.
+    this.camera.near=data.metadata?.backend==='original_3dgs'?0.2:0.01;
     this.objects=data.objects || []; this.objectMap=new Map(this.objects.map(o=>[String(o.id),o]));
     this.hiddenIds=new Set(this.objects.filter(o=>o.visible===false||o.hidden).map(o=>String(o.id)));
     this.isolationIds=readIsolation(data,this.objects);
@@ -166,7 +176,7 @@ export class GaussianViewer {
     this.arrays={center:new Float32Array(n*3),splatScale:new Float32Array(n*3),quaternion:new Float32Array(n*4),rgba:new Float32Array(n*4),highlight:new Float32Array(n),shInfo:new Float32Array(n*2)};
     this.sortOrder=new Uint32Array(n);this.sortScratch=new Uint32Array(n);this.sortDepth=new Float64Array(n);
     for(const [name,array] of Object.entries(this.arrays))geometry.setAttribute(name,new THREE.InstancedBufferAttribute(array,name==='highlight'?1:name==='shInfo'?2:name==='rgba'||name==='quaternion'?4:3).setUsage(THREE.DynamicDrawUsage));
-    this.material=new THREE.ShaderMaterial({vertexShader,fragmentShader,uniforms:{viewport:{value:new THREE.Vector2()},shTexture:{value:this.shTexture},shTextureWidth:{value:shBank.width},shCoefficientStride:{value:shBank.coefficientStride}},transparent:true,depthTest:true,depthWrite:false,blending:THREE.CustomBlending,blendSrc:THREE.OneFactor,blendDst:THREE.OneMinusSrcAlphaFactor,blendEquation:THREE.AddEquation,side:THREE.DoubleSide});
+    this.material=new THREE.ShaderMaterial({vertexShader,fragmentShader,uniforms:{viewport:{value:new THREE.Vector2()},nearClip:{value:this.camera.near},shTexture:{value:this.shTexture},shTextureWidth:{value:shBank.width},shCoefficientStride:{value:shBank.coefficientStride}},transparent:true,depthTest:true,depthWrite:false,blending:THREE.CustomBlending,blendSrc:THREE.OneFactor,blendDst:THREE.OneMinusSrcAlphaFactor,blendEquation:THREE.AddEquation,side:THREE.DoubleSide});
     this.mesh=new THREE.Mesh(geometry,this.material); this.mesh.frustumCulled=false; this.mesh.renderOrder=2; this.scene.add(this.mesh);
     this.grid.position.y=this.bounds.isEmpty()?-.04:this.bounds.min.y-.03;
     if(!this.bounds.isEmpty()){const size=this.bounds.getSize(new THREE.Vector3()).length();this.grid.scale.setScalar(Math.max(.05,size/10));}

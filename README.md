@@ -8,21 +8,19 @@ A bilingual desktop workbench that brings **3D Gaussian reconstruction, sparse-v
 
 **English** · [简体中文](README.zh-CN.md) · [Complete user guide](docs/user-guide.html) · [Colab notebook](colab/Splat-Studio-User-Guide.ipynb) · [Fine showcase](docs/fine-evaluation/README.md)
 
-![Fine Teatime: held-out photograph and actual rendering](docs/fine-evaluation/measurements/full-held-out-comparison.jpg)
+![Splat Studio · Fine · Teatime](docs/fine-evaluation/screenshots/12-full-viewer-en.png)
 
 </div>
 
 ## See the app in action
 
-[**Explore the bilingual Fine measurements and workflow screenshots →**](docs/fine-evaluation/README.md)
+[**Explore the bilingual Fine screenshot walkthrough →**](docs/fine-evaluation/README.md)
 
-Actual **22,000-step A100** runs reconstruct Teatime from **171 photos** and from **six sparse photos with learned visible-geometry completion**. The showcase pairs held-out image comparisons with overall rendering, priority-object and semantic metrics, including a same-test-view comparison.
+Two actual **22,000-step A100** runs cover **171-photo standard reconstruction** and **six-photo sparse reconstruction with learned visible-geometry completion**, followed by hierarchical semantics and native object editing.
 
-[Whole-project report](docs/fine-evaluation/项目报告.html) · [All measurements](docs/fine-evaluation/精度评测.html) · [Earlier Fast native interaction walkthrough](docs/demo/README.md).
+**Overall PSNR 26.08 dB · Coffee mug ROI SSIM 0.921 · stuffed bear IoU 94.2%**
 
-**Overall PSNR 26.08 dB · coffee mug ROI SSIM 0.921 · stuffed bear IoU 94.2%**
-
-Overall PSNR uses 6 held-out views; the priority detail averages 5 annotated views of coffee mug, selected by mean ROI SSIM among the two priority categories. The semantic highlight is the best pooled class with at least two annotated views (171-input run, 5 evaluated views); all classes and coverage remain in the report.
+Overall PSNR uses six held-out views of the full-input run; coffee-mug ROI SSIM averages five annotated views and is the higher mean SSIM among the two predeclared priority categories. The semantic highlight is the best pooled class with at least two annotated views; its run and every class score are reported in [all measurements](docs/fine-evaluation/精度评测.html). [Protocol and complete metrics](docs/fine-evaluation/README.md#measured-rendering-and-semantics--重建与语义实测) · [Execution record](docs/fine-evaluation/execution-record.json).
 
 ## A complete workflow, from capture to interaction
 

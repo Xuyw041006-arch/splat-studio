@@ -1,6 +1,6 @@
 {
   "name": "splat-studio-guided",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "private": true,
   "description": "Local 3D Gaussian reconstruction and semantic editing workbench",
   "main": "desktop/main.cjs",
