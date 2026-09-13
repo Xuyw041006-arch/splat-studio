@@ -1,5 +1,5 @@
-// A capacity guard, never a sampling budget. Both full benchmark models fit.
-export const MAX_SCENE_GAUSSIANS = 2_000_000;
+// A bounded capacity guard, never a sampling budget; retain the complete Fine scene.
+export const MAX_SCENE_GAUSSIANS = 3_000_000;
 
 export function assertSceneCapacity(count, maximum = MAX_SCENE_GAUSSIANS) {
   if (!Number.isSafeInteger(maximum) || maximum < 1 || maximum > MAX_SCENE_GAUSSIANS) {

@@ -132,6 +132,57 @@ def test_missing_geometry_support_never_falls_back_to_prior_or_all_points():
     assert any(row['prior_loss'] > 0 for row in stats['history'])
 
 
+def test_shared_hierarchy_frames_project_once_and_keep_edge_specific_support():
+    frames = ['a', 'b', 'c']
+    regions = ['parent', 'left', 'right']
+    records = [{'frame_id': f, 'region_id': r, 'mask': np.ones((1, 1), bool)}
+               for f in frames for r in regions]
+    built = {'class_labels': regions,
+        'tracks': [{'id': r, 'observations': [{'frame': f, 'region_id': r} for f in frames]}
+                   for r in regions],
+        'diagnostics': {'matching_config': {'min_parent_views': 2}},
+        'hierarchy': {'edges': [{'parent': 'parent', 'child': r, 'per_view': [
+            {'frame': f, 'supports': True, 'explicit_declaration': True} for f in reversed(frames)]}
+            for r in ['left', 'right']]}}
+    support = {'parent': [1, 2, 3, 4], 'left': [1, 2], 'right': [3, 4]}
+    calls = []
+    def load(row, mask):
+        calls.append((row['frame_id'], row['region_id']))
+        # One point has only one view's support and must remain excluded.
+        values = support[row['region_id']]
+        return values if row['frame_id'] == 'a' else values[:1]
+    mapping, audit = _hierarchy_geometry_support(built, records, load)
+    assert mapping[(0, 1)].tolist() == [1]
+    assert mapping[(0, 2)].tolist() == []
+    assert [f for f, _ in calls] == ['a'] * 3 + ['b'] * 3 + ['c'] * 3
+    assert len(calls) == len(set(calls)) == 9
+    assert all(row['supporting_declared_frames'] == frames for row in audit)
+    assert audit[0]['sha256'] == hashlib.sha256(np.asarray([1], np.int64).tobytes()).hexdigest()
+
+
+def test_combined_hierarchy_gather_preserves_loss_and_shared_point_gradients():
+    from backend.semantic_refinement import _gathered_hierarchy_loss
+    values = torch.tensor([[.1, .8, .6], [.5, -.3, .9], [-.7, .2, -.1]])
+    reference = values.clone().requires_grad_()
+    combined = values.clone().requires_grad_()
+    # Unequal edge support and repeated rows exercise weighted means and
+    # accumulation into the same parent/child Gaussian parameters.
+    rows = [torch.tensor([0, 2, 0]), torch.tensor([0, 1])]
+    columns = [(0, 1), (1, 2)]
+    terms = []
+    for ids, (parent, child) in zip(rows, columns):
+        pair = reference[ids][:, [parent, child]].sigmoid()
+        terms.append(torch.relu(pair[:, 1] - pair[:, 0]).mean())
+    expected = torch.stack(terms).mean()
+    actual = _gathered_hierarchy_loss(combined,
+        [ids[:, None].expand(-1, 2) for ids in rows],
+        [torch.tensor(pair)[None, :].expand(len(ids), -1) for ids, pair in zip(rows, columns)],
+        [len(ids) for ids in rows])
+    expected.backward(); actual.backward()
+    torch.testing.assert_close(actual, expected, rtol=0, atol=0)
+    torch.testing.assert_close(combined.grad, reference.grad, rtol=0, atol=1e-8)
+
+
 def test_worker_passes_repeated_visible_child_support_without_fabricating_prior(tmp_path, monkeypatch):
     from backend import semantic_worker as worker, semantic_refinement
     from tests.test_semantic_worker import FakeGaussians, camera, make_ply, masks

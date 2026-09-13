@@ -1,0 +1,604 @@
+{
+  "status": "completed",
+  "kind": "sparse",
+  "mode": "fine",
+  "iterations": 22000,
+  "input_views": 6,
+  "registered_training_views": 6,
+  "registered_training_names": [
+    "0000.jpg",
+    "0001.jpg",
+    "0002.jpg",
+    "0003.jpg",
+    "0004.jpg",
+    "0005.jpg"
+  ],
+  "input_audit": {
+    "input_views": 6,
+    "original_names_disjoint": true,
+    "source_hashes_verified": true
+  },
+  "expected_test_views": 6,
+  "registered_test_views": 2,
+  "failed_test_views": [
+    {
+      "name": "frame_00025.jpg",
+      "reason": "Test registration quality gate failed: {\"matched_distinct_points\": 48, \"inliers\": 28, \"median_reprojection_pixels\": 1.8571879757950058, \"p95_reprojection_pixels\": 2.9128693906349206, \"image_hull_coverage\": 0.07345612900949998, \"positive_depth_fraction\": 1.0, \"focal_scale\": 1.263645630185372}"
+    },
+    {
+      "name": "frame_00043.jpg",
+      "reason": "Test registration quality gate failed: {\"matched_distinct_points\": 33, \"inliers\": 15, \"median_reprojection_pixels\": 1.3882001394005765, \"p95_reprojection_pixels\": 3.851970339152126, \"image_hull_coverage\": 0.06614119211545287, \"positive_depth_fraction\": 1.0, \"focal_scale\": 1.0701149669627}"
+    },
+    {
+      "name": "frame_00129.jpg",
+      "reason": "Fewer than 30 distinct matched training points"
+    },
+    {
+      "name": "frame_00140.jpg",
+      "reason": "Test registration quality gate failed: {\"matched_distinct_points\": 40, \"inliers\": 14, \"median_reprojection_pixels\": 2.1737262957799537, \"p95_reprojection_pixels\": 3.494868639475677, \"image_hull_coverage\": 0.010364479132147105, \"positive_depth_fraction\": 1.0, \"focal_scale\": 1.1050521694836362}"
+    }
+  ],
+  "source_ply_sha256": "c2a061884c3a650384cd0291ac946f0230654f3709d4376b4d41cc1f3e2ed969",
+  "gaussian_count": 84748,
+  "sh_degree": 3,
+  "semantic_catalog_sha256": "749b5d05fa88329a4cf133aedbe9bfd567239bd6a4660533e9b02eb648156207",
+  "protocol_sha256": "4e3928298c642589edf41319780a04e375ee0a0b4fb68e0520dc01c95cf1e3d2",
+  "semantic_field": "raw learned probabilities; category max, fixed 0.5 threshold; complete cloud opacity preserved",
+  "semantic_steps": 2400,
+  "semantic_coverage": {
+    "sampling_schedule": "view_cycle",
+    "sweep_steps": 34,
+    "min_required_steps": 102,
+    "minimum_sweeps": 3,
+    "planned_steps": 2400,
+    "planned_sweeps": 70,
+    "completed_sweeps": 70,
+    "minimum_pair_visits": 70,
+    "observed_frame_class_pairs": 98,
+    "visited_frame_class_pairs": 98,
+    "uncovered_observed_frame_class_pairs": [],
+    "eligible_frames": 6,
+    "uncovered_observed_frames": []
+  },
+  "registration_scope": "Test poses only; no RGB, semantic, or geometry updates from held-out views",
+  "summary": {
+    "evaluated_views": 2,
+    "overall_psnr_db": 22.608298615832958,
+    "overall_ssim": 0.7105429031397971,
+    "priority_roi_psnr_db": 23.033481538600743,
+    "priority_roi_ssim": 0.5942611341042399,
+    "miou": 0.2141211342855928,
+    "mean_boundary_iou": 0.03551926978137471,
+    "classes": {
+      "apple": {
+        "views": 2,
+        "iou": 0.06979872995371865,
+        "mean_view_iou": 0.1340307522753407,
+        "mean_boundary_iou": 0.016174508852777103,
+        "mean_roi_psnr_db": 24.43081649324089,
+        "mean_roi_ssim": 0.6326966000833473
+      },
+      "bag of cookies": {
+        "views": 2,
+        "iou": 0.31357270444484714,
+        "mean_view_iou": 0.5142888183386568,
+        "mean_boundary_iou": 0.17509588721329422,
+        "mean_roi_psnr_db": 28.436783292814866,
+        "mean_roi_ssim": 0.748793057567246
+      },
+      "bear nose": {
+        "views": 2,
+        "iou": 0.0,
+        "mean_view_iou": 0.0,
+        "mean_boundary_iou": 0.0,
+        "mean_roi_psnr_db": 26.42698020109896,
+        "mean_roi_ssim": 0.782719324848914
+      },
+      "coffee": {
+        "views": 1,
+        "iou": 0.0,
+        "mean_view_iou": 0.0,
+        "mean_boundary_iou": 0.0,
+        "mean_roi_psnr_db": 39.7119345218384,
+        "mean_roi_ssim": 0.9816468193780602
+      },
+      "coffee mug": {
+        "views": 2,
+        "iou": 0.5146046511627907,
+        "mean_view_iou": 0.5206851782191324,
+        "mean_boundary_iou": 0.07103365384615384,
+        "mean_roi_psnr_db": 28.025666448763552,
+        "mean_roi_ssim": 0.6464564017644604
+      },
+      "dall-e brand": {
+        "views": 1,
+        "iou": 0.09300296632350376,
+        "mean_view_iou": 0.09300296632350376,
+        "mean_boundary_iou": 0.01402884805374432,
+        "mean_roi_psnr_db": 12.926452295403262,
+        "mean_roi_ssim": 0.13109779258753884
+      },
+      "paper napkin": {
+        "views": 2,
+        "iou": 0.2830410916283308,
+        "mean_view_iou": 0.3262707092999429,
+        "mean_boundary_iou": 0.03353695335989204,
+        "mean_roi_psnr_db": 25.59962775888278,
+        "mean_roi_ssim": 0.7542049341372781
+      },
+      "plate": {
+        "views": 2,
+        "iou": 0.4051872537393367,
+        "mean_view_iou": 0.40014244821016814,
+        "mean_boundary_iou": 0.032472543915456654,
+        "mean_roi_psnr_db": 28.61125842206814,
+        "mean_roi_ssim": 0.7792015197120776
+      },
+      "sheep": {
+        "views": 2,
+        "iou": 0.0,
+        "mean_view_iou": 0.0,
+        "mean_boundary_iou": 0.0,
+        "mean_roi_psnr_db": 23.205349435647058,
+        "mean_roi_ssim": 0.6971832966199787
+      },
+      "stuffed bear": {
+        "views": 2,
+        "iou": 0.7505837349858465,
+        "mean_view_iou": 0.7488835411111339,
+        "mean_boundary_iou": 0.06898514583898153,
+        "mean_roi_psnr_db": 22.98169508772854,
+        "mean_roi_ssim": 0.593524471129859
+      },
+      "tea in a glass": {
+        "views": 2,
+        "iou": 0.0,
+        "mean_view_iou": 0.0,
+        "mean_boundary_iou": 0.0,
+        "mean_roi_psnr_db": 24.91931430102991,
+        "mean_roi_ssim": 0.6234371240558264
+      },
+      "three cookies": {
+        "views": 2,
+        "iou": 0.13966247918873922,
+        "mean_view_iou": 0.14215412507722036,
+        "mean_boundary_iou": 0.014903696296196797,
+        "mean_roi_psnr_db": 26.280611822450147,
+        "mean_roi_ssim": 0.6779194135877087
+      }
+    },
+    "averaging": "RGB: equal weight per registered test frame. mIoU: sum intersections/unions over annotated views per class, then equal class weight."
+  },
+  "frames": [
+    {
+      "name": "frame_00002.jpg",
+      "rgb": {
+        "pixels": 721240,
+        "mse": 0.0005970313763765007,
+        "psnr_db": 32.24002844366269,
+        "ssim": 0.870083776275461
+      },
+      "priority_rgb": {
+        "pixels": 154121,
+        "mse": 0.0006427025359324151,
+        "psnr_db": 31.91989986476279,
+        "ssim": 0.8152175076106751
+      },
+      "objects": [
+        {
+          "label": "apple",
+          "iou": 0.04874604782515272,
+          "intersection": 1588,
+          "union": 32577,
+          "gt_pixels": 1709,
+          "predicted_pixels": 32456,
+          "boundary_iou": 0.009792626728110598,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 1709,
+            "mse": 0.0005848356385350197,
+            "psnr_db": 32.32966170339684,
+            "ssim": 0.9102198788945888
+          },
+          "region_tracks": 4
+        },
+        {
+          "label": "bag of cookies",
+          "iou": 0.8130619971604354,
+          "intersection": 5154,
+          "union": 6339,
+          "gt_pixels": 5169,
+          "predicted_pixels": 6324,
+          "boundary_iou": 0.3210702341137124,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 5169,
+            "mse": 0.00020463175994041923,
+            "psnr_db": 36.89026960572892,
+            "ssim": 0.9778130728762173
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "bear nose",
+          "iou": 0.0,
+          "intersection": 0,
+          "union": 9859,
+          "gt_pixels": 9859,
+          "predicted_pixels": 0,
+          "boundary_iou": 0.0,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 9859,
+            "mse": 0.00013662271894412107,
+            "psnr_db": 38.644770759718,
+            "ssim": 0.9637324644867838
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "coffee",
+          "iou": 0.0,
+          "intersection": 0,
+          "union": 5836,
+          "gt_pixels": 2891,
+          "predicted_pixels": 2945,
+          "boundary_iou": 0.0,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 2891,
+            "mse": 0.00010685787853381474,
+            "psnr_db": 39.7119345218384,
+            "ssim": 0.9816468193780602
+          },
+          "region_tracks": 4
+        },
+        {
+          "label": "coffee mug",
+          "iou": 0.5665880334548574,
+          "intersection": 2642,
+          "union": 4663,
+          "gt_pixels": 2702,
+          "predicted_pixels": 4603,
+          "boundary_iou": 0.09644396551724138,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 2702,
+            "mse": 0.0001038317989150919,
+            "psnr_db": 39.836696216470976,
+            "ssim": 0.9817755514823473
+          },
+          "region_tracks": 1
+        },
+        {
+          "label": "paper napkin",
+          "iou": 0.4168084382443008,
+          "intersection": 4900,
+          "union": 11756,
+          "gt_pixels": 5303,
+          "predicted_pixels": 11353,
+          "boundary_iou": 0.057158263682933405,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 5303,
+            "mse": 0.0002793301764383333,
+            "psnr_db": 35.538821443107196,
+            "ssim": 0.9542588678734625
+          },
+          "region_tracks": 4
+        },
+        {
+          "label": "plate",
+          "iou": 0.364081124355097,
+          "intersection": 4093,
+          "union": 11242,
+          "gt_pixels": 4093,
+          "predicted_pixels": 11242,
+          "boundary_iou": 0.03494297500606649,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 4093,
+            "mse": 0.00011228288460585879,
+            "psnr_db": 39.49686438642562,
+            "ssim": 0.9716331022504555
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "sheep",
+          "iou": 0.0,
+          "intersection": 0,
+          "union": 63126,
+          "gt_pixels": 63126,
+          "predicted_pixels": 0,
+          "boundary_iou": 0.0,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": true,
+          "rgb": {
+            "pixels": 63126,
+            "mse": 0.0005505364693519234,
+            "psnr_db": 32.59213906640109,
+            "ssim": 0.8623411966510404
+          },
+          "region_tracks": 0
+        },
+        {
+          "label": "stuffed bear",
+          "iou": 0.8638392318641287,
+          "intersection": 143228,
+          "union": 165804,
+          "gt_pixels": 151419,
+          "predicted_pixels": 157613,
+          "boundary_iou": 0.0917846027365083,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": true,
+          "rgb": {
+            "pixels": 151419,
+            "mse": 0.0006523184278047745,
+            "psnr_db": 31.855403526121382,
+            "ssim": 0.8122276268994039
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "tea in a glass",
+          "iou": 0.0,
+          "intersection": 0,
+          "union": 3354,
+          "gt_pixels": 3354,
+          "predicted_pixels": 0,
+          "boundary_iou": 0.0,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 3354,
+            "mse": 0.00020396419140243204,
+            "psnr_db": 36.90446071992639,
+            "ssim": 0.9627248406909747
+          },
+          "region_tracks": 0
+        },
+        {
+          "label": "three cookies",
+          "iou": 0.10652143160277266,
+          "intersection": 1506,
+          "union": 14138,
+          "gt_pixels": 1506,
+          "predicted_pixels": 14138,
+          "boundary_iou": 0.01868478524629944,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 1506,
+            "mse": 0.0002485904589898236,
+            "psnr_db": 36.04515543786036,
+            "ssim": 0.9697899304443482
+          },
+          "region_tracks": 7
+        }
+      ]
+    },
+    {
+      "name": "frame_00107.jpg",
+      "rgb": {
+        "pixels": 721240,
+        "mse": 0.05038985645636951,
+        "psnr_db": 12.976568788003224,
+        "ssim": 0.5510020300041332
+      },
+      "priority_rgb": {
+        "pixels": 162152,
+        "mse": 0.038485193877730466,
+        "psnr_db": 14.147063212438697,
+        "ssim": 0.3733047605978045
+      },
+      "objects": [
+        {
+          "label": "apple",
+          "iou": 0.21931545672552866,
+          "intersection": 1006,
+          "union": 4587,
+          "gt_pixels": 1690,
+          "predicted_pixels": 3903,
+          "boundary_iou": 0.022556390977443608,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 1690,
+            "mse": 0.02222300948831413,
+            "psnr_db": 16.531971283084946,
+            "ssim": 0.35517332127210577
+          },
+          "region_tracks": 4
+        },
+        {
+          "label": "bag of cookies",
+          "iou": 0.2155156395168783,
+          "intersection": 6959,
+          "union": 32290,
+          "gt_pixels": 7169,
+          "predicted_pixels": 32080,
+          "boundary_iou": 0.029121540312876053,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 7169,
+            "mse": 0.010038534179056514,
+            "psnr_db": 19.983296979900814,
+            "ssim": 0.5197730422582747
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "bear nose",
+          "iou": 0.0,
+          "intersection": 0,
+          "union": 22863,
+          "gt_pixels": 22863,
+          "predicted_pixels": 0,
+          "boundary_iou": 0.0,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 22863,
+            "mse": 0.0379385768610706,
+            "psnr_db": 14.209189642479922,
+            "ssim": 0.6017061852110442
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "coffee mug",
+          "iou": 0.4747823229834073,
+          "intersection": 2890,
+          "union": 6087,
+          "gt_pixels": 3779,
+          "predicted_pixels": 5198,
+          "boundary_iou": 0.04562334217506631,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 3779,
+            "mse": 0.023907619316154823,
+            "psnr_db": 16.214636681056128,
+            "ssim": 0.31113725204657344
+          },
+          "region_tracks": 1
+        },
+        {
+          "label": "dall-e brand",
+          "iou": 0.09300296632350376,
+          "intersection": 1066,
+          "union": 11462,
+          "gt_pixels": 2596,
+          "predicted_pixels": 9932,
+          "boundary_iou": 0.01402884805374432,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 2596,
+            "mse": 0.05097471079172114,
+            "psnr_db": 12.926452295403262,
+            "ssim": 0.13109779258753884
+          },
+          "region_tracks": 6
+        },
+        {
+          "label": "paper napkin",
+          "iou": 0.23573298035558496,
+          "intersection": 7836,
+          "union": 33241,
+          "gt_pixels": 12620,
+          "predicted_pixels": 28457,
+          "boundary_iou": 0.009915643036850674,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 12620,
+            "mse": 0.027161677759761405,
+            "psnr_db": 15.660434074658362,
+            "ssim": 0.5541510004010936
+          },
+          "region_tracks": 4
+        },
+        {
+          "label": "plate",
+          "iou": 0.4362037720652393,
+          "intersection": 6499,
+          "union": 14899,
+          "gt_pixels": 6693,
+          "predicted_pixels": 14705,
+          "boundary_iou": 0.03000211282484682,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 6693,
+            "mse": 0.016882422091553058,
+            "psnr_db": 17.725652457710655,
+            "ssim": 0.5867699371736997
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "sheep",
+          "iou": 0.0,
+          "intersection": 0,
+          "union": 37477,
+          "gt_pixels": 37477,
+          "predicted_pixels": 0,
+          "boundary_iou": 0.0,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 37477,
+            "mse": 0.04150916713419211,
+            "psnr_db": 13.818559804893024,
+            "ssim": 0.5320253965889171
+          },
+          "region_tracks": 0
+        },
+        {
+          "label": "stuffed bear",
+          "iou": 0.633927850358139,
+          "intersection": 102044,
+          "union": 160971,
+          "gt_pixels": 158373,
+          "predicted_pixels": 104642,
+          "boundary_iou": 0.046185688941454764,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": true,
+          "rgb": {
+            "pixels": 158373,
+            "mse": 0.03883303507710279,
+            "psnr_db": 14.1079866493357,
+            "ssim": 0.374821315360314
+          },
+          "region_tracks": 2
+        },
+        {
+          "label": "tea in a glass",
+          "iou": 0.0,
+          "intersection": 0,
+          "union": 3356,
+          "gt_pixels": 3356,
+          "predicted_pixels": 0,
+          "boundary_iou": 0.0,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 3356,
+            "mse": 0.050884230562026955,
+            "psnr_db": 12.93416788213343,
+            "ssim": 0.284149407420678
+          },
+          "region_tracks": 0
+        },
+        {
+          "label": "three cookies",
+          "iou": 0.17778681855166803,
+          "intersection": 2185,
+          "union": 12290,
+          "gt_pixels": 2185,
+          "predicted_pixels": 12290,
+          "boundary_iou": 0.011122607346094155,
+          "boundary_width_pixels": 2,
+          "gt_touches_image_border": false,
+          "rgb": {
+            "pixels": 2185,
+            "mse": 0.022304535292692555,
+            "psnr_db": 16.516068207039933,
+            "ssim": 0.3860488967310692
+          },
+          "region_tracks": 7
+        }
+      ]
+    }
+  ]
+}

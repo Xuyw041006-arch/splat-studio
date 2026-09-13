@@ -1,0 +1,226 @@
+{
+  "scope": "Only test photographs successfully registered in both runs; no threshold or model changes.",
+  "test_names": [
+    "frame_00002.jpg",
+    "frame_00107.jpg"
+  ],
+  "test_views": 2,
+  "runs": {
+    "full": {
+      "evaluated_views": 2,
+      "overall_psnr_db": 28.5139163134569,
+      "overall_ssim": 0.8789047803927791,
+      "priority_roi_psnr_db": 30.556305783392407,
+      "priority_roi_ssim": 0.8191951498637499,
+      "miou": 0.4266889917373453,
+      "mean_boundary_iou": 0.13196379909656955,
+      "classes": {
+        "apple": {
+          "views": 2,
+          "iou": 0.5700258397932817,
+          "mean_view_iou": 0.5736124890923653,
+          "mean_boundary_iou": 0.2913858832475313,
+          "mean_roi_psnr_db": 29.438428141919722,
+          "mean_roi_ssim": 0.907028256129847
+        },
+        "bag of cookies": {
+          "views": 2,
+          "iou": 0.7268488461311456,
+          "mean_view_iou": 0.7269527963295008,
+          "mean_boundary_iou": 0.27282375111581314,
+          "mean_roi_psnr_db": 26.110787053962202,
+          "mean_roi_ssim": 0.8592815347021225
+        },
+        "bear nose": {
+          "views": 2,
+          "iou": 0.7110490924273722,
+          "mean_view_iou": 0.686169982898907,
+          "mean_boundary_iou": 0.13479969298166306,
+          "mean_roi_psnr_db": 32.173091651193474,
+          "mean_roi_ssim": 0.9287690720382205
+        },
+        "coffee": {
+          "views": 1,
+          "iou": 0.1040819005118782,
+          "mean_view_iou": 0.1040819005118782,
+          "mean_boundary_iou": 0.05105724600309438,
+          "mean_roi_psnr_db": 27.58493184273639,
+          "mean_roi_ssim": 0.9141554365989267
+        },
+        "coffee mug": {
+          "views": 2,
+          "iou": 0.5788393356969583,
+          "mean_view_iou": 0.5814048403874921,
+          "mean_boundary_iou": 0.191297562369176,
+          "mean_roi_psnr_db": 26.862519405268692,
+          "mean_roi_ssim": 0.9121187476836858
+        },
+        "dall-e brand": {
+          "views": 1,
+          "iou": 0.0945066388961208,
+          "mean_view_iou": 0.0945066388961208,
+          "mean_boundary_iou": 0.034688655103781635,
+          "mean_roi_psnr_db": 22.31634411483217,
+          "mean_roi_ssim": 0.8797130214146824
+        },
+        "paper napkin": {
+          "views": 2,
+          "iou": 0.2910829404807516,
+          "mean_view_iou": 0.28127623979623184,
+          "mean_boundary_iou": 0.05151121569734435,
+          "mean_roi_psnr_db": 34.156830009349974,
+          "mean_roi_ssim": 0.9615752428925701
+        },
+        "plate": {
+          "views": 2,
+          "iou": 0.8574524440163737,
+          "mean_view_iou": 0.8505593521725692,
+          "mean_boundary_iou": 0.2823729674796748,
+          "mean_roi_psnr_db": 24.681333543840235,
+          "mean_roi_ssim": 0.8719481812835363
+        },
+        "sheep": {
+          "views": 2,
+          "iou": 0.0,
+          "mean_view_iou": 0.0,
+          "mean_boundary_iou": 0.0,
+          "mean_roi_psnr_db": 29.82831970178406,
+          "mean_roi_ssim": 0.9300581757789794
+        },
+        "stuffed bear": {
+          "views": 2,
+          "iou": 0.9266155634741349,
+          "mean_view_iou": 0.9271421643457385,
+          "mean_boundary_iou": 0.18031565624820345,
+          "mean_roi_psnr_db": 30.677219068862787,
+          "mean_roi_ssim": 0.8171883967772956
+        },
+        "tea in a glass": {
+          "views": 2,
+          "iou": 0.24854802680565896,
+          "mean_view_iou": 0.24867158115108934,
+          "mean_boundary_iou": 0.05318667002632327,
+          "mean_roi_psnr_db": 24.59863245420007,
+          "mean_roi_ssim": 0.7697510739140854
+        },
+        "three cookies": {
+          "views": 2,
+          "iou": 0.011217272614468296,
+          "mean_view_iou": 0.011196368713630726,
+          "mean_boundary_iou": 0.04012628888622904,
+          "mean_roi_psnr_db": 22.899031889948837,
+          "mean_roi_ssim": 0.8357117766341524
+        }
+      },
+      "averaging": "RGB: equal weight per registered test frame. mIoU: sum intersections/unions over annotated views per class, then equal class weight."
+    },
+    "sparse": {
+      "evaluated_views": 2,
+      "overall_psnr_db": 22.608298615832958,
+      "overall_ssim": 0.7105429031397971,
+      "priority_roi_psnr_db": 23.033481538600743,
+      "priority_roi_ssim": 0.5942611341042399,
+      "miou": 0.2141211342855928,
+      "mean_boundary_iou": 0.03551926978137471,
+      "classes": {
+        "apple": {
+          "views": 2,
+          "iou": 0.06979872995371865,
+          "mean_view_iou": 0.1340307522753407,
+          "mean_boundary_iou": 0.016174508852777103,
+          "mean_roi_psnr_db": 24.43081649324089,
+          "mean_roi_ssim": 0.6326966000833473
+        },
+        "bag of cookies": {
+          "views": 2,
+          "iou": 0.31357270444484714,
+          "mean_view_iou": 0.5142888183386568,
+          "mean_boundary_iou": 0.17509588721329422,
+          "mean_roi_psnr_db": 28.436783292814866,
+          "mean_roi_ssim": 0.748793057567246
+        },
+        "bear nose": {
+          "views": 2,
+          "iou": 0.0,
+          "mean_view_iou": 0.0,
+          "mean_boundary_iou": 0.0,
+          "mean_roi_psnr_db": 26.42698020109896,
+          "mean_roi_ssim": 0.782719324848914
+        },
+        "coffee": {
+          "views": 1,
+          "iou": 0.0,
+          "mean_view_iou": 0.0,
+          "mean_boundary_iou": 0.0,
+          "mean_roi_psnr_db": 39.7119345218384,
+          "mean_roi_ssim": 0.9816468193780602
+        },
+        "coffee mug": {
+          "views": 2,
+          "iou": 0.5146046511627907,
+          "mean_view_iou": 0.5206851782191324,
+          "mean_boundary_iou": 0.07103365384615384,
+          "mean_roi_psnr_db": 28.025666448763552,
+          "mean_roi_ssim": 0.6464564017644604
+        },
+        "dall-e brand": {
+          "views": 1,
+          "iou": 0.09300296632350376,
+          "mean_view_iou": 0.09300296632350376,
+          "mean_boundary_iou": 0.01402884805374432,
+          "mean_roi_psnr_db": 12.926452295403262,
+          "mean_roi_ssim": 0.13109779258753884
+        },
+        "paper napkin": {
+          "views": 2,
+          "iou": 0.2830410916283308,
+          "mean_view_iou": 0.3262707092999429,
+          "mean_boundary_iou": 0.03353695335989204,
+          "mean_roi_psnr_db": 25.59962775888278,
+          "mean_roi_ssim": 0.7542049341372781
+        },
+        "plate": {
+          "views": 2,
+          "iou": 0.4051872537393367,
+          "mean_view_iou": 0.40014244821016814,
+          "mean_boundary_iou": 0.032472543915456654,
+          "mean_roi_psnr_db": 28.61125842206814,
+          "mean_roi_ssim": 0.7792015197120776
+        },
+        "sheep": {
+          "views": 2,
+          "iou": 0.0,
+          "mean_view_iou": 0.0,
+          "mean_boundary_iou": 0.0,
+          "mean_roi_psnr_db": 23.205349435647058,
+          "mean_roi_ssim": 0.6971832966199787
+        },
+        "stuffed bear": {
+          "views": 2,
+          "iou": 0.7505837349858465,
+          "mean_view_iou": 0.7488835411111339,
+          "mean_boundary_iou": 0.06898514583898153,
+          "mean_roi_psnr_db": 22.98169508772854,
+          "mean_roi_ssim": 0.593524471129859
+        },
+        "tea in a glass": {
+          "views": 2,
+          "iou": 0.0,
+          "mean_view_iou": 0.0,
+          "mean_boundary_iou": 0.0,
+          "mean_roi_psnr_db": 24.91931430102991,
+          "mean_roi_ssim": 0.6234371240558264
+        },
+        "three cookies": {
+          "views": 2,
+          "iou": 0.13966247918873922,
+          "mean_view_iou": 0.14215412507722036,
+          "mean_boundary_iou": 0.014903696296196797,
+          "mean_roi_psnr_db": 26.280611822450147,
+          "mean_roi_ssim": 0.6779194135877087
+        }
+      },
+      "averaging": "RGB: equal weight per registered test frame. mIoU: sum intersections/unions over annotated views per class, then equal class weight."
+    }
+  }
+}

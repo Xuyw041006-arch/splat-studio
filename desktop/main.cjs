@@ -46,7 +46,7 @@ async function start(){
     details.requestHeaders['x-splat-token']=token;callback({requestHeaders:details.requestHeaders});
   });
   const win=new BrowserWindow({width:1500,height:990,minWidth:1080,minHeight:740,backgroundColor:'#101319',
-    title:'Splat Studio',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true}});
+    title:'Splat Studio',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,nodeIntegration:false,sandbox:true,backgroundThrottling:false}});
   win.webContents.setWindowOpenHandler(()=>({action:'deny'}));
   win.webContents.on('will-navigate',(event,destination)=>{if(!destination.startsWith(url+'/'))event.preventDefault();});
   win.webContents.session.setPermissionRequestHandler((_webContents,_permission,callback)=>callback(false));

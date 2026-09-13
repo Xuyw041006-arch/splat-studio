@@ -1,0 +1,40 @@
+{
+  "selection_rule": "Best pooled class IoU among classes with >=2 evaluated annotation views; all classes remain in the report.",
+  "semantic": {
+    "kind": "full",
+    "label": "stuffed bear",
+    "display_label_zh": "\u5c0f\u718a\u73a9\u5076",
+    "views": 5,
+    "iou": 0.941966803400226,
+    "mean_view_iou": 0.9478063637345407,
+    "mean_boundary_iou": 0.2959073372506095,
+    "mean_roi_psnr_db": 28.230237626265698,
+    "mean_roi_ssim": 0.7653548690538287
+  },
+  "overall": {
+    "kind": "full",
+    "mean_psnr_db": 26.076382158512107,
+    "mean_ssim": 0.8668858569044987
+  },
+  "priority": {
+    "labels": [
+      "stuffed bear",
+      "coffee mug"
+    ],
+    "kind": "full",
+    "mean_roi_psnr_db": 27.994482365088725,
+    "mean_roi_ssim": 0.7786514190049315
+  },
+  "priority_detail": {
+    "kind": "full",
+    "label": "coffee mug",
+    "display_label_zh": "\u5496\u5561\u676f",
+    "views": 5,
+    "iou": 0.5025330150607065,
+    "mean_view_iou": 0.5438920542549609,
+    "mean_boundary_iou": 0.1643247189414041,
+    "mean_roi_psnr_db": 25.152309164896288,
+    "mean_roi_ssim": 0.9209783070503667,
+    "selection_rule": "Highest mean ROI SSIM among the two predeclared priority categories, with >=2 evaluated annotation views."
+  }
+}

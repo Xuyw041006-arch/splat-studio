@@ -28,6 +28,24 @@ from .semantics import _camera_matrices
 _FROZEN_TENSORS = ("_xyz", "_features_dc", "_features_rest", "_scaling", "_rotation", "_opacity")
 
 
+def semantic_parameter_budget(config, free_device_bytes=None):
+    """Bound dense state against currently free VRAM, keeping workspace headroom."""
+    gib = 1024 ** 3
+    if free_device_bytes is not None and (type(free_device_bytes) is not int or free_device_bytes < 0):
+        raise ValueError('Free device memory must be a nonnegative byte count')
+    automatic = min(32 * gib, free_device_bytes * 3 // 4) if free_device_bytes is not None else 8 * gib
+    requested = config.get('max_semantic_parameter_bytes', automatic)
+    if type(requested) is not int or requested < 0 or ('max_semantic_parameter_bytes' in config and requested < 1):
+        raise ValueError('max_semantic_parameter_bytes must be a positive integer')
+    # An explicit smaller limit remains useful on shared GPUs; it cannot bypass
+    # the measured hardware bound or consume the reserved working memory.
+    limit = min(requested, automatic)
+    return limit, {'free_device_bytes': free_device_bytes, 'free_memory_fraction': .75,
+                   'automatic_limit_bytes': automatic, 'applied_limit_bytes': limit,
+                   'explicit_limit': 'max_semantic_parameter_bytes' in config,
+                   'scope': 'Dense parameters, gradients, Adam state and working copies; remaining memory reserved for rendering and temporary operations.'}
+
+
 class SemanticRefinementUnsupported(RuntimeError):
     """The original 3DGS CUDA backend is unavailable on this machine."""
 
@@ -379,7 +397,7 @@ def _hierarchy_closure(probabilities, edges):
 def _hierarchy_geometry_support(built, records, support_loader):
     """Per-edge child/parent intersection seen in repeated declared views.
 
-    Re-read only accepted edge regions through the one-frame projection cache.
+    Visit accepted edge regions in frame order through the one-frame cache.
     No semantic probabilities establish this geometric support, and no support
     from a different hierarchy edge can regularize an unrelated child.
     """
@@ -388,19 +406,32 @@ def _hierarchy_geometry_support(built, records, support_loader):
               for track in built['tracks']}
     labels = built['class_labels']
     minimum = max(2, built['diagnostics']['matching_config']['min_parent_views'])
-    mapping, audit = {}, []
-    for edge in built['hierarchy']['edges']:
-        counts = Counter(); valid_frames = []
-        for view in sorted(edge['per_view'], key=lambda value: value['frame']):
+    edges = built['hierarchy']['edges']
+    counts_by_edge = [Counter() for _ in edges]
+    frames_by_edge = [[] for _ in edges]
+    requests = {}
+    for index, edge in enumerate(edges):
+        for view in edge['per_view']:
             if not view['supports'] or not view['explicit_declaration']:
                 continue
-            frame = view['frame']
-            parent = rows[(frame, tracks[edge['parent']][frame])]
-            child = rows[(frame, tracks[edge['child']][frame])]
-            parent_ids = set(support_loader(parent, parent['mask']))
-            child_ids = set(support_loader(child, child['mask']))
-            counts.update(parent_ids & child_ids)
-            valid_frames.append(frame)
+            requests.setdefault(view['frame'], []).append(index)
+    # The point grid projects the complete cloud. Revisiting all frames for
+    # each edge used to discard its one-frame cache thousands of times.
+    for frame, indices in sorted(requests.items()):
+        region_support = {}
+        for index in indices:
+            edge = edges[index]
+            parent_id = tracks[edge['parent']][frame]
+            child_id = tracks[edge['child']][frame]
+            for region_id in (parent_id, child_id):
+                if region_id not in region_support:
+                    row = rows[(frame, region_id)]
+                    region_support[region_id] = set(support_loader(row, row['mask']))
+            counts_by_edge[index].update(region_support[parent_id] & region_support[child_id])
+            frames_by_edge[index].append(frame)
+    mapping, audit = {}, []
+    for index, edge in enumerate(edges):
+        counts, valid_frames = counts_by_edge[index], frames_by_edge[index]
         ids = np.asarray(sorted(point for point, views in counts.items() if views >= minimum), dtype=np.int64)
         pair = (labels.index(edge['parent']), labels.index(edge['child']))
         mapping[pair] = ids
@@ -569,15 +600,18 @@ def refine_upstream_semantics(ply_path, cameras, masks, output_dir, config=None,
         edges = [(labels.index(e['parent']), labels.index(e['child'])) for e in accepted]
         if not labels:
             raise ValueError('No nonempty explicit-granularity regions to optimize')
-        hierarchy_support_indices, hierarchy_support_audit = _hierarchy_geometry_support(built, region_records, loader)
-    matching_seconds = time.perf_counter() - matching_started
     # Parameters, gradients, Adam state and working copies are still dense NxC.
     # Refuse excessive allocation instead of silently dropping region tracks.
     estimated_parameter_bytes = count * len(labels) * 24
-    max_parameter_bytes = int(config.get('max_semantic_parameter_bytes', 8 * 1024**3))
+    free_device_bytes = int(torch.cuda.mem_get_info(device)[0]) if device.type == 'cuda' else None
+    max_parameter_bytes, parameter_budget = semantic_parameter_budget(config, free_device_bytes)
     if estimated_parameter_bytes > max_parameter_bytes:
         raise ValueError(f'Semantic field needs about {estimated_parameter_bytes/1024**3:.2f} GiB for {len(labels)} tracks; '
-                         'reduce proposal levels or use flat categories; no tracks were silently dropped')
+                         f'available dense-state budget is {max_parameter_bytes/1024**3:.2f} GiB; '
+                         'use more GPU memory or a smaller explicitly selected budget; no tracks were silently dropped')
+    if granularity == 'multilevel':
+        hierarchy_support_indices, hierarchy_support_audit = _hierarchy_geometry_support(built, region_records, loader)
+    matching_seconds = time.perf_counter() - matching_started
     initial, prior_metadata = _initial_probabilities(config, labels, count, ply_sha, device, torch)
     observations = []
     for frame, items in sorted(built["per_frame"].items()):
@@ -633,6 +667,7 @@ def refine_upstream_semantics(ply_path, cameras, masks, output_dir, config=None,
                     'missing_mask_views':sorted(set(camera_map)-{o['frame_id'] for o in observations}),
                     'missing_masks_are_unknown':True},
                 'estimated_parameter_bytes':estimated_parameter_bytes,
+                'parameter_memory_budget':parameter_budget,
                 "training_frames": [obs["frame_id"] for obs in observations], "initialization": prior_metadata,
                 "mask_coordinate_provenance": mask_coordinate_provenance,
                 "hierarchy_edges": accepted, "hierarchy_rejected": rejected,

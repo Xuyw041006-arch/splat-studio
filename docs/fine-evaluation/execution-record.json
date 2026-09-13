@@ -1,0 +1,463 @@
+{
+  "format": "splat-studio-fine-execution/1",
+  "scene": "Teatime",
+  "training_base_commit": "f513390a26b3b83612e06fcce8e88b878269d471",
+  "native_app_version": "0.4.3",
+  "runs": {
+    "full": {
+      "input_views": 171,
+      "gaussian_count": 2162260,
+      "source_ply_sha256": "d169c9c47dbfd820acbc8cb0533239b5be946a074d5834fe1f6c781604ddfd13",
+      "rgb_steps": 22000,
+      "semantic_steps": 2715,
+      "semantic_tracks": 523,
+      "semantic_training_coverage": {
+        "registered_training_views": 171,
+        "views_with_masks": 170,
+        "missing_mask_views": [
+          "0018.jpg"
+        ],
+        "missing_masks_are_unknown": true
+      },
+      "supervision_coverage": {
+        "sampling_schedule": "view_cycle",
+        "sweep_steps": 905,
+        "min_required_steps": 2715,
+        "minimum_sweeps": 3,
+        "planned_steps": 2715,
+        "planned_sweeps": 3,
+        "completed_sweeps": 3,
+        "minimum_pair_visits": 3,
+        "observed_frame_class_pairs": 2555,
+        "visited_frame_class_pairs": 2555,
+        "uncovered_observed_frame_class_pairs": [],
+        "eligible_frames": 170,
+        "uncovered_observed_frames": []
+      },
+      "hierarchy_edges_used": 55,
+      "cross_view_confidence": {
+        "executed": true,
+        "method": "leave_one_view_out_visible_agreement",
+        "observations": 2555,
+        "cross_view_checked": 2133,
+        "single_view_or_occluded_unknown": 422
+      },
+      "semantic_timing": {
+        "worker_seconds": 1515.5856058190002,
+        "matching_seconds": 116.14452103300027,
+        "optimizer_seconds": 425.82379896900056,
+        "setup_seconds": 28.7374936110009,
+        "checkpoint_seconds": 644.9678649189991,
+        "scope": "worker through sidecar serialization; excludes teacher inference and RGB training; components overlap worker total"
+      },
+      "priority": {
+        "method": "reviewed_mask_weighting_high_resolution_gradient_and_bounded_roi_densification",
+        "added_gaussians": 16000,
+        "before_gaussians": 2146260,
+        "after_gaussians": 2162260,
+        "refinement_steps": 2400,
+        "original_resolution_visits": 1897,
+        "training_camera_roi_psnr_before": 31.613362630208332,
+        "training_camera_roi_psnr_after": 31.645140329996746,
+        "scope": "same training cameras before and after final refinement; not a held-out evaluation or unweighted ablation"
+      },
+      "registered_test_views": 6,
+      "expected_test_views": 6,
+      "metrics": {
+        "evaluated_views": 6,
+        "overall_psnr_db": 26.076382158512107,
+        "overall_ssim": 0.8668858569044987,
+        "priority_roi_psnr_db": 27.994482365088725,
+        "priority_roi_ssim": 0.7786514190049315,
+        "miou": 0.4121016575457223,
+        "mean_boundary_iou": 0.1150170406038288,
+        "classes": {
+          "apple": {
+            "views": 5,
+            "iou": 0.42045637475853187,
+            "mean_view_iou": 0.48758369233303134,
+            "mean_boundary_iou": 0.22969925859562257,
+            "mean_roi_psnr_db": 26.969776656299338,
+            "mean_roi_ssim": 0.8552426382304908
+          },
+          "bag of cookies": {
+            "views": 5,
+            "iou": 0.6370409205044011,
+            "mean_view_iou": 0.6558331448005952,
+            "mean_boundary_iou": 0.20480149227342898,
+            "mean_roi_psnr_db": 24.561169854659102,
+            "mean_roi_ssim": 0.8446949049456951
+          },
+          "bear nose": {
+            "views": 3,
+            "iou": 0.6155862983698083,
+            "mean_view_iou": 0.5877420051857641,
+            "mean_boundary_iou": 0.13642532457663561,
+            "mean_roi_psnr_db": 29.9572610730056,
+            "mean_roi_ssim": 0.9331875601636096
+          },
+          "coffee": {
+            "views": 4,
+            "iou": 0.11387799835041296,
+            "mean_view_iou": 0.1352260791548334,
+            "mean_boundary_iou": 0.05294063887347362,
+            "mean_roi_psnr_db": 25.020862311977176,
+            "mean_roi_ssim": 0.9141287705210663
+          },
+          "coffee mug": {
+            "views": 5,
+            "iou": 0.5025330150607065,
+            "mean_view_iou": 0.5438920542549609,
+            "mean_boundary_iou": 0.1643247189414041,
+            "mean_roi_psnr_db": 25.152309164896288,
+            "mean_roi_ssim": 0.9209783070503667
+          },
+          "dall-e brand": {
+            "views": 2,
+            "iou": 0.19257433875472318,
+            "mean_view_iou": 0.19352762108696958,
+            "mean_boundary_iou": 0.049023313824330096,
+            "mean_roi_psnr_db": 23.107993625092647,
+            "mean_roi_ssim": 0.8914815662976345
+          },
+          "hooves": {
+            "views": 2,
+            "iou": 0.31274547172000067,
+            "mean_view_iou": 0.25373220860714707,
+            "mean_boundary_iou": 0.03725609103529992,
+            "mean_roi_psnr_db": 28.407854802542495,
+            "mean_roi_ssim": 0.9431528717791526
+          },
+          "paper napkin": {
+            "views": 5,
+            "iou": 0.20645230641940643,
+            "mean_view_iou": 0.20652735991203394,
+            "mean_boundary_iou": 0.03785103233346412,
+            "mean_roi_psnr_db": 30.668611396105813,
+            "mean_roi_ssim": 0.9475018826102428
+          },
+          "plate": {
+            "views": 6,
+            "iou": 0.8380926425876561,
+            "mean_view_iou": 0.8347754663399871,
+            "mean_boundary_iou": 0.18702216258474147,
+            "mean_roi_psnr_db": 27.63663064814755,
+            "mean_roi_ssim": 0.9089028921981418
+          },
+          "sheep": {
+            "views": 4,
+            "iou": 0.0,
+            "mean_view_iou": 0.0,
+            "mean_boundary_iou": 0.0,
+            "mean_roi_psnr_db": 29.462523009670377,
+            "mean_roi_ssim": 0.9241140815657223
+          },
+          "stuffed bear": {
+            "views": 5,
+            "iou": 0.941966803400226,
+            "mean_view_iou": 0.9478063637345407,
+            "mean_boundary_iou": 0.2959073372506095,
+            "mean_roi_psnr_db": 28.230237626265698,
+            "mean_roi_ssim": 0.7653548690538287
+          },
+          "tea in a glass": {
+            "views": 6,
+            "iou": 0.34918014280473003,
+            "mean_view_iou": 0.24576035749930136,
+            "mean_boundary_iou": 0.03638575324611221,
+            "mean_roi_psnr_db": 21.39201497738709,
+            "mean_roi_ssim": 0.7144353634334412
+          },
+          "three cookies": {
+            "views": 6,
+            "iou": 0.04029826014913007,
+            "mean_view_iou": 0.10136519124541908,
+            "mean_boundary_iou": 0.06977150305801595,
+            "mean_roi_psnr_db": 25.037811709276355,
+            "mean_roi_ssim": 0.8483657078830732
+          },
+          "yellow pouf": {
+            "views": 1,
+            "iou": 0.5986186327603799,
+            "mean_view_iou": 0.5986186327603799,
+            "mean_boundary_iou": 0.10882994186046512,
+            "mean_roi_psnr_db": 30.905744876340858,
+            "mean_roi_ssim": 0.9216773285663675
+          }
+        },
+        "averaging": "RGB: equal weight per registered test frame. mIoU: sum intersections/unions over annotated views per class, then equal class weight."
+      },
+      "capacity_recovery": {
+        "reason": "Completed Fine PLY exceeded the previous 2M display capacity; new bounded capacity is 3M.",
+        "rgb_training_repeated": false,
+        "geometry_unchanged": true,
+        "serialization_seconds": 705.660653591156,
+        "gpu_queue_wait_seconds": 0.00013947486877441406,
+        "patches": [
+          {
+            "file": "backend/scene_limits.py",
+            "before_sha256": "0d144335c18a39fbbc216e000462d4bc667fe30232639e198841008e364eb730",
+            "after_sha256": "6f797b161f825e08ee2242883f53c3bacfd98ee4726d6080cb605dc296b625dc"
+          },
+          {
+            "file": "backend/upstream.py",
+            "before_sha256": "90a38c5cdcf6580ff03240ad8b6b715adbe696d7f86a2cc7abf8826c3b6f0b09",
+            "after_sha256": "9e1f70500edb4258a90ae49368f58e90ae12558457abc8cf58c2e795a79639c6"
+          }
+        ]
+      },
+      "semantic_memory_recovery": {
+        "reason": "Full field requires 25.28 GiB; replace fixed 8 GiB guard with measured available-VRAM budget and bounded headroom. Group frame projections and hierarchy gathers without changing target evidence or loss.",
+        "rgb_training_repeated": false,
+        "geometry_unchanged": true,
+        "tracks_dropped": false,
+        "patches": [
+          {
+            "file": "backend/semantic_worker.py",
+            "before_sha256": "4e22a6d8aee9656409b8377180b0d722dc69184a2d847faf7eef1f692f70df03",
+            "after_sha256": "61ef1da5a00130a5790c6e6f5b76121e025bb6123e59e3d7ece0e4625d30c7a7"
+          },
+          {
+            "file": "backend/semantic_refinement.py",
+            "before_sha256": "4b8ca201a8c946c4dba5aa4b3e3cf7367d2c2dcbf5a1b14b088bd7aceaa6113a",
+            "after_sha256": "1bc0377063bc0d697434d753819c6ddcca9fc48c1b0a2c1ed427f46ce73f6325"
+          }
+        ]
+      },
+      "semantic_parameter_memory_budget": {
+        "free_device_bytes": 38331154432,
+        "free_memory_fraction": 0.75,
+        "automatic_limit_bytes": 28748365824,
+        "applied_limit_bytes": 28748365824,
+        "explicit_limit": false,
+        "scope": "Dense parameters, gradients, Adam state and working copies; remaining memory reserved for rendering and temporary operations."
+      },
+      "wall_seconds_including_recovery": 7825.976902246475,
+      "pipeline_timing_scope": "Wall time from original job start through recovery and export. Includes interrupted-capacity handling and waiting; not a clean training-speed benchmark."
+    },
+    "sparse": {
+      "input_views": 6,
+      "gaussian_count": 84748,
+      "source_ply_sha256": "c2a061884c3a650384cd0291ac946f0230654f3709d4376b4d41cc1f3e2ed969",
+      "rgb_steps": 22000,
+      "semantic_steps": 2400,
+      "semantic_tracks": 65,
+      "semantic_training_coverage": {
+        "registered_training_views": 6,
+        "views_with_masks": 6,
+        "missing_mask_views": [],
+        "missing_masks_are_unknown": true
+      },
+      "supervision_coverage": {
+        "sampling_schedule": "view_cycle",
+        "sweep_steps": 34,
+        "min_required_steps": 102,
+        "minimum_sweeps": 3,
+        "planned_steps": 2400,
+        "planned_sweeps": 70,
+        "completed_sweeps": 70,
+        "minimum_pair_visits": 70,
+        "observed_frame_class_pairs": 98,
+        "visited_frame_class_pairs": 98,
+        "uncovered_observed_frame_class_pairs": [],
+        "eligible_frames": 6,
+        "uncovered_observed_frames": []
+      },
+      "hierarchy_edges_used": 12,
+      "cross_view_confidence": {
+        "executed": true,
+        "method": "leave_one_view_out_visible_agreement",
+        "observations": 98,
+        "cross_view_checked": 48,
+        "single_view_or_occluded_unknown": 50
+      },
+      "semantic_timing": {
+        "worker_seconds": 45.43009870700007,
+        "matching_seconds": 1.521195732999331,
+        "optimizer_seconds": 37.38392992899844,
+        "setup_seconds": 0.5678266770000846,
+        "checkpoint_seconds": 3.145305971002017,
+        "scope": "worker through sidecar serialization; excludes teacher inference and RGB training; components overlap worker total"
+      },
+      "priority": {
+        "method": "reviewed_mask_weighting_high_resolution_gradient_and_bounded_roi_densification",
+        "added_gaussians": 16000,
+        "before_gaussians": 68748,
+        "after_gaussians": 84748,
+        "refinement_steps": 2400,
+        "original_resolution_visits": 2000,
+        "training_camera_roi_psnr_before": 35.374141693115234,
+        "training_camera_roi_psnr_after": 37.22037887573242,
+        "scope": "same training cameras before and after final refinement; not a held-out evaluation or unweighted ablation"
+      },
+      "registered_test_views": 2,
+      "expected_test_views": 6,
+      "metrics": {
+        "evaluated_views": 2,
+        "overall_psnr_db": 22.608298615832958,
+        "overall_ssim": 0.7105429031397971,
+        "priority_roi_psnr_db": 23.033481538600743,
+        "priority_roi_ssim": 0.5942611341042399,
+        "miou": 0.2141211342855928,
+        "mean_boundary_iou": 0.03551926978137471,
+        "classes": {
+          "apple": {
+            "views": 2,
+            "iou": 0.06979872995371865,
+            "mean_view_iou": 0.1340307522753407,
+            "mean_boundary_iou": 0.016174508852777103,
+            "mean_roi_psnr_db": 24.43081649324089,
+            "mean_roi_ssim": 0.6326966000833473
+          },
+          "bag of cookies": {
+            "views": 2,
+            "iou": 0.31357270444484714,
+            "mean_view_iou": 0.5142888183386568,
+            "mean_boundary_iou": 0.17509588721329422,
+            "mean_roi_psnr_db": 28.436783292814866,
+            "mean_roi_ssim": 0.748793057567246
+          },
+          "bear nose": {
+            "views": 2,
+            "iou": 0.0,
+            "mean_view_iou": 0.0,
+            "mean_boundary_iou": 0.0,
+            "mean_roi_psnr_db": 26.42698020109896,
+            "mean_roi_ssim": 0.782719324848914
+          },
+          "coffee": {
+            "views": 1,
+            "iou": 0.0,
+            "mean_view_iou": 0.0,
+            "mean_boundary_iou": 0.0,
+            "mean_roi_psnr_db": 39.7119345218384,
+            "mean_roi_ssim": 0.9816468193780602
+          },
+          "coffee mug": {
+            "views": 2,
+            "iou": 0.5146046511627907,
+            "mean_view_iou": 0.5206851782191324,
+            "mean_boundary_iou": 0.07103365384615384,
+            "mean_roi_psnr_db": 28.025666448763552,
+            "mean_roi_ssim": 0.6464564017644604
+          },
+          "dall-e brand": {
+            "views": 1,
+            "iou": 0.09300296632350376,
+            "mean_view_iou": 0.09300296632350376,
+            "mean_boundary_iou": 0.01402884805374432,
+            "mean_roi_psnr_db": 12.926452295403262,
+            "mean_roi_ssim": 0.13109779258753884
+          },
+          "paper napkin": {
+            "views": 2,
+            "iou": 0.2830410916283308,
+            "mean_view_iou": 0.3262707092999429,
+            "mean_boundary_iou": 0.03353695335989204,
+            "mean_roi_psnr_db": 25.59962775888278,
+            "mean_roi_ssim": 0.7542049341372781
+          },
+          "plate": {
+            "views": 2,
+            "iou": 0.4051872537393367,
+            "mean_view_iou": 0.40014244821016814,
+            "mean_boundary_iou": 0.032472543915456654,
+            "mean_roi_psnr_db": 28.61125842206814,
+            "mean_roi_ssim": 0.7792015197120776
+          },
+          "sheep": {
+            "views": 2,
+            "iou": 0.0,
+            "mean_view_iou": 0.0,
+            "mean_boundary_iou": 0.0,
+            "mean_roi_psnr_db": 23.205349435647058,
+            "mean_roi_ssim": 0.6971832966199787
+          },
+          "stuffed bear": {
+            "views": 2,
+            "iou": 0.7505837349858465,
+            "mean_view_iou": 0.7488835411111339,
+            "mean_boundary_iou": 0.06898514583898153,
+            "mean_roi_psnr_db": 22.98169508772854,
+            "mean_roi_ssim": 0.593524471129859
+          },
+          "tea in a glass": {
+            "views": 2,
+            "iou": 0.0,
+            "mean_view_iou": 0.0,
+            "mean_boundary_iou": 0.0,
+            "mean_roi_psnr_db": 24.91931430102991,
+            "mean_roi_ssim": 0.6234371240558264
+          },
+          "three cookies": {
+            "views": 2,
+            "iou": 0.13966247918873922,
+            "mean_view_iou": 0.14215412507722036,
+            "mean_boundary_iou": 0.014903696296196797,
+            "mean_roi_psnr_db": 26.280611822450147,
+            "mean_roi_ssim": 0.6779194135877087
+          }
+        },
+        "averaging": "RGB: equal weight per registered test frame. mIoU: sum intersections/unions over annotated views per class, then equal class weight."
+      },
+      "sparse_geometry": {
+        "completion": {
+          "requested": "auto",
+          "status": "learned_visible_initialization_after_sfm_failure",
+          "unseen_surfaces_recovered": false
+        },
+        "camera_source": "dust3r_inferred",
+        "backend": "dust3r",
+        "sfm_failure": "insufficient_overlap",
+        "initialization_points": 30000,
+        "registered_views": 6,
+        "cross_view_mean_support": 3.5052666666666665,
+        "minimum_view_support": 2,
+        "depth_anchors": 101116,
+        "geometry_seconds": 32.066519619000246,
+        "external_full_scene_camera_or_pointcloud_used": false
+      },
+      "pipeline_seconds": 486.82,
+      "pipeline_timing_scope": "Worker reconstruction job through semantic scene save, excluding prior teacher review, queue and final cloud exchange archive."
+    }
+  },
+  "evaluation_scope": "Six predeclared held-out images; fixed training geometry, independently registered test poses; raw learned semantics; no no-priority ablation.",
+  "local_scene_encoding": {
+    "status": "passed",
+    "gaussians": 84748,
+    "legacy_seconds": 2.4422224999871105,
+    "batched_seconds": 1.1188690840499476,
+    "speed_ratio": 2.1827598374128345,
+    "identical_bytes": true,
+    "sha256": "a123a74923be66c9c68b735ddff4a13adda113bf1c582380334ad84896e5dad9",
+    "bytes": 145603971,
+    "scope": "Local serialization only, actual completed Sparse Fine scene; not GPU training or total job time."
+  },
+  "local_frontend_import": {
+    "full": {
+      "status": "passed",
+      "reader": "frontend/scene_transport.js readSceneLines",
+      "gaussian_count": 2162260,
+      "all_source_indices_preserved": true,
+      "all_sh_degree": 3,
+      "coefficients_per_gaussian": 48,
+      "object_count": 403,
+      "seconds": 13.679149417000001,
+      "peak_rss_bytes": 3170140160,
+      "scope": "Actual frontend data reader; native GPU rendering and interaction remain pending screen unlock."
+    },
+    "sparse": {
+      "status": "passed",
+      "reader": "frontend/scene_transport.js readSceneLines",
+      "gaussian_count": 84748,
+      "all_source_indices_preserved": true,
+      "all_sh_degree": 3,
+      "coefficients_per_gaussian": 48,
+      "scene_name": "Teatime Fine · 6 views",
+      "semantic_steps": 2400,
+      "object_count": 66,
+      "seconds": 0.45299599999999995
+    }
+  },
+  "local_frontend_import_scope": "Both downloaded model files passed the actual frontend JSONL reader, preserving every Gaussian source index and all 48 SH3 coefficients. This does not measure native GPU rendering or interaction."
+}

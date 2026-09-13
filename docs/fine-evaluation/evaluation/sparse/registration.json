@@ -1,0 +1,139 @@
+{
+  "views": [
+    {
+      "name": "frame_00002.jpg",
+      "file": "/content/fine-data/lerf_ovs/teatime/images/frame_00002.jpg",
+      "width": 988,
+      "height": 730,
+      "intrinsics": [
+        [
+          744.6204629621584,
+          0.0,
+          494.0
+        ],
+        [
+          0.0,
+          745.2106340550531,
+          365.00000000000006
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_camera": [
+        [
+          0.7944488813588514,
+          0.3461175357988548,
+          -0.49905272899784675,
+          0.0917108527767389
+        ],
+        [
+          -0.3390314898271652,
+          0.934506976023648,
+          0.108417529342399,
+          -0.05146647779642696
+        ],
+        [
+          0.503893464745518,
+          0.08306240530869315,
+          0.8597627655412229,
+          0.07269219803309263
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "registration": {
+        "matched_distinct_points": 384,
+        "inliers": 365,
+        "median_reprojection_pixels": 1.1649238693269925,
+        "p95_reprojection_pixels": 2.0896637587037143,
+        "image_hull_coverage": 0.43484094323873496,
+        "positive_depth_fraction": 1.0,
+        "focal_scale": 0.9433301731496858
+      }
+    },
+    {
+      "name": "frame_00107.jpg",
+      "file": "/content/fine-data/lerf_ovs/teatime/images/frame_00107.jpg",
+      "width": 988,
+      "height": 730,
+      "intrinsics": [
+        [
+          777.5535857730803,
+          0.0,
+          494.0
+        ],
+        [
+          0.0,
+          778.1698589918882,
+          365.00000000000006
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_camera": [
+        [
+          0.9741997908022967,
+          -0.10648882440029026,
+          0.19898466744602575,
+          -0.003818367743115771
+        ],
+        [
+          0.09706854287098263,
+          0.9936704179222453,
+          0.05654023815951391,
+          -0.004699578691136846
+        ],
+        [
+          -0.20374608115413048,
+          -0.0357663364642577,
+          0.9783702282828622,
+          0.011040230132292252
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "registration": {
+        "matched_distinct_points": 65,
+        "inliers": 41,
+        "median_reprojection_pixels": 1.794775281191688,
+        "p95_reprojection_pixels": 3.246453984415381,
+        "image_hull_coverage": 0.3640790613602464,
+        "positive_depth_fraction": 1.0,
+        "focal_scale": 0.9850518420922779
+      }
+    }
+  ],
+  "failed_views": [
+    {
+      "name": "frame_00025.jpg",
+      "reason": "Test registration quality gate failed: {\"matched_distinct_points\": 48, \"inliers\": 28, \"median_reprojection_pixels\": 1.8571879757950058, \"p95_reprojection_pixels\": 2.9128693906349206, \"image_hull_coverage\": 0.07345612900949998, \"positive_depth_fraction\": 1.0, \"focal_scale\": 1.263645630185372}"
+    },
+    {
+      "name": "frame_00043.jpg",
+      "reason": "Test registration quality gate failed: {\"matched_distinct_points\": 33, \"inliers\": 15, \"median_reprojection_pixels\": 1.3882001394005765, \"p95_reprojection_pixels\": 3.851970339152126, \"image_hull_coverage\": 0.06614119211545287, \"positive_depth_fraction\": 1.0, \"focal_scale\": 1.0701149669627}"
+    },
+    {
+      "name": "frame_00129.jpg",
+      "reason": "Fewer than 30 distinct matched training points"
+    },
+    {
+      "name": "frame_00140.jpg",
+      "reason": "Test registration quality gate failed: {\"matched_distinct_points\": 40, \"inliers\": 14, \"median_reprojection_pixels\": 2.1737262957799537, \"p95_reprojection_pixels\": 3.494868639475677, \"image_hull_coverage\": 0.010364479132147105, \"positive_depth_fraction\": 1.0, \"focal_scale\": 1.1050521694836362}"
+    }
+  ],
+  "purpose": "PnP to a frozen training-only map. This evaluates rendering, not metric geometry accuracy."
+}

@@ -1,0 +1,19 @@
+{
+  "id": "d9c46ba2d5f1488eb0f87d7a182636e6",
+  "project_id": "2b4095b6ca2945cba01094e9e4c20e1c",
+  "status": "completed",
+  "progress": 1.0,
+  "stage": "重建已完成",
+  "created_at": 1789282137.3585973,
+  "kind": "reconstruction",
+  "execution_target": "cloud",
+  "execution_device": "cuda",
+  "package_sha256": "667be284899918a5aea4f3e2b3a6bce06c7b30d1519cf6d745b75fd525b6afdd",
+  "started_at": 1789282137.35924,
+  "elapsed_seconds": 486.82,
+  "message": "完整模型语义侧文件已保存；原始 RGB 高斯参数保持一致",
+  "training_progress": null,
+  "viewer_scene_url": "/api/projects/2b4095b6ca2945cba01094e9e4c20e1c/files/runs/d9c46ba2d5f1488eb0f87d7a182636e6/scene.viewer.json",
+  "scene_url": "/api/projects/2b4095b6ca2945cba01094e9e4c20e1c/files/runs/d9c46ba2d5f1488eb0f87d7a182636e6/scene.json",
+  "finished_at": 1789282624.183251
+}

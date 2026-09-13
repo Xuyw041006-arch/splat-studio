@@ -1,0 +1,171 @@
+{
+  "format": "splat-studio-fine-showcase/1",
+  "training_base_commit": "f513390a26b3b83612e06fcce8e88b878269d471",
+  "native_app_version": "0.4.3",
+  "native_source_manifest_sha256": "cca17d2157bb517861939616fa58878a131fcea59fefd232edca6616a6b3d192",
+  "execution_record_sha256": "651e8fd248298d7f761b58e52fb5cd4da8ddd4ab0915ad67aa5ac5ddd6c5ef6b",
+  "evaluator_source_sha256": "c8474980c99fd458673e1aac7cdb016577e1da3e6316c139692d5ae78e6cce34",
+  "runs": {
+    "full": {
+      "gaussian_count": 2162260,
+      "source_ply_sha256": "d169c9c47dbfd820acbc8cb0533239b5be946a074d5834fe1f6c781604ddfd13",
+      "input_views": 171,
+      "iterations": 22000,
+      "semantic_steps": 2715
+    },
+    "sparse": {
+      "gaussian_count": 84748,
+      "source_ply_sha256": "c2a061884c3a650384cd0291ac946f0230654f3709d4376b4d41cc1f3e2ed969",
+      "input_views": 6,
+      "iterations": 22000,
+      "semantic_steps": 2400
+    }
+  },
+  "captures": [
+    {
+      "path": "screenshots/01-home-zh.jpg",
+      "language": "zh",
+      "bytes": 57863,
+      "sha256": "acf1f9a964b959ae22bd4705228d47cc0551d99281bfaadd01edeeab11245113",
+      "caption": [
+        "两种开始方式",
+        "从照片建立新场景，或导入已有重建继续浏览和编辑。中文与英文可以随时切换。"
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/01-home-en.jpg",
+      "language": "en",
+      "bytes": 59690,
+      "sha256": "879aa7ea8b9b3410d109e7d7884788139d85345f067536cfe019aae7cc2ef4d5",
+      "caption": [
+        "Two ways to begin",
+        "Build a new scene from photographs, or import an existing reconstruction to explore and edit. Switch between Chinese and English in place."
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/02-full-analysis-zh.jpg",
+      "language": "zh",
+      "bytes": 72403,
+      "sha256": "72c548ce75f7e98602d9511c2c66774dad99c6d03f4068de4776f06821e10e71",
+      "caption": [
+        "先检查照片，再决定怎么重建",
+        "171 张输入照片具有较好的匹配连通性，App 建议直接重建。六张测试照片已提前留出，未进入训练。"
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/02-full-analysis-en.jpg",
+      "language": "en",
+      "bytes": 78767,
+      "sha256": "871b17f328603eb9ba9a376cb6d7ef2f27d33952cab7f84b46d68780949a1491",
+      "caption": [
+        "Check the capture before choosing a strategy",
+        "The 171 input photos have strong match connectivity, so the App recommends standard reconstruction. Six test photographs were held out before training."
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/03-priority-zh.jpg",
+      "language": "zh",
+      "bytes": 66618,
+      "sha256": "958488fdc23e7aeb4b692124ab163eca0dba56ecaaa5a22e1803ce86a0b669d6",
+      "caption": [
+        "告诉系统哪些物品更重要",
+        "本次输入 stuffed bear 与 coffee mug。后续审核实际检测区域，确认后的掩码参与重点加权与细化训练。"
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/03-priority-en.jpg",
+      "language": "en",
+      "bytes": 72521,
+      "sha256": "20322030fe74d81eeb6bdcc015f3e49865a74435e68ce3e0aff2ca91a5604b27",
+      "caption": [
+        "Tell the system what deserves more detail",
+        "This run prioritizes stuffed bear and coffee mug. Actual detected regions are reviewed before the approved masks drive weighted optimization and refinement."
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/04-fine-settings-zh.jpg",
+      "language": "zh",
+      "bytes": 78756,
+      "sha256": "099e74a57c6d731a50d9da1eaf08435b49fe1d795d284d7ca41934015c75c087",
+      "caption": [
+        "精细模式与云端 A100",
+        "两组实验均选择精细模式：22,000 步 RGB 训练，全部有效训练视角参与语义优化。App 根据设备与预算显示预计时间。"
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/04-fine-settings-en.jpg",
+      "language": "en",
+      "bytes": 88949,
+      "sha256": "a2aa7d46c2b839923341271b557da31e4bb4e267ddf3b824c7d5b393390b2157",
+      "caption": [
+        "Fine mode on a cloud A100",
+        "Both experiments use Fine mode: 22,000 RGB steps with all valid training views included in semantic optimization. The App estimates time from the device and selected budget."
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/06-priority-confirmed-zh.jpg",
+      "language": "zh",
+      "bytes": 83405,
+      "sha256": "56d9b27e9ce0be3c9f45d23a9c79a7a9486b6714ab7f9799dce4e9648cb15945",
+      "caption": [
+        "审核并确认重点区域",
+        "逐张核对识别区域，剔除误认和重复候选，再将确认结果加入训练。中文截图显示本次完整任务已确认 252 个照片区域。"
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native captures from the actual Fine full-input task: English candidate review and Chinese final confirmation are two successive states."
+    },
+    {
+      "path": "screenshots/05-priority-review-en.jpg",
+      "language": "en",
+      "bytes": 132325,
+      "sha256": "2f1717978522765495e5567a3438bfe4ac7994daf41aeb24ba728cb5e2f608fc",
+      "caption": [
+        "Review and confirm priority regions",
+        "Inspect candidate masks and border warnings before approval. The English capture shows review; the full task subsequently confirms 252 image regions for training."
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native captures from the actual Fine full-input task: English candidate review and Chinese final confirmation are two successive states."
+    },
+    {
+      "path": "screenshots/07-sparse-analysis-zh.jpg",
+      "language": "zh",
+      "bytes": 76384,
+      "sha256": "d2dbd83dc4d23b21d7a8c14f283e9c8543fb6ea4cc95eaa16e043587f164b6ed",
+      "caption": [
+        "六张照片，触发稀疏策略",
+        "照片连通性较低时，App 才建议稀疏重建与按需补全。本次训练实际使用学习几何初始化、跨视角深度约束与 3DGS 优化。"
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    },
+    {
+      "path": "screenshots/07-sparse-analysis-en.jpg",
+      "language": "en",
+      "bytes": 82193,
+      "sha256": "c18880ea1a23aec3bf5e0ecaf7295a8ff514aaae15aba1bf3838d3ae3f21f13d",
+      "caption": [
+        "Six photos trigger the sparse route",
+        "Low photo connectivity prompts sparse reconstruction with completion as needed. This run actually uses learned geometric initialization, cross-view depth constraints and 3DGS optimization."
+      ],
+      "native_app_version": "0.4.2",
+      "provenance": "Original native App capture while creating the actual Fine training tasks; captured before the 0.4.3 capacity update."
+    }
+  ],
+  "showcase_status": "measurements_complete_native_result_captures_pending"
+}

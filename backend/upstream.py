@@ -212,6 +212,25 @@ def reconstruct_upstream(image_paths, output_dir, config, progress, cancelled):
         runner+=['--position_lr_init','0.00008','--scaling_lr','0.0025']
         for name, value in densification.items(): runner += ['--'+name, str(value)]
     run(runner,'原始 3DGS CUDA 优化',iterations)
+    return finalize_upstream_model(image_paths, out, config, root=root, source_model=model,
+        exported=exported, anchors=anchors, adapter=adapter, lineage=lineage,
+        verified_cameras=verified_cameras, priority_camera_names=priority_camera_names,
+        progress=progress)
+
+
+def finalize_upstream_model(image_paths, output_dir, config, *, root, source_model,
+                            exported=None, anchors=None, adapter=None, lineage=None,
+                            verified_cameras=None, priority_camera_names=(), progress=lambda *_:None):
+    """Serialize an already-saved upstream model; never invoke geometry or RGB training.
+
+    Separating this stage lets an explicitly audited recovery retain a completed
+    PLY after a transport/capacity error, including its SH and priority evidence.
+    The caller must establish the saved run's identity before recovery.
+    """
+    out=Path(output_dir).resolve();root=Path(root).resolve();model=Path(source_model).resolve()
+    dataset=out/'dataset';shared=exported is not None
+    iterations=MODES[config.get('mode','balanced')]['iterations']
+    densification=sparse_densification_settings(iterations) if shared else None
     progress(.93,'读取原始模型并生成交互预览 · 当前阶段无可靠 ETA')
     ply=out/'model'/'point_cloud'/f'iteration_{iterations}'/'point_cloud.ply'
     from .scene_limits import scene_point_budget

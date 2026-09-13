@@ -41,7 +41,7 @@ test('untrusted remote, encoded, absolute and parent paths rejected before chunk
 });
 
 test('bad count, ordering, duplicate paths and header fail before fetching chunks',async()=>{
-  for(const alter of [m=>m.gaussian_count=6,m=>m.gaussian_count=2000001,m=>m.chunks[1].offset=1,
+  for(const alter of [m=>m.gaussian_count=6,m=>m.gaussian_count=3000001,m=>m.chunks[1].offset=1,
     m=>m.chunks[1].path=m.chunks[0].path,m=>m.chunks[0].count=3,m=>m.scene.gaussians=[],m=>m.chunk_size=25001]){
     const {manifest}=fixture();alter(manifest);let reads=0;
     await assert.rejects(fetchSceneResource(url,async()=>{reads++;return manifest;}));
@@ -118,7 +118,7 @@ test('JSONL truncated file, missing final newline and missing final chunk reject
 test('JSONL invalid count, duplicated offset, wrong format and extra chunk rejected',async()=>{
   const parts=sceneLinesParts({...header,gaussians:records},{chunkSize:2});
   const parsed=parts.map(JSON.parse);
-  for(const alter of [p=>p[0].gaussian_count=2000001,p=>p[1].offset=1,p=>p[2].offset=0,
+  for(const alter of [p=>p[0].gaussian_count=3000001,p=>p[1].offset=1,p=>p[2].offset=0,
                      p=>p[1].count=3,p=>p[1].format='unknown',p=>p.push(p[1])]){
     const values=structuredClone(parsed);alter(values);
     const text=values.map(value=>JSON.stringify(value)+'\n').join('');
@@ -141,7 +141,7 @@ test('JSONL malformed UTF-8 and blank extra line are rejected',async()=>{
 });
 
 test('full Bonsai and Teatime counts pass sequential transport without missing source rows',async()=>{
-  for(const count of [1065515,1706789]){
+  for(const count of [1065515,1706789,2162260]){
     const chunkSize=25000,chunks=[];let calls=0,progress=0;
     for(let offset=0;offset<count;offset+=chunkSize)chunks.push({path:`chunks/${offset}.json`,offset,count:Math.min(chunkSize,count-offset)});
     const manifest={format:SCENE_MANIFEST_FORMAT,gaussian_count:count,chunk_size:chunkSize,scene:{objects:[]},chunks};
@@ -158,8 +158,8 @@ test('full Bonsai and Teatime counts pass sequential transport without missing s
 });
 
 test('plain scenes and invalid caller capacities cannot bypass the full-scene safety guard',async()=>{
-  await assert.rejects(fetchSceneResource('/scene.json',async()=>({gaussians:new Array(2000001)})),/超过当前完整显示上限/);
-  await assert.rejects(fetchSceneResource('/scene.json',async()=>({gaussians:[]}),{maxGaussians:2000001}),/上限无效/);
+  await assert.rejects(fetchSceneResource('/scene.json',async()=>({gaussians:new Array(3000001)})),/超过当前完整显示上限/);
+  await assert.rejects(fetchSceneResource('/scene.json',async()=>({gaussians:[]}),{maxGaussians:3000001}),/上限无效/);
 });
 
 test('streaming export applies visibility per chunk and honors writer backpressure',async()=>{

@@ -1,6 +1,6 @@
 """Shared desktop display resource limits; full means no Gaussian sampling."""
 
-MAX_SCENE_GAUSSIANS = 2_000_000
+MAX_SCENE_GAUSSIANS = 3_000_000
 MAX_PLY_IMPORT_BYTES = 1024 ** 3
 MAX_JSON_IMPORT_BYTES = 256 * 1024 ** 2
 MAX_JSONL_IMPORT_BYTES = 4 * 1024 ** 3

@@ -162,12 +162,13 @@ def test_streamed_upload_limit_removes_partial_project(api_client, monkeypatch, 
     assert not list(tmp_path.iterdir())
 
 
-def test_limits_accept_two_million_and_reject_larger_without_sampling():
+def test_limits_accept_fine_scene_and_reject_over_capacity_without_sampling():
     from backend.scene_limits import validate_gaussian_count, scene_point_budget
-    validate_gaussian_count(2_000_000)
+    validate_gaussian_count(2_162_260)
+    validate_gaussian_count(3_000_000)
     assert scene_point_budget() is None
     with pytest.raises(ValueError, match='不会自动抽样'):
-        validate_gaussian_count(2_000_001)
+        validate_gaussian_count(3_000_001)
 
 
 def test_all_training_modes_default_to_full_display():

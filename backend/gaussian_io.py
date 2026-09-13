@@ -22,7 +22,24 @@ def write_scene(scene: dict[str, Any], path: str | Path) -> str:
     try:
         with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=path.parent, delete=False) as stream:
             temporary = Path(stream.name)
-            json.dump(scene, stream, ensure_ascii=False, allow_nan=False, separators=(',', ':'))
+            # Encode bounded Gaussian batches in the C JSON encoder. json.dump
+            # iterates over every float in Python; millions of full-SH records
+            # otherwise spend minutes writing a canonical scene. Keep ordering
+            # and JSON values identical without constructing a scene-sized str.
+            encode=lambda value:json.dumps(value,ensure_ascii=False,allow_nan=False,separators=(',', ':'))
+            stream.write('{')
+            for ordinal,(key,value) in enumerate(scene.items()):
+                if not isinstance(key,str):raise TypeError('Scene field names must be strings')
+                if ordinal:stream.write(',')
+                stream.write(encode(key)+':')
+                if key=='gaussians' and isinstance(value,list):
+                    stream.write('[')
+                    for start in range(0,len(value),25000):
+                        if start:stream.write(',')
+                        stream.write(encode(value[start:start+25000])[1:-1])
+                    stream.write(']')
+                else:stream.write(encode(value))
+            stream.write('}')
         os.replace(temporary, path)
     finally:
         if temporary is not None:temporary.unlink(missing_ok=True)

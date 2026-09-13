@@ -297,6 +297,12 @@ def _hierarchy_support(value, declared_edges, active_edges, count, classes):
                     'class_count': classes, 'edges': rows, 'sha256': digest.hexdigest()}
 
 
+def _gathered_hierarchy_loss(logits, sample_rows, sample_columns, sizes):
+    pair = logits[torch.cat(sample_rows), torch.cat(sample_columns)].sigmoid()
+    violations = F.relu(pair[:, 1] - pair[:, 0])
+    return torch.stack([values.mean() for values in violations.split(sizes)]).mean()
+
+
 def refine_semantics(
     initial_probs,
     observations: Sequence[Mapping[str, Any]],
@@ -570,16 +576,20 @@ def refine_semantics(
                 if reliable.any():
                     prior_loss = ((sample_probs - prior).square() * reliable).sum() / reliable.sum()
         if geometry_support is not None and config.hierarchy_weight:
-            terms = []
+            sample_rows, sample_columns, sizes = [], [], []
             for (parent, child), ids in geometry_support.items():
                 if not len(ids):
                     continue
                 sampled = ids[torch.randint(len(ids), (min(config.regularization_samples, len(ids)),),
                                             generator=torch_rng).to(device)]
-                pair = logits[sampled][:, [mapping[parent], mapping[child]]].sigmoid()
-                terms.append(F.relu(pair[:, 1] - pair[:, 0]).mean())
-            if terms:
-                hierarchy_loss = torch.stack(terms).mean()
+                sample_rows.append(sampled[:, None].expand(-1, 2))
+                columns = torch.tensor([mapping[parent], mapping[child]], device=device)
+                sample_columns.append(columns[None, :].expand(len(sampled), -1))
+                sizes.append(len(sampled))
+            if sizes:
+                # Gather all edge pairs once. Separate full-field gathers used
+                # to create one dense NxC backward allocation for every edge.
+                hierarchy_loss = _gathered_hierarchy_loss(logits, sample_rows, sample_columns, sizes)
         loss = data_loss + config.hierarchy_weight * hierarchy_loss + config.prior_weight * prior_loss
         if not torch.isfinite(loss):
             raise FloatingPointError(f"non-finite semantic loss at step {step}")

@@ -55,7 +55,8 @@ def read_scene_lines(path, *, max_line_bytes=MAX_SCENE_LINE_BYTES):
 
 def _write_json(path, data):
     with path.open('w', encoding='utf-8') as stream:
-        json.dump(data, stream, ensure_ascii=False, allow_nan=False, separators=(',', ':'))
+        # Viewer records are already bounded to one header or <=25,000 points.
+        stream.write(json.dumps(data, ensure_ascii=False, allow_nan=False, separators=(',', ':')))
 
 
 def write_viewer_scene(scene, canonical_path, *, threshold=50_000, chunk_size=25_000):

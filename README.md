@@ -6,24 +6,23 @@
 
 A bilingual desktop workbench that brings **3D Gaussian reconstruction, sparse-view geometry, hierarchical semantics, and object-focused refinement** into one guided workflow.
 
-**English** · [简体中文](README.zh-CN.md) · [Complete user guide](docs/user-guide.html) · [Colab notebook](colab/Splat-Studio-User-Guide.ipynb) · [Screenshot demo](docs/demo/README.md)
+**English** · [简体中文](README.zh-CN.md) · [Complete user guide](docs/user-guide.html) · [Colab notebook](colab/Splat-Studio-User-Guide.ipynb) · [Fine showcase](docs/fine-evaluation/README.md)
 
-![Teatime reconstructed in the native Splat Studio App](docs/demo/screenshots/16-teatime-viewer-en.jpg)
+![Fine Teatime: held-out photograph and actual rendering](docs/fine-evaluation/measurements/full-held-out-comparison.jpg)
 
 </div>
 
 ## See the app in action
 
-[**Explore the bilingual screenshot walkthrough →**](docs/demo/README.md)
+[**Explore the bilingual Fine measurements and workflow screenshots →**](docs/fine-evaluation/README.md)
 
-The walkthrough covers scene creation, photo-based sparse guidance, priority-mask review, GPU setup, the trained Teatime viewer and reversible region editing. **24 scenes, 48 original screenshots, 48 captioned cards.**
+Actual **22,000-step A100** runs reconstruct Teatime from **171 photos** and from **six sparse photos with learned visible-geometry completion**. The showcase pairs held-out image comparisons with overall rendering, priority-object and semantic metrics, including a same-test-view comparison.
 
-| Review priority regions | Edit and undo | Input-aware sparse guidance |
-| --- | --- | --- |
-| ![Priority region confirmation](docs/demo/screenshots/25-priority-review-en.jpg) | ![Restore the scene with undo](docs/demo/screenshots/19-command-undo-en.jpg) | ![Two-photo reconstruction guidance](docs/demo/screenshots/27-two-view-completion-en.jpg) |
+[Whole-project report](docs/fine-evaluation/项目报告.html) · [All measurements](docs/fine-evaluation/精度评测.html) · [Earlier Fast native interaction walkthrough](docs/demo/README.md).
 
-The real Fast A100 run exports **1,200,686 Gaussians with degree-three SH** from 177 photos. Reconstruction through full export takes **45m 50.5s**, with setup and detection reported separately. Semantic editing uses partial regions in this Fast result. [Methods and measured scope](docs/demo/方法与实测说明.md) · [Execution record](docs/demo/execution-record.json).
+**Overall PSNR 26.08 dB · coffee mug ROI SSIM 0.921 · stuffed bear IoU 94.2%**
 
+Overall PSNR uses 6 held-out views; the priority detail averages 5 annotated views of coffee mug, selected by mean ROI SSIM among the two priority categories. The semantic highlight is the best pooled class with at least two annotated views (171-input run, 5 evaluated views); all classes and coverage remain in the report.
 
 ## A complete workflow, from capture to interaction
 
